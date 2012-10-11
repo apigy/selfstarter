@@ -1,6 +1,8 @@
 # Selfstarter
 Selfstarter makes it easy to roll your own crowdfunding site. To get started, fork this repository and change around ```config/settings.yml``` to suit your needs.
 
+[See it in action](http://selfstarter.us)
+
 ## Background
 
 [Kickstarter rejected us](http://techcrunch.com/2012/10/07/the-story-of-lockitron-crowdfunding-without-kickstarter/), so we made our own crowdfunding for [Lockitron](https://lockitron.com). Feel free to [give us feedback](mailto:hello@lockitron.com)!
