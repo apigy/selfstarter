@@ -14,6 +14,7 @@ Selfstarter is a starting point. We made some specific choices with Selfstarter 
 * Selfstarter doesn't come with any authentication, administration, mailers or analytics tools. We recommend adding a basic set of these so that you can message backers and manage orders.
 
 ## Getting Started
+*Note: This assumes you have Ruby 1.9.2 or later installed properly and have a basic working knowledge of how to use RubyGems*
 
 First you'll need to fork and clone this repo
 
