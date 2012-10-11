@@ -5,7 +5,7 @@ Selfstarter makes it easy to roll your own crowdfunding site. To get started, fo
 
 ## Background
 
-[Kickstarter rejected us](http://techcrunch.com/2012/10/07/the-story-of-lockitron-crowdfunding-without-kickstarter/), so we made our own crowdfunding for [Lockitron](https://lockitron.com). Feel free to [give us feedback](mailto:hello@lockitron.com)!
+After a [rejection from Kickstarter](http://techcrunch.com/2012/10/07/the-story-of-lockitron-crowdfunding-without-kickstarter/), we decided to follow in the footsteps of App.net roll our own crowdfunding site for [Lockitron](https://lockitron.com). We've been absolutely blown away by the response. As a first step in what will hopefully be a long history of giving back, we have decided to open source the tools that got us here. Feel free to [give us feedback](mailto:hello@lockitron.com)!
 
 Over the past week, a lot of people asked us for help with building their own crowdfunding app. This is it.
 
