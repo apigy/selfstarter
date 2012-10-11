@@ -17,6 +17,10 @@ Selfstarter is a starting point. We made some specific choices with Selfstarter 
 
 First you'll need to fork and clone this repo
 
+```bash
+git clone https://github.com/lockitron/selfstarter.git
+```
+
 Let's get all our dependencies setup:
 ```bash
 bundle install --without production
