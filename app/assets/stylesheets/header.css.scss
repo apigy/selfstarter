@@ -1,0 +1,19 @@
+#lockitron_header
+{
+  border: none;
+  a
+  {
+    border: none !important;
+    font-size: inherit !important;
+  }
+}
+#header 
+{
+  width: 100%;
+  padding: 26px 0;
+  -moz-box-shadow:    0px 1px 3px 0px #acacac;
+  -webkit-box-shadow: 0px 1px 3px 0px #acacac;
+  box-shadow:         0px 1px 3px 0px #acacac;
+  background: #fcfcfc;
+  position: relative;
+}

@@ -1,0 +1,26 @@
+<div class="gray_background" id='share_container'>
+  <div class="wrapper center" id="congrats">
+    <h2>
+      Hooray! You've just reserved a <%= Settings.product_name %>!
+    </h2>
+    <p>Congratulations, you're <%= Settings.primary_stat_verb %> number <span id="backer_number"><%= number_with_delimiter @order.number, :delimiter => "," %></span>,  in supporting <%= Settings.product_name %>. Share the great news!</p>
+		<br />
+		<br />
+    <div id="share" class="clearfix">
+			<div id='pin_button_container'>
+				<%= pin_it_button %>
+			</div>
+			<div id='tweet_button_container'>
+				<%= tweet_button %>
+	    </div>
+			<div id='facebook_button_container'>
+				<%= like_button(450, true) %>
+			</div>
+  	</div>
+		 <div id="order_id">Reservation ID: <%= @order.uuid %>. You can bookmark or print this page for your records.</div> 
+  </div>
+
+</div>
+
+<%= render 'preorder/share/twitter_js' %>
+<%= render 'preorder/share/facebook_js' %>

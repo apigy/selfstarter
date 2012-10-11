@@ -1,0 +1,232 @@
+
+/* For modern browsers */
+.clearfix:before,
+.clearfix:after 
+{
+  content:"";
+  display:table;
+}
+.clearfix:after 
+{
+    clear:both;
+}
+/* For IE 6/7 (trigger hasLayout) */
+.clearfix {
+    zoom:1;
+}
+
+ code
+ {
+  border: 1px solid #CCC;
+  padding: 1px;
+  vertical-align: middle;
+  font-family: "Consolas", "Inconsolata", "Meslo", "Inconsolata-dz", monospace;
+  text-shadow: none;
+  font-size: 10pt;
+ }
+
+html, body {
+  width: 100%;
+}
+
+body {
+  background: $body_background;
+}
+
+.disabled
+{
+  opacity: 0.65;
+  pointer-events: none;
+}
+
+form
+{
+  margin-top: 15px;
+}
+
+body, input, textarea 
+{
+  font-size: $font_size;
+  font-family: $primary_font, $secondary_font, $tertiary_font;
+  color: $text_color;
+  text-shadow: $text_shadow;
+  -webkit-font-smoothing: antialiased;
+}
+
+a 
+{
+  text-decoration: none;
+  color: $link_color;
+}
+
+a:hover 
+{
+  text-decoration: underline;
+}
+
+i 
+{
+  font-style: italic;
+}
+
+
+
+
+// Used in the FAQ
+details, summary
+{
+  outline: none;
+}
+summary
+{
+  text-decoration: none;
+  color: $summary_color;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  font-size: 20px;
+  line-height: 1.3;
+
+}
+summary:hover
+{
+  text-decoration: underline;
+  cursor: pointer;
+}
+details summary::-webkit-details-marker { display:none; content: ""; }
+// Styling the polyfill for browsers that don't support details/summary tags
+.no-details details { display: block }
+.no-details details > summary::before { content:none }
+.no-details details.open > summary::before {   content:none }
+
+
+
+h1 {
+  margin: 0 auto;
+  margin-left: 380px;
+  width: 174px;
+  font-family: Helvetica;
+  font-size: 42px;
+  font-weight: bold;
+  color: $h1_color;
+  letter-spacing: -.05em;
+  float: left;
+  a
+  {
+    color: $h1_color;
+    text-decoration: none;
+  }
+  a:hover
+  {
+    color: $h1_color;
+    text-decoration: none;
+  }
+}
+
+h2 {
+  font-family: $primary_font, $secondary_font, $tertiary_font;
+  font-size: 45px;
+  color: $h2_color;
+  margin-bottom: 50px;
+}
+
+h4 {
+  font-size: 36px;
+  color: $h4_color;
+  margin-bottom: 30px;
+}
+
+h5 {
+  font-family: $primary_font, $secondary_font, $tertiary_font;
+  margin-bottom: 10px;
+  color: $h5_color;
+}
+
+.wrapper {
+  width: 935px;
+  margin: 0 auto;
+}
+
+.center {
+  text-align: center;
+}
+
+.gray_background 
+{
+  width:  100%;
+  padding: 50px 0;
+  background: $gray_background_top_color; /* Old browsers */
+  background: -moz-linear-gradient(top,  $gray_background_top_color 0%, $gray_background_middle_color 50%, $gray_background_bottom_color 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$gray_background_top_color), color-stop(50%,$gray_background_middle_color), color-stop(100%,$gray_background_bottom_color)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  $gray_background_top_color 0%,$gray_background_middle_color 50%,$gray_background_bottom_color 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  $gray_background_top_color 0%,$gray_background_middle_color 50%,$gray_background_bottom_color 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  $gray_background_top_color 0%,$gray_background_middle_color 50%,$gray_background_bottom_color 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  $gray_background_top_color 0%,$gray_background_middle_color 50%,$gray_background_bottom_color 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$gray_background_top_color', endColorstr='$gray_background_bottom_color',GradientType=0 ); /* IE6-9 */
+  border-bottom: 1px solid $gray_background_border_color;
+}
+
+.button:hover {
+  text-decoration: none;
+  color: $button_hovered_color;
+}
+
+.button:active {
+  background: $button_active_background;
+  border: 1px solid $button_active_border;
+}
+
+.blue_button {
+  display: block;
+  color: $button_color; /* text color */
+  text-shadow: 0 -1px 1px $button-text_shadow_color; /* drop shadow */
+  -moz-box-shadow:
+    0 1px 1px  $button_box_shadow_color /* drop shadow */,
+    inset 0 -1px $button_box_shadow_inset_color /* inner shadow */;
+  -webkit-box-shadow:
+    0 1px 1px $button_box_shadow_color /* drop shadow */,
+    inset 0 -1px 1px $button_box_shadow_inset_color /* inner shadow */;
+  background-image: $button_top_gradient; /* gradient fill */
+  background-image: -moz-linear-gradient(90deg, $button_top_gradient 0%, $button_bottom_gradient 100%); /* gradient fill */
+  background-image: -o-linear-gradient(90deg, $button_top_gradient 0%, $button_bottom_gradient 100%); /* gradient fill */
+  background-image: -webkit-linear-gradient(90deg, $button_top_gradient 0%, $button_bottom_gradient 100%); /* gradient fill */
+  background-image: linear-gradient(90deg, $button_top_gradient 0%, $button_bottom_gradient 100%); /* gradient fill */
+  -webkit-border-radius: $button_border_radius;
+  -moz-border-radius: $button_border_radius;
+  border-radius: $button_border_radius;
+  font-family: $primary_font, $secondary_font, $tertiary_font;
+}
+.blue_button:hover {
+  -moz-box-shadow:
+    0 1px 1px $button_box_shadow_color /* drop shadow */,
+    inset 0 -1px 1px $button_box_shadow_inset_color /* inner shadow */;
+  -webkit-box-shadow:
+    0 1px 1px$button_box_shadow_color /* drop shadow */,
+    inset 0 -1px 1px $button_box_shadow_inset_color /* inner shadow */;
+  box-shadow:
+    0 1px 1px $button_box_shadow_color /* drop shadow */,
+    inset 0 -1px 1px $button_box_shadow_inset_color /* inner shadow */;
+  background-image: $button_ie9_gradient_hover; /* gradient fill */
+  background-image: -moz-linear-gradient(90deg, $button_top_gradient_hover 0%, $button_bottom_gradient_hover 100%); /* gradient fill */
+  background-image: -o-linear-gradient(90deg, $button_top_gradient_hover 0%, $button_bottom_gradient_hover 100%); /* gradient fill */
+  background-image: -webkit-linear-gradient(90deg, $button_top_gradient_hover 0%, $button_bottom_gradient_hover 100%); /* gradient fill */
+  background-image: linear-gradient(90deg, $button_top_gradient_hover 0%, $button_bottom_gradient_hover 100%); /* gradient fill */
+  text-decoration: none;  
+}
+
+.blue_button:active {
+  -moz-box-shadow:
+    0 1px 1px $button_box_shadow_color /* drop shadow */,
+    inset 0 3px 5px $button_box_shadow_inset_color /* inner shadow */;
+  -webkit-box-shadow:
+    0 1px 1px $button_box_shadow_color /* drop shadow */,
+    inset 0 3px 5px $button_box_shadow_inset_color /* inner shadow */;
+  box-shadow:
+    0 1px 1px $button_box_shadow_color /* drop shadow */,
+    inset 0 3px 5px $button_box_shadow_inset_color /* inner shadow */;
+  background-image: $button_ie9_gradient_active /* gradient fill */;
+  background-image: -moz-linear-gradient(90deg, $button_top_gradient_active 0%, $button_bottom_gradient_active 100%); /* gradient fill */
+  background-image: -o-linear-gradient(90deg, $button_top_gradient_active 0%, $button_bottom_gradient_active 100%); /* gradient fill */
+  background-image: -webkit-linear-gradient(90deg, $button_top_gradient_active 0%, $button_bottom_gradient_active 100%); /* gradient fill */
+  background-image: linear-gradient(90deg, $button_top_gradient_active 0%, $button_bottom_gradient_active 100%); /* gradient fill */
+}

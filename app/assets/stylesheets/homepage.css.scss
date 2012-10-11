@@ -1,0 +1,33 @@
+@import "homepage/stats";
+@import "homepage/call_to_action";
+@import "homepage/key_points";
+@import "homepage/other_points";
+@import "homepage/press";
+@import "homepage/faq";
+
+#tweet_button
+{
+  margin-top: 5px;
+}
+
+.fb-like 
+{
+	margin-left: 5px;
+	float:left;
+}
+
+#video 
+{
+  float: left;
+  width: 512px;
+  height: 385px;
+  background: #fff;
+  -moz-box-shadow: 0 2px 6px rgba(0,0,0,.39); /* drop shadow */
+  -webkit-box-shadow: 0 2px 6px rgba(0,0,0,.39); /* drop shadow */
+  box-shadow: 0 2px 6px rgba(0,0,0,.39); /* drop shadow */
+  img:hover 
+  {
+	 opacity: 0.5;
+	 cursor: pointer;
+  }
+}

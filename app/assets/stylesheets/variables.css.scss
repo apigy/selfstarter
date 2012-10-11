@@ -1,0 +1,63 @@
+// Hi!
+// Please change around the settings as you need. These are all the defaults
+// These only affect the primitives -- inputs, divs, h1-h5, etc (not classes/IDs, with one exception)
+
+// If you have any questions, create a GitHub issue, or email me us -- hello@lockitron.com
+
+$body_background: #E6E6E6;
+
+// Right now, we don't really use h1 and h2's correctly.
+// We'll fix it soon!
+
+$h1_color: #323232;
+$h2_color: #4B4B4B;
+$h4_color: #292929;
+$h5_color: #4B4B4B;
+
+$text_color: #6B6B6B;
+$link_color: #0008D6;
+$text_shadow: 0 1px 0px #fff;
+$font_size: 22px;
+
+// Lockitron uses ProximaNova Regular, but that costs money, so we're defaulting to Helveitca Neue instead.
+$primary_font:   "Helvetica Neue";
+$secondary_font: "Helvetica";
+$tertiary_font:  "Arial";
+
+// Gray background is a gradient -- top == 0%, middle == 50%, bottom == 100%
+$gray_background_top_color: 	 #F6F6F6;
+$gray_background_middle_color: #FAFAFA;
+$gray_background_bottom_color: #FAFAFA;
+
+// The bottom border on the gray backgrounds
+$gray_background_border_color: #C4C4C4;
+
+// Button colors/background/border
+$button_color: 								 white;
+$button_hovered_color: 				 #0088d6;
+$button_active_background: 		 #FAFAFA;
+$button_active_border: 				 #C8C8C8;
+
+// This only affects .blue_button, which is the "Reserve Now" button you see on Lockitron's homepage
+$button_text_shadow_color: 		  rgba(0,0,0,.37);
+$button_box_shadow_color: 		  rgba(255,255,255,.92);
+$button_box_shadow_inset_color: rgba(0,0,0,.22);
+$button_border_radius: 					10px;
+
+// Default State
+$button_ie9_gradient:  					url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PGxpbmVhckdyYWRpZW50IGlkPSJoYXQwIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjUwJSIgeTE9IjEwMCUiIHgyPSI1MCUiIHkyPSIwJSI+CjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwZTk2ZTQiIHN0b3Atb3BhY2l0eT0iMSIvPgo8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMmEwZmEiIHN0b3Atb3BhY2l0eT0iMSIvPgogICA8L2xpbmVhckdyYWRpZW50PgoKPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNoYXQwKSIgLz4KPC9zdmc+);
+$button_top_gradient: 					#0E96E4;
+$button_bottom_gradient: 				#02A0FA;
+
+// Hover State
+$button_ie9_gradient_hover: 		url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PGxpbmVhckdyYWRpZW50IGlkPSJoYXQwIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjUwJSIgeTE9IjEwMCUiIHgyPSI1MCUiIHkyPSIwJSI+CjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMyZGE0ZTkiIHN0b3Atb3BhY2l0eT0iMSIvPgo8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMyMWFlZmYiIHN0b3Atb3BhY2l0eT0iMSIvPgogICA8L2xpbmVhckdyYWRpZW50PgoKPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNoYXQwKSIgLz4KPC9zdmc+);
+$button_top_gradient_hover: 		#2DA4E9;
+$button_bottom_gradient_hover: 	#21AEFF;
+
+// Active State
+$button_ie9_gradient_active:		url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PGxpbmVhckdyYWRpZW50IGlkPSJoYXQwIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjUwJSIgeTE9IjEwMCUiIHgyPSI1MCUiIHkyPSIwJSI+CjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwMzlmZjciIHN0b3Atb3BhY2l0eT0iMSIvPgo8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMzlmZjciIHN0b3Atb3BhY2l0eT0iMSIvPgogICA8L2xpbmVhckdyYWRpZW50PgoKPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNoYXQwKSIgLz4KPC9zdmc+);
+$button_top_gradient_active: 	 	#039FF7;
+$button_bottom_gradient_active: #039ff7;
+
+// FAQ Entry
+$summary_color: #0088D6;

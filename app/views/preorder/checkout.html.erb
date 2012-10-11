@@ -1,0 +1,20 @@
+<div class="gray_background">
+  <div class="wrapper clearfix">
+    <div class="main_content">
+      <h3>Check out</h3>
+      <p>
+        Let your backers know how their payment information will be handled.
+        <br />
+	      <br />
+    		Enter your email address below.
+      </p>
+      <%= form_tag "/preorder/prefill", :id => "checkout" do %>
+        <%= email_field_tag "email", nil, :placeholder => "hello@lockitron.com", :required => "required", :id => "email" %>
+        <%= hidden_field_tag "preorder", true %>
+        <%= hidden_field_tag "quantity", params[:quantity] %>
+        <%= submit_tag "Checkout", :class => "blue_button disabled", :id => "amazon_button" %>
+      <% end %>
+    </div>
+    <%= render 'preorder/checkout/sidebar' %>
+  </div>
+</div>

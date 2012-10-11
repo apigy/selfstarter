@@ -1,0 +1,50 @@
+#share_container
+{
+  #congrats 
+  {
+    padding: 70px 0;
+    h2 
+    {
+      margin-bottom: 24px;
+    }
+    p 
+    {
+      margin-bottom: 30px;
+      font-size: 24px;
+    }
+  }
+  #share 
+  {
+    margin: 0 auto;
+    text-align: center;
+    margin: 0 auto;
+    #facebook_button_container
+    {
+      margin: 0 auto;
+      display: inline-block;
+    }
+    #pin_button_container
+    {
+      margin: 0 auto;
+      display: inline-block;
+      position: relative;
+      top: 1px;
+      .pin-it-button
+      {
+      }
+    }
+    #tweet_button_container
+    {
+      margin: 0 auto;
+      display: inline-block;
+    }
+  }
+  #order_id
+  {
+    margin: 0 auto;
+    margin-top: 15px;
+    padding: 0px;
+    opacity: 0.3;
+    z-index: 9999;
+  }
+}

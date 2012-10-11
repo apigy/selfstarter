@@ -1,0 +1,47 @@
+#logos {
+  padding: 40px 0;
+  background: #f3f3f3;
+  -moz-box-shadow:    0px 1px 3px 0px #acacac;
+  -webkit-box-shadow: 0px 1px 3px 0px #acacac;
+  box-shadow:         0px 1px 3px 0px #acacac;
+  li 
+  {
+    float: left;
+    margin: 0 16px;
+    a {
+      display: block;
+      height: 48px;
+      opacity: 0.2;
+      text-indent: -10000px;
+    }
+    a:hover {
+      opacity: 1;
+    }
+  }
+  #awesomeblog a
+  {
+    background: url(image-path("")) no-repeat left center;
+    width: 176px;
+  }
+  #coolpaper a
+  {
+    background: url(image-path("")) no-repeat left center;
+    width: 109px;
+  }
+  #nicemag a
+  {
+    background: url(image-path("")) no-repeat left center;
+    width: 149px;
+  }
+  #readcrunch a
+  {
+    background: url(image-path("")) no-repeat left center;
+    width: 81px;
+  }
+}
+
+
+
+
+
+
