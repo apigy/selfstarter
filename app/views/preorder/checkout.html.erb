@@ -5,8 +5,8 @@
       <p>
         Let your backers know how their payment information will be handled.
         <br />
-	      <br />
-    		Enter your email address below.
+        <br />
+        Enter your email address below.
       </p>
       <%= form_tag "/preorder/prefill", :id => "checkout" do %>
         <%= email_field_tag "email", nil, :placeholder => "hello@lockitron.com", :required => "required", :id => "email" %>
