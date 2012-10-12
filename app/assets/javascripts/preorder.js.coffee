@@ -20,9 +20,3 @@ Selfstarter =
 $ ->
 	Selfstarter.init()
 	$("#email").focus()
-		
-
-
-	
-		
-
