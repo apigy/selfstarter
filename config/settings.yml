@@ -19,9 +19,8 @@ product_image_path: "my-product-image.png"
 # The message on the preorder page, Lockitron's 
 value_proposition: "Roll your own crowdfunding"
 
-# YouTube Video URL (The embed URL, without the query string options)
-# There's no Vimeo support at the moment, but feel free to implement it and  send a pull request!
-youtube_embed_url: "https://www.youtube.com/v/D1L3o88GKew"
+# YouTube or Vimeo Video URL (The embed URL, without the query string options)
+video_embed_url: "https://www.youtube.com/v/D1L3o88GKew"
 
 # Amazon settings -- you'll need an Amazon Payments account, sign up here --> http://bit.ly/SGksTv
 
