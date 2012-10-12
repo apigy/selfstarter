@@ -1,47 +1,47 @@
-#backing 
+#backing
 {
   float: left;
   width: 383px;
   margin: 20px 0 0 40px;
-	#backers 
-	{
-	  border-left: none;
-	  padding-left: 0;
-	  ul 
-		{
-		  float: left;
-		}
-	}
-	#days {
-	  border-right: none;
-	  padding-right: 0;
-	}
-	ul {
-	  text-align: center;	
-	}
-	.stats 
-	{
-	  margin: 0 auto;
-	  color: #3f3f3f;
-	  font-size: 24px;
-	  display: block;
-	  display: inline-block;
-	  font-family: $primary_font, $secondary_font, $tertiary_font;
-	  border-right: 1px solid #cbcbcb;
-	  padding-right: 26px;
-	  padding-left: 26px;
-	  text-align: left;
-		span 
-		{
-		  color: #868686;
-		  font-size: 18px;
-		  margin-top: 5px;
-		  display: block;
-		  font-family: $primary_font, $secondary_font, $tertiary_font;
-		}
-	}
+  #backers
+  {
+    border-left: none;
+    padding-left: 0;
+    ul
+    {
+      float: left;
+    }
+  }
+  #days {
+    border-right: none;
+    padding-right: 0;
+  }
+  ul {
+    text-align: center;
+  }
+  .stats
+  {
+    margin: 0 auto;
+    color: #3f3f3f;
+    font-size: 24px;
+    display: block;
+    display: inline-block;
+    font-family: $primary_font, $secondary_font, $tertiary_font;
+    border-right: 1px solid #cbcbcb;
+    padding-right: 26px;
+    padding-left: 26px;
+    text-align: left;
+    span
+    {
+      color: #868686;
+      font-size: 18px;
+      margin-top: 5px;
+      display: block;
+      font-family: $primary_font, $secondary_font, $tertiary_font;
+    }
+  }
 }
-#progress_bg 
+#progress_bg
 {
   margin-top: 20px;
   float: left;
@@ -54,7 +54,7 @@
   border-radius: 30px;
   width: 383px;
   background: #dbdbdb;
-  #progress 
+  #progress
   {
     height: 40px;
     -moz-box-shadow: 0 1px 1px rgba(0,0,0,.59); /* drop shadow */
@@ -74,23 +74,23 @@
     display: inline-block;
   }
   #progress_text
-	{
-	  margin: 0 auto;
-	  width: 100%;
-	  font-size: 14pt;
-	  display: inline-block;
-	  color: white;
-	  text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.37);
-	  text-align: center;
-	  position: relative;
-	  top: -35px;
-	}
+  {
+    margin: 0 auto;
+    width: 100%;
+    font-size: 14pt;
+    display: inline-block;
+    color: white;
+    text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.37);
+    text-align: center;
+    position: relative;
+    top: -35px;
+  }
 }
 .small
 {
-	height: 20px !important;
-	#progress
-	{
-		height: 20px !important;
-	}
+  height: 20px !important;
+  #progress
+  {
+    height: 20px !important;
+  }
 }

@@ -15,5 +15,4 @@ class PreorderControllerTest < ActionController::TestCase
     get :get_excited
     assert_response :success
   end
-
 end
