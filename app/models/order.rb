@@ -57,7 +57,7 @@ class Order < ActiveRecord::Base
 
   # See what it looks like when you have some backers! Drop in a number instead of Order.count
   def self.current
-    Order.count
+    Order.where("token != ? OR token != ?", "", nil).count
   end
 
   def self.revenue
