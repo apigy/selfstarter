@@ -1,71 +1,69 @@
 <div class="gray_background" id="faqs">
-    <div class="wrapper clearfix">
-      <h4>Frequently Asked Questions</h4>
-        <ul>
-          <li class=''>
-            <details class=''>
-              <summary class=''>How do I setup Amazon Payments?</summary>
-              <p>You'll need to <a href="https://payments.amazon.com/sdui/sdui/accountstatus">create an Amazon Seller Central account</a>. Afterwards, get your access key and secret key from the "Integration" tab on your AWS account. <a href="https://payments.amazon.com/sdui/sdui/helpTab/Checkout-by-Amazon/Advanced-Integration-Help/Using-Your-Access-Key">Click here for more info</a>.
-                <br />
-                <br />
-                Once you have your access key and secret key, head over to <code>config/settings.yml</code>. Change <code>amazon_access_key</code> and <code>amazon_secret_key</code> appropriately.</p>
-            </details>
-          </li>
-          <li>
-            <details class=''>
-              <summary>Can I use another payments provider?</summary>
-              <p>Of course. We haven't built in support for other providers, but we recommend that you take a look at <a href="https://stripe.com">Stripe</a> or <a href="https://wepay.com">WePay</a>.</p>
-            </details>
-          </li>
-          <li>
-            <details class=''>
-              <summary>How do I edit the FAQ?</summary>
-              <p>The faq is a partial located in <code>app/views/preorder/homepage/_faq.html.erb</code> The <code>summary</code> tag is the title, the <code>p</code> is the body. Make sure to add an <code>li</code> tag for each FAQ entry.</p>
-            </details>
-          </li>
-          <li>
-            <details class=''>
-              <summary>How do I change around the images, product name, etc?</summary>
-              <p>The best way is in <code>config/settings.yml</code>. It has variables for several different parts, the YouTube video, the product name, the call to action button ("Fork Now"), and several more.
-              </p>
-            </details>
-          </li>
-        </ul>
-        <ul class='col2'>
-          <li>
-            <details class=''>
-              <summary>How do I change the CSS?</summary>
-              <p>Head over to <code>app/assets/stylesheets/variables.css.scss</code>. It makes it easy to change around the elements used throughout the HTML.
-              <br />
-              <br />
-              Alternatively, you can dive right into the CSS, have a look at <code>app/assets/stylesheets/main.css.scss</code>.</p>
-            </details>
-          </li> 
-         <li class=''>
-            <details class=''>
-              <summary>Why did you release this?</summary>
-              <p>Hardware startups are less welcome on Kickstarter than they were 6 months ago. We needed to roll our own kickstarter, so we did. Other hardware startups probably will too, so we made it easier for them by open sourcing our way of doing it.</p>
-            </details>
-          </li>
-          <li class=''>
-            <details class=''>
-              <summary class=''>What software stack does this use?</summary>
-              <p>It's a Ruby on Rails app that makes heavy use of SCSS, Kickstarter's wonderful <code>amazon_flex_pay</code> gem, and a hint of CoffeeScript.</p>
-            </details>
-          </li>
-          <li class=''>
-            <details class=''>
-              <summary class=''>How do I deploy it?</summary>
-              <p>We recommend using Heroku. We include a Procfile for you, so all you need to do is:
-                <p>
-                  <p>Install the <a href="https://toolbelt.heroku.com/">Heroku Toolbelt</a></p>
-                  <p>Run <code>heroku create</code> in Selfstarter's folder</code></p>
-                  <p>Run <code>git push heroku master</code> in Selfstarter's folder</p>
-                </p>
-              </p>
-            </details>
-          </li>
-        </ul>
-    </div>
+  <div class="wrapper clearfix">
+    <h4>Frequently Asked Questions</h4>
+    <ul>
+      <li class=''>
+        <details class=''>
+          <summary class=''>How do I setup Amazon Payments?</summary>
+          <p>You'll need to <a href="https://payments.amazon.com/sdui/sdui/accountstatus">create an Amazon Seller Central account</a>. Afterwards, get your access key and secret key from the "Integration" tab on your AWS account. <a href="https://payments.amazon.com/sdui/sdui/helpTab/Checkout-by-Amazon/Advanced-Integration-Help/Using-Your-Access-Key">Click here for more info</a>.
+          <br />
+          <br />
+          Once you have your access key and secret key, head over to <code>config/settings.yml</code>. Change <code>amazon_access_key</code> and <code>amazon_secret_key</code> appropriately.</p>
+        </details>
+      </li>
+      <li>
+        <details class=''>
+          <summary>Can I use another payments provider?</summary>
+          <p>Of course. We haven't built in support for other providers, but we recommend that you take a look at <a href="https://stripe.com">Stripe</a> or <a href="https://wepay.com">WePay</a>.</p>
+        </details>
+      </li>
+      <li>
+        <details class=''>
+          <summary>How do I edit the FAQ?</summary>
+          <p>The faq is a partial located in <code>app/views/preorder/homepage/_faq.html.erb</code> The <code>summary</code> tag is the title, the <code>p</code> is the body. Make sure to add an <code>li</code> tag for each FAQ entry.</p>
+        </details>
+      </li>
+      <li>
+        <details class=''>
+          <summary>How do I change around the images, product name, etc?</summary>
+          <p>The best way is in <code>config/settings.yml</code>. It has variables for several different parts, the video, the product name, the call to action button ("Fork Now"), and several more.
+          </p>
+        </details>
+      </li>
+    </ul>
+    <ul class='col2'>
+      <li>
+        <details class=''>
+          <summary>How do I change the CSS?</summary>
+          <p>Head over to <code>app/assets/stylesheets/variables.css.scss</code>. It makes it easy to change around the elements used throughout the HTML.
+          <br />
+          <br />
+          Alternatively, you can dive right into the CSS, have a look at <code>app/assets/stylesheets/main.css.scss</code>.</p>
+        </details>
+      </li>
+      <li class=''>
+        <details class=''>
+          <summary>Why did you release this?</summary>
+          <p>Hardware startups are less welcome on Kickstarter than they were 6 months ago. We needed to roll our own kickstarter, so we did. Other hardware startups probably will too, so we made it easier for them by open sourcing our way of doing it.</p>
+        </details>
+      </li>
+      <li class=''>
+        <details class=''>
+          <summary class=''>What software stack does this use?</summary>
+          <p>It's a Ruby on Rails app that makes heavy use of SCSS, Kickstarter's wonderful <code>amazon_flex_pay</code> gem, and a hint of CoffeeScript.</p>
+        </details>
+      </li>
+      <li class=''>
+        <details class=''>
+          <summary class=''>How do I deploy it?</summary>
+          <p>We recommend using Heroku. We include a Procfile for you, so all you need to do is:
+          <p>
+            <p>Install the <a href="https://toolbelt.heroku.com/">Heroku Toolbelt</a></p>
+            <p>Run <code>heroku create</code> in Selfstarter's folder</code></p>
+            <p>Run <code>git push heroku master</code> in Selfstarter's folder</p>
+          </p>
+        </details>
+      </li>
+    </ul>
+  </div>
 </div>
-  

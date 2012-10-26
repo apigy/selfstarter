@@ -68,4 +68,30 @@ gem install heroku
 heroku create
 git push heroku master
 heroku run rake db:migrate
+heroku open
 ```
+## Contributing
+
+In it's current state, Selfstarter is very skeletal. We welcome your pull requests. If you're looking to contribute, here are some good starting points.
+
+### Email Updates
+
+Using Amazon FPS will send users a notification when they place an order, however, it's nice to notify people when they place an order. 
+
+Something that we built into Lockitron.com was "Remind Me" functionality. The idea behind this is that you can capture potential backers and notify them near the end of your campaign that they should reserve your product. We have no data on this yet, however, it seems to be part of why Kickstarter campaigns pick up a lot of steam in their final hours.
+
+### Reporting
+
+There is no admin panel with Selfstarter. This could be useful when the project's funding time is over and you want to export your orders elsewhere.
+
+Relatedly, some analytics would be nice. It'd be good to know how many reservations you receive over time, as well as the specifics of each order. Customers may have questions or might want to modify their order after they've placed it.
+
+### Alternate Payment Processors
+
+Amazon Payments works great for us, but it may not work out for everyone. If you'd rather use Stripe, WePay, or any other payment processor, feel free to send out a pull request.
+
+### Tests
+
+There aren't any tests yet. Tests are very welcome!
+
+
