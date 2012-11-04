@@ -42,7 +42,9 @@ class Order < ActiveRecord::Base
   end
 
   def generate_uuid!
-    self.uuid = SecureRandom.hex(16)
+    begin
+      self.uuid = SecureRandom.hex(16)
+    end while Order.find_by_uuid(self.uuid).present?
   end
 
   # Implement these three methods to
