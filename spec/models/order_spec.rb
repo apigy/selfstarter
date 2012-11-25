@@ -18,4 +18,38 @@ describe Order do
 
     end
 
+    describe ".prefill!" do
+
+      before do
+        @options = {
+          name: 'marin',
+          user_id: 12983,
+          price: 123.12
+        }
+        @order = Order.prefill!(@options)
+      end
+
+      it "sets the name" do
+        @order.name.should eq @options[:name]
+      end
+
+      it "sets user_id" do
+        @order.user_id.should eq @options[:user_id]
+      end
+
+      it "sets the price" do
+        @order.price.should eq @options[:price]
+      end
+
+      it "saves" do
+        Order.any_instance.should_receive :save!
+        Order.prefill!(@options)
+      end
+
+      it "uses the right order number" do
+        @order.number.should eq Order.next_order_number - 1
+      end
+
+    end
+
 end
