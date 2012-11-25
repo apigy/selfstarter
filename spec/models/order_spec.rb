@@ -1,12 +1,12 @@
 describe Order do
-  
-    context "attributes" do
-      
-      [:address_one, :address_two, :city, :country, :number, :state, :status, 
-        :token, :transaction_id, :zip, :shipping, :tracking_number, :name, 
-        :price, :phone, :expiration
+
+  context "attributes" do
+
+    [:address_one, :address_two, :city, :country, :number, :state, :status, 
+      :token, :transaction_id, :zip, :shipping, :tracking_number, :name, 
+      :price, :phone, :expiration
       ].each do |property|
-          it { should allow_mass_assignment_of property }   
+        it { should allow_mass_assignment_of property }   
       end  
 
       it { should_not allow_mass_assignment_of :uuid }
@@ -18,6 +18,8 @@ describe Order do
       it { Order.primary_key.should == 'uuid' }
 
     end
+
+  context "class methods" do
 
     describe ".prefill!" do
 
@@ -56,7 +58,7 @@ describe Order do
 
     describe ".postfill!" do
       fixtures :orders
-      
+
       before do
         @options = {
           callerReference: 'ec781fa2-c5e6-4af9-8049-4dee15a85296',
@@ -105,7 +107,7 @@ describe Order do
       it "sets status" do
         @order.status.should == @options[:status]
       end
-      
+
       it "sets zip" do
         @order.zip.should == @options[:zip]
       end
@@ -129,12 +131,15 @@ describe Order do
 
     end
 
-    describe "validators" do
+  end
 
-      it { should validate_presence_of :name }
-      it { should validate_presence_of :price }
-      it { should validate_presence_of :user_id }
-      
-    end
+
+  describe "validators" do
+
+    it { should validate_presence_of :name }
+    it { should validate_presence_of :price }
+    it { should validate_presence_of :user_id }
+
+  end
 
 end
