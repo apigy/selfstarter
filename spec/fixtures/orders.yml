@@ -1,6 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
+  user_id: 1
   token: MyString
   transaction_id: MyString
   address_one: MyString
@@ -14,6 +15,7 @@ one:
   uuid: MyString
 
 two:
+  user_id: 2
   token: MyString
   transaction_id: MyString
   address_one: MyString
