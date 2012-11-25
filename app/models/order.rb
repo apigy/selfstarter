@@ -20,7 +20,7 @@ class Order < ActiveRecord::Base
   # After authenticating with Amazon, we get the rest of the details
   def self.postfill!(options = {})
     @order = Order.find_by_uuid!(options[:callerReference])
-    @order.token                = options[:tokenID]
+    @order.token             = options[:tokenID]
     if @order.token.present?
       @order.address_one     = options[:addressLine1]
       @order.address_two     = options[:addressLine2]

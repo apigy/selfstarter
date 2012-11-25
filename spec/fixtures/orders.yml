@@ -12,7 +12,9 @@ one:
   country: MyString
   status: MyString
   number: MyString
-  uuid: MyString
+  name: Marin
+  price: 123.05
+  uuid: ec781fa2-c5e6-4af9-8049-4dee15a85296
 
 two:
   user_id: 2
