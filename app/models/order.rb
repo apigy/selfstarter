@@ -11,7 +11,7 @@ class Order < ActiveRecord::Base
     @order.name     = options[:name]
     @order.user_id  = options[:user_id]
     @order.price    = options[:price]
-    @order.number   = Order.next_order_number || 1
+    @order.number   = Order.next_order_number
     @order.save!
 
     @order
@@ -38,7 +38,11 @@ class Order < ActiveRecord::Base
   end
 
   def self.next_order_number
-    Order.order("number DESC").limit(1).first.number.to_i + 1 if Order.count > 0
+    if Order.count > 0
+      Order.order("number DESC").limit(1).first.number.to_i + 1
+    else
+      1
+    end
   end
 
   def generate_uuid!

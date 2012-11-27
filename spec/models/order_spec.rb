@@ -131,6 +131,33 @@ describe Order do
 
     end
 
+
+    describe ".next_order_number" do
+
+      it "gives the next number" do
+        ActiveRecord::Relation.any_instance.stub(:first).and_return(stub( number: 1 ))
+        Order.next_order_number.should == 2
+      end
+
+      context "no orders" do
+          
+          before do
+            ActiveRecord::Relation.any_instance.stub(:first).and_return(nil)
+            Order.stub!(:count).and_return(0)
+          end
+          
+          it "doesn't break if there's no orders" do
+            expect { Order.next_order_number }.to_not raise_error
+          end
+          
+          it "returns 1 if there's no orders" do
+            Order.next_order_number.should == 1
+          end
+          
+      end
+
+    end
+
   end
 
 
