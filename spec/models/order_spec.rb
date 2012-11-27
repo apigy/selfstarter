@@ -153,9 +153,44 @@ describe Order do
           it "returns 1 if there's no orders" do
             Order.next_order_number.should == 1
           end
-          
+
       end
 
+    end
+
+    describe ".percent" do
+      it "calculates the percent based on #goal and #current" do
+        Order.stub(:current).and_return(6.2)
+        Order.stub(:goal).and_return(2.5)
+
+        Order.percent.should == 2.48 * 100
+      end
+    end
+
+    describe ".goal" do
+      it "returns the project goal from Settings" do
+        Order.goal.should == Settings.project_goal
+      end
+    end
+
+    describe ".revenue" do
+      it "multiplies the #current with price from Settings" do
+        Order.stub(:current).and_return(4)
+        Settings.stub(:price).and_return(6)
+        
+        Order.revenue.should == 24
+      end
+    end
+
+    describe ".current" do
+      it "returns the number of orders with valid token / that have been postfilled" do
+        Order.delete_all
+        order = Order.prefill!(name: 'marin', user_id: 1, price: 123.21)
+        Order.current.should == 0
+
+        Order.postfill!(callerReference: order.uuid, tokenID: '1232', expiry: '2015-12-24')
+        Order.current.should == 1
+      end
     end
 
   end

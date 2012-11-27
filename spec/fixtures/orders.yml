@@ -18,7 +18,6 @@ one:
 
 two:
   user_id: 2
-  token: MyString
   transaction_id: MyString
   address_one: MyString
   address_two: MyString
