@@ -11,7 +11,7 @@ class Order < ActiveRecord::Base
     @order.name     = options[:name]
     @order.user_id  = options[:user_id]
     @order.price    = options[:price]
-    @order.number   = Order.next_order_number || 1
+    @order.number   = Order.next_order_number
     @order.save!
 
     @order
@@ -20,7 +20,7 @@ class Order < ActiveRecord::Base
   # After authenticating with Amazon, we get the rest of the details
   def self.postfill!(options = {})
     @order = Order.find_by_uuid!(options[:callerReference])
-    @order.token                = options[:tokenID]
+    @order.token             = options[:tokenID]
     if @order.token.present?
       @order.address_one     = options[:addressLine1]
       @order.address_two     = options[:addressLine2]
@@ -38,7 +38,11 @@ class Order < ActiveRecord::Base
   end
 
   def self.next_order_number
-    Order.order("number DESC").limit(1).first.number.to_i + 1 if Order.count > 0
+    if Order.count > 0
+      Order.order("number DESC").limit(1).first.number.to_i + 1
+    else
+      1
+    end
   end
 
   def generate_uuid!
