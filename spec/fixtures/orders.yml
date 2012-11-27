@@ -1,6 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
+  user_id: 1
   token: MyString
   transaction_id: MyString
   address_one: MyString
@@ -11,10 +12,12 @@ one:
   country: MyString
   status: MyString
   number: MyString
-  uuid: MyString
+  name: Marin
+  price: 123.05
+  uuid: ec781fa2-c5e6-4af9-8049-4dee15a85296
 
 two:
-  token: MyString
+  user_id: 2
   transaction_id: MyString
   address_one: MyString
   address_two: MyString
