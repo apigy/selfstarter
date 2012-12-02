@@ -4,25 +4,28 @@ describe PreorderController do
     @controller = PreorderController.new
     @params = { email: 'mneorr@gmail.com' }
     @controller.stub(:params).and_return(@params)
+
     @controller.stub(:request).and_return(stub( scheme: nil, host: 'mneorr.com'))
     @controller.stub(:redirect_to)
-    Order.stub(:prefill!).and_return(stub(uuid: 1232131))
   end
 
   it { should respond_to :index, :checkout, :ipn }
 
   describe "#prefill" do
     
-    it "finds user by email from params" do
-      User.should_receive(:find_or_create_by_email!).with(@params[:email]).and_return(stub(id: 1))
+    before do
       @controller.prefill
     end
 
+    it "finds user by email from params" do
+      @controller.instance_variable_get(:@user).email.should == "mneorr@gmail.com"
+    end
+
     it "prefills the Order" do
-      Order.should_receive(:prefill!).with( { name: Settings.product_name,
-                                              price: Settings.price,
-                                              user_id: 1 } )
-      @controller.prefill
+      order = @controller.instance_variable_get(:@order)
+      order.name.should == Settings.product_name
+      order.price.should == Settings.price
+      order.user_id.should == 1
     end
 
   end
