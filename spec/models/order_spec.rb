@@ -12,7 +12,13 @@ describe Order do
       it { should_not allow_mass_assignment_of :uuid }
 
       it "generates UUID before validation on_create" do
-        # TODO
+        order = Order.new.tap do |o|
+          o.name = 'marin'
+          o.user_id = 12983
+          o.price = 123.12
+        end
+        order.should_receive(:generate_uuid!)
+        order.save!
       end
 
       it { Order.primary_key.should == 'uuid' }
