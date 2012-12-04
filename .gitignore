@@ -19,3 +19,4 @@ config/settings/*.local.yml
 config/environments/*.local.yml
 
 *.sublime-workspace
+.rvmrc
