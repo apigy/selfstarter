@@ -61,10 +61,9 @@ app/controllers/preorder_controller.rb
 
 ### Deploying to Production
 
-We recommend using Heroku, and we even include a ```Procfile``` for you. All you need to do is run:
+We recommend using Heroku, and we even include a ```Procfile``` for you. All you need to do is first install the [Heroku Toolbelt](https://toolbelt.heroku.com) and then run:
 
 ```bash
-gem install heroku
 heroku create
 git push heroku master
 heroku run rake db:migrate
