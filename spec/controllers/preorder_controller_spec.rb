@@ -1,13 +1,6 @@
 describe PreorderController do
 
-  before do
-    @controller = PreorderController.new
-    @params = { email: 'mneorr@gmail.com' }
-    @controller.stub(:params).and_return(@params)
-
-    @controller.stub(:request).and_return(stub( scheme: nil, host: 'mneorr.com'))
-    @controller.stub(:redirect_to)
-  end
+  it { should respond_to :index, :checkout, :ipn }
 
   [:index, :checkout].each do |method|
     it "should get #{method}" do
@@ -16,25 +9,40 @@ describe PreorderController do
     end
   end
 
-  it { should respond_to :index, :checkout, :ipn }
-
   describe "#prefill" do
     
     before do
-      @controller.prefill
+      get :prefill, email: 'mneorr@gmail.com'
     end
 
     it "finds user by email from params" do
-      @controller.instance_variable_get(:@user).email.should == "mneorr@gmail.com"
+      assigns(:user).email.should == "mneorr@gmail.com"
     end
 
     it "prefills the Order" do
-      order = @controller.instance_variable_get(:@order)
+      order = assigns(:order)
       order.name.should == Settings.product_name
       order.price.should == Settings.price
       order.user_id.should == 1
     end
 
+    it "sets up the amazon pipeline" do
+      # TODO
+    end
+
+    it "redirects to pipeline url" do
+      # TODO
+    end
+
+  end
+
+  describe "#share" do
+
+    it "finds the order by uuid" do
+      get :share, uuid: 12321
+      assigns(:order).user_id.should == '2'
+    end
+    
   end
   
 end

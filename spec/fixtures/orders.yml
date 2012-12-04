@@ -27,4 +27,4 @@ two:
   country: MyString
   status: MyString
   number: MyString
-  uuid: MyString
+  uuid: 12321
