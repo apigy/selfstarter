@@ -27,11 +27,19 @@ describe PreorderController do
     end
 
     it "sets up the amazon pipeline" do
-      # TODO
+      pipeline = assigns(:pipeline)
+      order = assigns(:order)
+
+      pipeline.caller_reference.should == order.uuid
+      pipeline.transaction_amount.should == order.price
+      pipeline.global_amount_limit.should == Settings.charge_limit
+      pipeline.collect_shipping_address.should == "True"
+      pipeline.payment_reason.should == Settings.payment_description
     end
 
     it "redirects to pipeline url" do
-      # TODO
+      url = assigns(:pipeline).url("#{request.scheme}://#{request.host}/preorder/postfill")
+      response.should redirect_to(url)
     end
 
   end
