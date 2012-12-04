@@ -9,6 +9,13 @@ describe PreorderController do
     @controller.stub(:redirect_to)
   end
 
+  [:index, :checkout].each do |method|
+    it "should get #{method}" do
+      get method
+      response.should be_success
+    end
+  end
+
   it { should respond_to :index, :checkout, :ipn }
 
   describe "#prefill" do
