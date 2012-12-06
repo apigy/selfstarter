@@ -54,12 +54,12 @@ progress_text: "Implemented"
 # Call to action section
 
 # On Lockitron, it's "First Batch Ships in March 2013"
-ships:  				"Ships...sometime"
+ships: "Ships...sometime"
 
 # On Lockitron, it's "Reserve Now"
 call_to_action: "Reserve Now"
 # On Lockitron, this is "Only $149 for a limited time"
-price_human: 		"It costs money!"					
+price_human: "It costs money!"
 
 # The paragraph below the price. You'd probably say something about how you're not going to charge them before it ships (so it's less risky).
 dont_give_them_a_reason_to_say_no: "You'll get this exact site. All you'll need to get started is a great product."
