@@ -20,8 +20,11 @@ class PreorderController < ApplicationController
 		return
 	else 
 		if params[:submitMethod] == 'Checkout with Mt. Gox'
-			render :status => :internal_server_error, :text => "Mt. Gox Not Yet Supported"
-			return
+			# Register with Mt. Gox & uncomment the lines below
+			# redirect_to "https://payment.mtgox.com/099e586b-b4e6-45d1-aaf8-fbe1e44462d8"
+			# return
+			
+			render :status => :internal_server_error, :text => "Payment with Mt. Gox not yet configured"
 		end
 	end
 	render :status => :internal_server_error, :text => "Payment method not supported"
@@ -32,8 +35,8 @@ class PreorderController < ApplicationController
       @order = Order.postfill!(params)
     end
     # "A" means the user cancelled the preorder before clicking "Confirm" on Amazon Payments.
-    if params['status'] != 'A' && @order.present?
-      redirect_to :action => :share, :uuid => @order.uuid
+    if params['status'] != 'A' # && @order.present?
+      redirect_to :action => :share, :uuid => unless @order.nil? then @order.uuid else 0 end
     else
       redirect_to root_url
     end
