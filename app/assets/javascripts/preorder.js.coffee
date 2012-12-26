@@ -5,10 +5,10 @@ Selfstarter =
 		# It probably should be a parser, but there isn't enough time for that (Maybe in the future though!)
 		if /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/.test($("#email").val())
 			$("#email").removeClass("highlight")
-			$("#amazon_button").removeClass("disabled")
+			$(".payment_button").removeClass("disabled")
 		else
 			$("#email").addClass("highlight") unless Selfstarter.firstTime
-			$("#amazon_button").addClass("disabled") unless $("#amazon_button").hasClass("disabled")
+			$(".payment_button").addClass("disabled") unless $(".payment_button").hasClass("disabled")
 	init: ->
 		$("#email").bind "textchange", ->
 			Selfstarter.validateEmail()

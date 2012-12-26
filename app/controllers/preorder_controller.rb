@@ -11,13 +11,22 @@ class PreorderController < ApplicationController
     @user  = User.find_or_create_by_email!(params[:email])
     @order = Order.prefill!(:name => Settings.product_name, :price => Settings.price, :user_id => @user.id)
 
-    # This is where all the magic happens. We create a multi-use token with Amazon, letting us charge the user's Amazon account
-    # Then, if they confirm the payment, Amazon POSTs us their shipping details and phone number
-    # From there, we save it, and voila, we got ourselves a preorder!
-    @pipeline = AmazonFlexPay.multi_use_pipeline(@order.uuid, :transaction_amount => Settings.price, :global_amount_limit => Settings.charge_limit, :collect_shipping_address => "True", :payment_reason => Settings.payment_description)
-    redirect_to @pipeline.url("#{request.scheme}://#{request.host}/preorder/postfill")
+	if params[:submitMethod] == 'Checkout with Amazon'
+		# This is where all the magic happens. We create a multi-use token with Amazon, letting us charge the user's Amazon account
+		# Then, if they confirm the payment, Amazon POSTs us their shipping details and phone number
+		# From there, we save it, and voila, we got ourselves a preorder!
+		@pipeline = AmazonFlexPay.multi_use_pipeline(@order.uuid, :transaction_amount => Settings.price, :global_amount_limit => Settings.charge_limit, :collect_shipping_address => "True", :payment_reason => Settings.payment_description)
+		redirect_to @pipeline.url("#{request.scheme}://#{request.host}/preorder/postfill")
+		return
+	else 
+		if params[:submitMethod] == 'Checkout with Mt. Gox'
+			render :status => :internal_server_error, :text => "Mt. Gox Not Yet Supported"
+			return
+		end
+	end
+	render :status => :internal_server_error, :text => "Payment method not supported"
   end
-
+  
   def postfill
     unless params[:callerReference].blank?
       @order = Order.postfill!(params)
