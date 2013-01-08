@@ -2,7 +2,7 @@
 
 one:
   user_id: 1
-  token: MyString
+  token: token123
   transaction_id: MyString
   address_one: MyString
   address_two: MyString
@@ -27,4 +27,4 @@ two:
   country: MyString
   status: MyString
   number: MyString
-  uuid: MyString
+  uuid: 12321
