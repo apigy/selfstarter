@@ -10,7 +10,7 @@ Selfstarter =
       $("#email").addClass("highlight") unless Selfstarter.firstTime
       $("#amazon_button").addClass("disabled") unless $("#amazon_button").hasClass("disabled")
   init: ->
-    checkoutOffset = $('body').height() - 101 #needs to be done upon init
+    checkoutOffset = $('body').height() - $('.footer').outerHeight() #needs to be done upon init
 
     $("#email").bind "textchange", ->
       Selfstarter.validateEmail()
