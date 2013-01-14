@@ -44,8 +44,8 @@ ActiveRecord::Schema.define(:version => 20130107010733) do
     t.string   "shipping_desc"
     t.string   "delivery_desc"
     t.integer  "limit"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "users", :force => true do |t|
