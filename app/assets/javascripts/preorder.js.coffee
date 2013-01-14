@@ -24,7 +24,6 @@ Selfstarter =
     $("#video_image").on "click", ->
       $("#player").removeClass("hidden")
       $(this).hide()
-      $("#player iframe").click()
 
     # if they are using the optional payment options section on the checkout page, need to conditional fix the email
     # field and button to the bottom of the page so it's displayed after selecting a radio button
