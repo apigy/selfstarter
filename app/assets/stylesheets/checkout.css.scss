@@ -37,6 +37,23 @@
 
 .main_content.payment_options
 {
+  div.checkout_controls
+  {
+    height: 100px;
+    div.checkout_controls_wrapper.fix_to_bottom.checkout_ready
+    {
+      background-color: #FAFAFA;
+      width: 100%;
+      position: fixed;
+      bottom: 0px ;
+      top: auto;
+      .checkout_controls_inner
+      {
+        width: 560px;
+        border-top: 1px solid #D2D2D2;
+      }
+    }
+  }
   #amazon_button
   {
     display: inline !important;

@@ -4,7 +4,7 @@
       <ol>
         <% Settings.payment_options.each_with_index do |p, index| %>
           <li>
-            <%= radio_button_tag "payment_option", p[0], index == 0 %>
+            <%= radio_button_tag "payment_option", p[0], false, class: 'payment_radio' %>
             <%= label_tag("payment_option_#{index}", p[1]) %>
             <div class="shipping">
               <span><%= p[2] %></span>
