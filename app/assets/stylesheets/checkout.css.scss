@@ -1,14 +1,14 @@
-.main_content 
+.main_content
 {
   width: 560px;
   float: left;
-  h3 
+  h3
   {
     margin-bottom: 30px;
     color: #4b4b4b;
     line-height: 1;
   }
-  p 
+  p
   {
     line-height: 1.5;
   }
@@ -23,7 +23,7 @@
       outline: none;
     }
     .invalid
-    {
+      {
       border: 1px solid orange;
     }
     #amazon_button
@@ -35,12 +35,195 @@
   }
 }
 
-.sidebar 
+.main_content.payment_options
 {
+  strong
+  {
+    font-weight: bold;
+  }
+  div.checkout_controls
+  {
+    .checkout_controls_inner
+    {
+      padding-top: 12px;
+    }
+    height: 100px;
+    div.checkout_controls_wrapper.fix_to_bottom.checkout_ready
+    {
+      background-color: #FAFAFA;
+      width: 100%;
+      position: fixed;
+      bottom: 0px ;
+      top: auto;
+      .checkout_controls_inner
+      {
+        @extend .checkout_controls_inner;
+        width: 560px;
+        border-top: 1px solid #D2D2D2;
+        padding-bottom: 90px;
+      }
+    }
+  }
+  #amazon_button
+  {
+    display: inline !important;
+  }
+  div.payment_options
+  {
+    font-size: 16px;
+    color: black;
+    background-color: #E9E9E9;
+    padding: 10px 20px;
+    .limited
+    {
+      font-weight: bold;
+    }
+    ol
+    {
+      list-style: none;
+      margin: -10px -20px;
+      word-wrap: break-word;
+      li:hover
+      {
+        background-color: #F3F3F3;
+        cursor: hand;
+        cursor: pointer;
+      }
+      li.checkout_option_selected
+      {
+        @extend li:hover;
+      }
+      li
+        {
+        border-bottom: 1px solid #c3c3c3;
+        padding: 25px 20px;
+        overflow: auto;
+        margin-left: 0;
+        position: relative;
+        color: black;
+        line-height: 20px;
+
+        input
+        {
+          display: inline;
+          float: left;
+          vertical-align: top;
+          margin-right: 8px;
+          margin-top: 5px;
+        }
+
+        label
+        {
+          display: inline;
+          float: left;
+          color: #333;
+          font-size: 16px;
+          font-weight: bold;
+          padding-right: 10px;
+          padding-top: 1px;
+          margin: 0;
+        }
+        div.shipping
+        {
+          color: #797979;
+          float: left;
+          clear: left;
+          width: 95px;
+          margin-right: 31px;
+          margin-top: 5px;
+          padding-left: 22px;
+          display: inline;
+
+          margin: 0;
+          padding: 0;
+          border: 0;
+          font: inherit;
+          font-size: 12px;
+          vertical-align: baseline;
+
+          span
+          {
+            display: -moz-inline-box;
+            display: -moz-inline-stack;
+            -moz-box-orient: vertical;
+            display: inline-block;
+            vertical-align: middle;
+            zoom: 1;
+            vertical-align: text-top;
+
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+
+            line-height: 14px;
+          }
+          .sold-out
+            {
+            color: #ffffff;
+            background-color: black;
+            padding: 3px;
+          }
+        }
+        div.description
+        {
+          margin-top: -16px;
+          padding-left: 112px;
+          line-height: 24px !important;
+          strong
+          {
+            font-weight: bold;
+          }
+          p.full
+          {
+            margin-bottom: 5px;
+            padding-top: 3px;
+
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font: inherit;
+            vertical-align: baseline;
+
+            display: block;
+            -webkit-margin-before: 1em;
+            -webkit-margin-after: 1em;
+            -webkit-margin-start: 0px;
+            -webkit-margin-end: 0px;
+          }
+          p.delivery_date
+          {
+            font-size: 12px;
+
+            line-height: 20px;
+            margin-bottom: 5px;
+            padding-top: 3px;
+
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font: inherit;
+            vertical-align: baseline;
+
+            display: block;
+            -webkit-margin-before: 1em;
+            -webkit-margin-after: 1em;
+            -webkit-margin-start: 0px;
+            -webkit-margin-end: 0px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.sidebar
+  {
   float: right;
   width: 300px;
-  p 
-  {
+  p
+    {
     font-size: 18px;
     margin-bottom: 30px;
     line-height: 1.3;

@@ -184,14 +184,14 @@ describe Order do
       end
     end
 
-    describe ".current" do
+    describe ".backers" do
       it "returns the number of orders with valid token / that have been postfilled" do
         Order.delete_all
         order = Order.prefill!(name: 'marin', user_id: 1, price: 123.21)
-        Order.current.should == 0
+        Order.backers.should == 0
 
         Order.postfill!(callerReference: order.uuid, tokenID: '1232', expiry: '2015-12-24')
-        Order.current.should == 1
+        Order.backers.should == 1
       end
     end
 
