@@ -14,6 +14,9 @@ project_goal: 100000
 # This'll be both the page title (<title></title>) and the name in the header
 product_name: "Selfstarter"
 
+# This will be used in sentences like "Hooray! You've just reserved <%= Settings.product_description %>!"
+product_description: "a set of widgets"
+
 # An image showcasing your product -- it'll show up when you pin your product
 # It should be in app/assets/images
 product_image_path: "my-product-image.png"
@@ -48,6 +51,7 @@ payment_description: "You really should change this text because people will see
 
 # Amazon limits how much we can charge people with their Multi-Use tokens.
 # You probably should add some leeway to account for international shipping
+# this value will be added to the price to create a charge limit
 charge_limit: 25.00
 
 # Stats settings
