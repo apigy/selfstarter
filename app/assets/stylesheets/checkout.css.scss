@@ -36,7 +36,11 @@
 }
 
 .main_content.payment_options
+{
+  strong
   {
+    font-weight: bold;
+  }
   div.checkout_controls
     {
     height: 100px;
