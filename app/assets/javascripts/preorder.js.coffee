@@ -23,6 +23,7 @@ Selfstarter =
     # init placeholder image for video
     $("#video_image").on "click", ->
       $("#player").removeClass("hidden")
+      $("#player").css('display', 'block')
       $(this).hide()
 
     # if they are using the optional payment options section on the checkout page, need to conditional fix the email
