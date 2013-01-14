@@ -12,3 +12,7 @@
  *= require reset
  *= require main
  */
+.hidden
+{
+  display: none;
+}
