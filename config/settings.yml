@@ -5,8 +5,10 @@
 # You should totally change the HTML and CSS though
 # Checkout app/assets/stylesheets/variables.css.scss to change around the CSS quickly
 
-# Set your project goal here - if you manually want to adjust your progress to test the site, head over to the Order model (app/models/order.rb)
-project_goal: 100
+# Set your project goal here - dollar amount
+# NOTE: if you manually want to adjust your progress to test the site, head over to the Order model (app/models/order.rb)
+project_goal: 100000
+
 # If you want to edit the FAQ, head over to app/views/preorder/homepage/_faqs.html.erb
 
 # This'll be both the page title (<title></title>) and the name in the header

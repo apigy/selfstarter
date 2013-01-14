@@ -20,12 +20,12 @@
   <div id="backing">
     <ul>
       <li class="stats" id="backers">
-        <%= number_with_delimiter Order.current, :delimiter => "," %>
+        <%= number_with_delimiter Order.backers, :delimiter => "," %>
         <span><%= Settings.primary_stat %></span>
       </li>
       <li class="stats">
         <%= number_to_currency Order.revenue, :precision => 0 %>
-        <span>of <%= number_to_currency Settings.project_goal.to_f * Settings.price.to_f, :precision => 0 %></span>
+        <span>of <%= number_to_currency Settings.project_goal.to_f, :precision => 0 %></span>
       </li>
 
       <% if Settings.expiration_date.present? %>
@@ -41,7 +41,7 @@
       <% end %>
     </ul>
     
-    <% if Order.current < Order.goal %>
+    <% if Order.revenue < Order.goal %>
       <div id='progress_bg' class='small'>
         <div id='progress' class='' style='width: <%= Order.percent %>%;'>
         </div>

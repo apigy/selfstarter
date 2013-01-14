@@ -54,22 +54,25 @@ class Order < ActiveRecord::Base
     end while Order.find_by_uuid(self.uuid).present?
   end
 
-  # Implement these three methods to
+  # goal is a dollar amount, not a number of backers, beause you may be using the multiple payment options component
+  # by setting Settings.use_payment_options == true
   def self.goal
     Settings.project_goal
   end
 
   def self.percent
-    (Order.current.to_f / Order.goal.to_f) * 100.to_f
+    (Order.revenue.to_f / Order.goal.to_f) * 100.to_f
   end
 
   # See what it looks like when you have some backers! Drop in a number instead of Order.count
-  def self.current
+  def self.backers
     Order.where("token != ? OR token != ?", "", nil).count
   end
 
   def self.revenue
-    Order.current.to_f * Settings.price
+    revenue = PaymentOption.joins(:orders).pluck('sum(amount)')[0]
+    return 0 if revenue.nil?
+    revenue
   end
 
   validates_presence_of :name, :price, :user_id
