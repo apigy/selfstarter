@@ -48,9 +48,9 @@ use_payment_options: true
 #   package text (description of what they get if they select this payment option - kickstarter calls these "rewards"),
 #   delivery text
 payment_options: [
-  ["10.00", "$10", "", "You receive a great big thankyou from us!  You Rock", ""],
-  ["100.00", "$100", "add $3 to ship outside the US", "You receive our print edition", "Estimated delivery: Oct 2013"],
-  ["125.00", "$125", "add $3 to ship outside the US", "You will receive both our print and digital edition", "Estimated delivery: Oct 2013"],
+  ["10.00", "$10", "", "<strong>Basic level: </strong>You receive a great big thankyou from us!  You Rock", ""],
+  ["100.00", "$100", "add $3 to ship outside the US", "<strong>Package 1: </strong>You receive our print edition", "Estimated delivery: Oct 2013"],
+  ["125.00", "$125", "add $3 to ship outside the US", "<strong>Package 2: </strong>You will receive both our print and digital edition", "Estimated delivery: Oct 2013"],
   ["125.00", "$125", "add $3 to ship outside the US", "You will receive both our print and digital edition", "Estimated delivery: Oct 2013"],
   ["125.00", "$125", "add $3 to ship outside the US", "You will receive both our print and digital edition", "Estimated delivery: Oct 2013"],
   ["125.00", "$125", "add $3 to ship outside the US", "You will receive both our print and digital edition", "Estimated delivery: Oct 2013"],
