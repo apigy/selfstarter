@@ -42,7 +42,11 @@
     font-weight: bold;
   }
   div.checkout_controls
+  {
+    .checkout_controls_inner
     {
+      padding-top: 12px;
+    }
     height: 100px;
     div.checkout_controls_wrapper.fix_to_bottom.checkout_ready
     {
@@ -53,8 +57,10 @@
       top: auto;
       .checkout_controls_inner
       {
+        @extend .checkout_controls_inner;
         width: 560px;
         border-top: 1px solid #D2D2D2;
+        padding-bottom: 90px;
       }
     }
   }
@@ -68,7 +74,10 @@
     color: black;
     background-color: #E9E9E9;
     padding: 10px 20px;
-
+    .limited
+    {
+      font-weight: bold;
+    }
     ol
     {
       list-style: none;
