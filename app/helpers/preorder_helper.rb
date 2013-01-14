@@ -25,4 +25,12 @@ module PreorderHelper
   def encoded_root_url
     raw URI.encode "#{request.scheme}://#{request.host}/preorder"
   end
+
+  def sold_out(payment_option)
+    payment_option.limit > -1 and order_count(payment_option) >= payment_option.limit
+  end
+
+  def order_count(payment_option)
+    Order.where(payment_option_id: payment_option).count(:token) # count of orders that have a token from amazon and are for this payment option
+  end
 end

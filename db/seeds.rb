@@ -13,8 +13,7 @@ PaymentOption.create(
             description: '<strong>Basic level: </strong>You receive a great big thankyou from us!  You Rock',
             shipping_desc: '',
             delivery_desc: '',
-            limit: -1,
-            purchased_count: 0
+            limit: -1
         },
         {
             amount: 100.00,
@@ -22,8 +21,7 @@ PaymentOption.create(
             description: '<strong>Package 1: </strong>You receive our print edition',
             shipping_desc: 'add $3 to ship outside the US',
             delivery_desc: 'Estimated delivery: Oct 2013',
-            limit: 250,
-            purchased_count: 0
+            limit: 250
         },
         {
             amount: 125.00,
@@ -31,8 +29,7 @@ PaymentOption.create(
             description: '<strong>Package 2: </strong>You will receive both our print and digital edition',
             shipping_desc: 'add $3 to ship outside the US',
             delivery_desc: 'Estimated delivery: Oct 2013',
-            limit: -1,
-            purchased_count: 0
+            limit: -1
         },
         {
             amount: 200.00,
@@ -40,8 +37,7 @@ PaymentOption.create(
             description: '<strong>Package 3: </strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
             shipping_desc: 'add $3 to ship outside the US',
             delivery_desc: 'Estimated delivery: Oct 2013',
-            limit: -1,
-            purchased_count: 0
+            limit: -1
         },
         {
             amount: 250.00,
@@ -49,8 +45,7 @@ PaymentOption.create(
             description: '<strong>Package 4: </strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
             shipping_desc: 'add $3 to ship outside the US',
             delivery_desc: 'Estimated delivery: Oct 2013',
-            limit: -1,
-            purchased_count: 0
+            limit: -1
         },
         {
             amount: 300.00,
@@ -58,8 +53,7 @@ PaymentOption.create(
             description: '<strong>Package 5: </strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
             shipping_desc: 'add $3 to ship outside the US',
             delivery_desc: 'Estimated delivery: Oct 2013',
-            limit: -1,
-            purchased_count: 0
+            limit: -1
         },
         {
             amount: 500.00,
@@ -67,8 +61,7 @@ PaymentOption.create(
             description: '<strong>Package 6: </strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
             shipping_desc: 'add $3 to ship outside the US',
             delivery_desc: 'Estimated delivery: Oct 2013',
-            limit: -1,
-            purchased_count: 0
+            limit: -1
         },
         {
             amount: 1000.00,
@@ -76,7 +69,6 @@ PaymentOption.create(
             description: '<strong>Package 7: </strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
             shipping_desc: 'add $3 to ship outside the US',
             delivery_desc: 'Estimated delivery: Oct 2013',
-            limit: -1,
-            purchased_count: 0
+            limit: -1
         }
     ])

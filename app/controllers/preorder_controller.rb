@@ -11,13 +11,15 @@ class PreorderController < ApplicationController
     @user  = User.find_or_create_by_email!(params[:email])
 
     if Settings.use_payment_options
-      price = params['payment_option']
-      raise Exception.new("No payment option was selected") if price.nil?
+      payment_option_id = params['payment_option']
+      raise Exception.new("No payment option was selected") if payment_option_id.nil?
+      payment_option = PaymentOption.find(payment_option_id)
+      price = payment_option.amount
     else
       price = Settings.price
     end
 
-    @order = Order.prefill!(:name => Settings.product_name, :price => price, :user_id => @user.id)
+    @order = Order.prefill!(:name => Settings.product_name, :price => price, :user_id => @user.id, :payment_option => payment_option)
 
     # This is where all the magic happens. We create a multi-use token with Amazon, letting us charge the user's Amazon account
     # Then, if they confirm the payment, Amazon POSTs us their shipping details and phone number
