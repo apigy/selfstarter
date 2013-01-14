@@ -16,3 +16,9 @@
 {
   display: none;
 }
+.pull-left {
+    float: left;
+}
+.pull-right {
+    float: right;
+}
