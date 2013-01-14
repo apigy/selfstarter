@@ -49,8 +49,13 @@ use_payment_options: true
 #   delivery text
 payment_options: [
   ["10.00", "$10", "", "You receive a great big thankyou from us!  You Rock", ""],
-  ["10.00", "$100", "add $3 to ship outside the US", "You receive our print edition", "Estimated delivery: Oct 2013"],
-  ["10.00", "$125", "add $3 to ship outside the US", "You will receive both our print and digital edition", "Estimated delivery: Oct 2013"]
+  ["100.00", "$100", "add $3 to ship outside the US", "You receive our print edition", "Estimated delivery: Oct 2013"],
+  ["125.00", "$125", "add $3 to ship outside the US", "You will receive both our print and digital edition", "Estimated delivery: Oct 2013"],
+  ["125.00", "$125", "add $3 to ship outside the US", "You will receive both our print and digital edition", "Estimated delivery: Oct 2013"],
+  ["125.00", "$125", "add $3 to ship outside the US", "You will receive both our print and digital edition", "Estimated delivery: Oct 2013"],
+  ["125.00", "$125", "add $3 to ship outside the US", "You will receive both our print and digital edition", "Estimated delivery: Oct 2013"],
+  ["125.00", "$125", "add $3 to ship outside the US", "You will receive both our print and digital edition", "Estimated delivery: Oct 2013"],
+  ["125.00", "$125", "add $3 to ship outside the US", "You will receive both our print and digital edition", "Estimated delivery: Oct 2013"]
 ]
 
 payment_description: "You really should change this text because people will see it on Amazon's order page!!!!!"
