@@ -14,7 +14,7 @@ project_goal: 100000
 # This'll be both the page title (<title></title>) and the name in the header
 product_name: "Selfstarter"
 
-# This will be used in sentences like "Hooray! You've just reserved <%= Settings.product_description %>!"
+# This will be used in sentences like Hooray Youve just reserved product_description
 product_description: "a set of widgets"
 
 # An image showcasing your product -- it'll show up when you pin your product
