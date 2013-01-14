@@ -3,7 +3,7 @@ module PreorderHelper
     raw "<div class=\"fb-like\" data-send=\"false\" data-width=\"#{width}\" data-layout=\"box_count\" data-show-faces=\"true\"></div>"
   end
   def pin_it_button
-    image_url = URI.encode("#{request.scheme}://#{request.host}#{image_path(Settings.product_image_url)}")
+    image_url = URI.encode("#{request.scheme}://#{request.host}#{image_path(Settings.product_image_path)}")
     raw "<a href='http://pinterest.com/pin/create/button/?url=#{encoded_root_url}&media=#{image_url}' class='pin-it-button' count-layout='vertical'><img border='0' src='//assets.pinterest.com/images/PinExt.png' title='Pin It' /></a>"
   end
   def tweet_button
