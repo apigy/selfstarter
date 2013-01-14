@@ -61,7 +61,6 @@
   div.payment_options
   {
     font-size: 16px;
-    line-height: 24px;
     color: black;
     background-color: #E9E9E9;
     padding: 10px 20px;
@@ -152,6 +151,7 @@
         {
           margin-top: -16px;
           padding-left: 112px;
+          line-height: 24px !important;
           strong
           {
             font-weight: bold;
