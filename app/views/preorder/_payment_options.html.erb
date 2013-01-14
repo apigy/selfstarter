@@ -2,16 +2,16 @@
   <fieldset>
     <div class="payment_options">
       <ol>
-        <% Settings.payment_options.each_with_index do |p, index| %>
+        <% PaymentOption.all.each_with_index do |p, index| %>
           <li>
-            <%= radio_button_tag "payment_option", p[0], false, class: 'payment_radio' %>
-            <%= label_tag("payment_option_#{index}", p[1]) %>
+            <%= radio_button_tag "payment_option", p.amount, false, class: 'payment_radio' %>
+            <%= label_tag("payment_option_#{index}", p.amount_display) %>
             <div class="shipping">
-              <span><%= p[2] %></span>
+              <span><%= p.shipping_desc %></span>
             </div>
             <div class="description">
-              <p class="full"><%= raw p[3] %></p>
-              <p class="delivery_date"><%= p[4] %></p>
+              <p class="full"><%= raw p.description %></p>
+              <p class="delivery_date"><%= p.delivery_desc %></p>
             </div>
           </li>
         <% end %>
