@@ -22,11 +22,13 @@ value_proposition: "Roll your own crowdfunding"
 # YouTube or Vimeo Video URL (The embed URL, without the query string options)
 video_embed_url: "https://www.youtube.com/v/D1L3o88GKew"
 
-# This image file will be shown in place of the youtube (or whatever) video.  When the user clicks it, the vid will
-# replace the image and start playing.  Note that you can leave this blank, and no image will be use - first frame
-# of the video will be displayed
+# If set to true, then the image at "/assets/video_placeholder.png" will be shown in place of the youtube
+# video.  When the user clicks it, the vid will replace the image and start playing.
+#
+# NOTE: you can set this to false, and no image will be use - first frame of the video will be displayed
+#
 # NOTE: this only works for youtube video at the moment.  If its not for youtube, then just leave this property blank
-video_placeholder_img_path: "video_placeholder.png"
+use_video_placeholder: true
 
 # Amazon settings -- you'll need an Amazon Payments account, sign up here --> http://bit.ly/SGksTv
 

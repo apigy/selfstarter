@@ -1,8 +1,8 @@
 <div class="wrapper clearfix">
   <div id="video">
-    <% if !Settings.video_placeholder_img_path.nil? %>
+    <% if Settings.use_video_placeholder %>
       <div id="video_image">
-        <img alt="video_place_holder" src="/assets/<%= Settings.video_placeholder_img_path %>" />
+        <img alt="video_place_holder" width='512px' height='385px' src="/assets/video_placeholder.png" />
       </div>
       <div id="player" class="hidden">
         <object width="512" height="385">
