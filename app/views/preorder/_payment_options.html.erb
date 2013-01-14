@@ -1,0 +1,21 @@
+<% if Settings.use_payment_options %>
+  <fieldset>
+    <div class="payment_options">
+      <ol>
+        <% Settings.payment_options.each_with_index do |p, index| %>
+          <li>
+            <%= radio_button_tag "payment_option", p[0], index == 0 %>
+            <%= label_tag("payment_option_#{index}", p[1]) %>
+            <div class="shipping">
+              <span><%= p[2] %></span>
+            </div>
+            <div class="description">
+              <p class="full"><%= raw p[3] %></p>
+              <p class="delivery_date"><%= p[4] %></p>
+            </div>
+          </li>
+        <% end %>
+      </ol>
+    </div>
+  </fieldset>
+<% end %>

@@ -35,6 +35,144 @@
   }
 }
 
+.main_content.payment_options
+{
+  #amazon_button
+  {
+    display: inline !important;
+  }
+  div.payment_options
+  {
+    font-size: 14px;
+    background-color: #DEFBD2;
+    padding: 10px 20px;
+
+    ol
+    {
+      list-style: none;
+      margin: -10px -20px;
+      word-wrap: break-word;
+      li
+      {
+        border-bottom: 1px solid #AAF58C;
+        padding: 25px 20px;
+        overflow: auto;
+        margin-left: 0;
+        position: relative;
+        color: #333;
+        line-height: 20px;
+
+        input
+        {
+          display: inline;
+          float: left;
+          vertical-align: top;
+          margin-right: 8px;
+          margin-top: 5px;
+        }
+
+        label
+        {
+          display: inline;
+          float: left;
+          color: #333;
+          font-size: 16px;
+          font-weight: bold;
+          padding-right: 10px;
+          padding-top: 3px;
+          margin: 0;
+        }
+        div.shipping
+        {
+          float: left;
+          clear: left;
+          width: 95px;
+          margin-right: 31px;
+          margin-top: 5px;
+          padding-left: 22px;
+          display: inline;
+
+          color: #666;
+          font-size: 12px;
+          line-height: 14px;
+
+          margin: 0;
+          padding: 0;
+          border: 0;
+          font: inherit;
+          vertical-align: baseline;
+
+          span
+          {
+            display: -moz-inline-box;
+            display: -moz-inline-stack;
+            -moz-box-orient: vertical;
+            display: inline-block;
+            vertical-align: middle;
+            zoom: 1;
+            vertical-align: text-top;
+
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+
+            color: #666;
+            line-height: 14px;
+          }
+        }
+        div.description
+        {
+
+
+          p.full
+          {
+            line-height: 20px;
+            font-size: 14px;
+            margin-bottom: 5px;
+            padding-top: 3px;
+            color: #333;
+
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font: inherit;
+            vertical-align: baseline;
+
+            display: block;
+            -webkit-margin-before: 1em;
+            -webkit-margin-after: 1em;
+            -webkit-margin-start: 0px;
+            -webkit-margin-end: 0px;
+          }
+          p.delivery_date
+          {
+            font-size: 12px;
+            color: #666;
+
+            line-height: 20px;
+            margin-bottom: 5px;
+            padding-top: 3px;
+
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font: inherit;
+            vertical-align: baseline;
+
+            display: block;
+            -webkit-margin-before: 1em;
+            -webkit-margin-after: 1em;
+            -webkit-margin-start: 0px;
+            -webkit-margin-end: 0px;
+          }
+        }
+      }
+    }
+  }
+}
+
 .sidebar 
 {
   float: right;

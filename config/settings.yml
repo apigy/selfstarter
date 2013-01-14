@@ -29,6 +29,22 @@ amazon_access_key: "YOUR_AMAZON_ACCESS_KEY"
 amazon_secret_key: "YOUR_AMAZON_SECRET_KEY"
 price: 	19.95
 
+# To allow different packages ("rewards" for funding) with different pricing on the payments page, set this to true
+use_payment_options: true
+
+# if use_payment_options is set to true, then a set of radio buttons will be displayed with various payment options
+# payment_options is a comma delimited list of:
+#   amount (the cost of the package in dd.cc),
+#   display ammount (the text to display on the web page for the cost)
+#   shipping description,
+#   package text (description of what they get if they select this payment option - kickstarter calls these "rewards"),
+#   delivery text
+payment_options: [
+  ["10.00", "$10", "", "You receive a great big thankyou from us!You Rock", ""],
+  ["10.00", "$100", "add $3 to ship outside the US", "You receive our print edition", "Estimated delivery: Oct 2013"],
+  ["10.00", "$125", "add $3 to ship outside the US", "You will receive both our print and digital edition", "Estimated delivery: Oct 2013"]
+]
+
 payment_description: "You really should change this text because people will see it on Amazon's order page!!!!!"
 
 # Amazon limits how much we can charge people with their Multi-Use tokens.
