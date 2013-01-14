@@ -69,6 +69,16 @@
       list-style: none;
       margin: -10px -20px;
       word-wrap: break-word;
+      li:hover
+      {
+        background-color: #cbe6c0;
+        cursor: hand;
+        cursor: pointer;
+      }
+      li.checkout_option_selected
+      {
+        @extend li:hover;
+      }
       li
       {
         border-bottom: 1px solid #AAF58C;
@@ -117,6 +127,7 @@
           padding: 0;
           border: 0;
           font: inherit;
+          font-size: 12px;
           vertical-align: baseline;
 
           span
@@ -141,7 +152,8 @@
         }
         div.description
         {
-
+          margin-top: -11px;
+          padding-left: 112px;
 
           p.full
           {
