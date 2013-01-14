@@ -18,7 +18,7 @@
         <div class="checkout_controls">
           <div class="checkout_controls_wrapper">
             <div class="checkout_controls_inner">
-              <%= email_field_tag "email", nil, :placeholder => "hello@lockitron.com", :required => "required", :id => "email" %>
+              <%= email_field_tag "email", nil, :placeholder => "Email address", :required => "required", :id => "email" %>
               <%= hidden_field_tag "preorder", true %>
               <%= hidden_field_tag "quantity", params[:quantity] %>
               <%= submit_tag "Checkout", :class => "blue_button disabled", :id => "amazon_button" %>
