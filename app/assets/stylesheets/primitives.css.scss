@@ -176,6 +176,16 @@ h5 {
   border: 1px solid $button_active_border;
 }
 
+body.lt-ie9 {
+  .blue_button {
+    background-color: #0D97E6 !important;
+    background-image: none !important;
+  }
+  .blue_button:hover {
+    background-color: #add8e6 !important;
+  }
+}
+
 .blue_button {
   display: block;
   color: $button_color; /* text color */
