@@ -70,7 +70,7 @@ class Order < ActiveRecord::Base
   end
 
   def self.revenue
-    revenue = PaymentOption.joins(:orders).pluck('sum(amount)')[0]
+    revenue = PaymentOption.joins(:orders).where("token != ? OR token != ?", "", nil).pluck('sum(amount)')[0]
     return 0 if revenue.nil?
     revenue
   end
