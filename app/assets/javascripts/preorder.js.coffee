@@ -22,16 +22,20 @@ Selfstarter =
     # if they are using the optional payment options section on the checkout page, need to conditional fix the email
     # field and button to the bottom of the page so it's displayed after selecting a radio button
     if $('.payment_options').length > 0
-      $(window).on "scroll", ->
+      onScroll = () ->
         wrapper = $('.checkout_controls_wrapper')
         if $(window).scrollTop() + $(window).height() < checkoutOffset
           wrapper.addClass('fix_to_bottom')
         else if wrapper.hasClass("fix_to_bottom")
           wrapper.removeClass('fix_to_bottom')
 
+      $(window).on "scroll", ->
+        onScroll()
+
       # the radio button selection should bring up the email field and button
       $('.payment_radio').on "click", ->
+        onScroll()
         $('.checkout_controls_wrapper').addClass "checkout_ready"
 $ ->
   Selfstarter.init()
-  $("#email").focus()
+  $("#email").focus() if $('.payment_options').length == 0
