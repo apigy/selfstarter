@@ -41,6 +41,14 @@
     }
   }
 }
+body.lt-ie9
+{
+  #progress
+  {
+    background-image: none !important;
+    background-color: #1392dc !important;
+  }
+}
 #progress_bg
 {
   margin-top: 20px;

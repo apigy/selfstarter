@@ -1,18 +1,30 @@
 <div class="gray_background">
   <div class="wrapper clearfix">
-    <div class="main_content">
+    <div class="main_content <%= "payment_options" if Settings.use_payment_options %>">
       <h3>Check out</h3>
       <p>
-        Let your backers know how their payment information will be handled.
+        All of your payment information will be secured and stored with Amazon Payments. If you don't have an Amazon account, simply select "I'm a new Customer" on the next page.
         <br />
         <br />
-        Enter your email address below.
+        <% if Settings.use_payment_options %>
+          Select a payment option and enter your email address below.
+        <% else %>
+          Enter your email address below.
+        <% end %>
+
       </p>
       <%= form_tag "/preorder/prefill", :id => "checkout" do %>
-        <%= email_field_tag "email", nil, :placeholder => "hello@lockitron.com", :required => "required", :id => "email" %>
-        <%= hidden_field_tag "preorder", true %>
-        <%= hidden_field_tag "quantity", params[:quantity] %>
-        <%= submit_tag "Checkout", :class => "blue_button disabled", :id => "amazon_button" %>
+        <%= render 'preorder/payment_options' %>
+        <div class="checkout_controls">
+          <div class="checkout_controls_wrapper">
+            <div class="checkout_controls_inner">
+              <%= email_field_tag "email", nil, :placeholder => "Email address", :required => "required", :id => "email" %>
+              <%= hidden_field_tag "preorder", true %>
+              <%= hidden_field_tag "quantity", params[:quantity] %>
+              <%= submit_tag "Checkout", :class => "blue_button disabled", :id => "amazon_button" %>
+            </div>
+          </div>
+        </div>
       <% end %>
     </div>
     <%= render 'preorder/checkout/sidebar' %>

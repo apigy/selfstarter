@@ -6,9 +6,10 @@
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application" %>
   </head>
-  <body>
-    <%= render 'header' %>
+  <!--[if lt IE 9 ]><body class="lt-ie9"><![endif]-->
+  <!--[if (gt IE 9)|!(IE)]><!--> <body><!--<![endif]-->
+    <%= render 'preorder/header' %>
     <%= yield %>
-    <%= render 'footer' %>
+    <%= render 'preorder/footer' %>
   </body>
 </html>

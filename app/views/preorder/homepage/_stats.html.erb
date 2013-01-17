@@ -1,17 +1,31 @@
 <div class="wrapper clearfix">
   <div id="video">
-    <iframe width='512' height='385' src="<%= video_url %>"></iframe>
+    <% if Settings.use_video_placeholder %>
+      <div id="video_image">
+        <img alt="video_place_holder" width='512px' height='385px' src="/assets/video_placeholder.png" />
+      </div>
+      <div id="player" class="hidden" style="display: none;">
+        <object width="512" height="385">
+          <param name="movie" value="<%= Settings.video_embed_url %>?autohide=1&showinfo=0&rel=0&autoplay=1" />
+          <param name="allowFullScreen" value="true" />
+          <param name="allowscriptaccess" value="always" />
+          <embed src="<%= Settings.video_embed_url %>?autohide=1&showinfo=0&rel=0&autoplay=1" type="application/x-shockwave-flash" width="512" height="385" allowscriptaccess="always" allowfullscreen="true"></embed>
+        </object>
+      </div>
+    <% else %>
+      <iframe width='512' height='385' src="<%= video_url %>"></iframe>
+    <% end %>
   </div>
 
   <div id="backing">
     <ul>
       <li class="stats" id="backers">
-        <%= number_with_delimiter Order.current, :delimiter => "," %>
+        <%= number_with_delimiter Order.backers, :delimiter => "," %>
         <span><%= Settings.primary_stat %></span>
       </li>
       <li class="stats">
         <%= number_to_currency Order.revenue, :precision => 0 %>
-        <span>of <%= number_to_currency Settings.project_goal.to_f * Settings.price.to_f, :precision => 0 %></span>
+        <span>of <%= number_to_currency Settings.project_goal.to_f, :precision => 0 %></span>
       </li>
 
       <% if Settings.expiration_date.present? %>
@@ -27,7 +41,7 @@
       <% end %>
     </ul>
     
-    <% if Order.current < Order.goal %>
+    <% if Order.revenue.to_f < Order.goal.to_f %>
       <div id='progress_bg' class='small'>
         <div id='progress' class='' style='width: <%= Order.percent %>%;'>
         </div>
