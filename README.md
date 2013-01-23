@@ -13,7 +13,9 @@ Selfstarter is a starting point. We made some specific choices with Selfstarter 
 * We collect multi-use tokens from customers with Amazon Payments - this let's us collect payment information without charging the customer until we are ready to ship
 * Selfstarter doesn't come with any authentication, administration, mailers or analytics tools. We recommend adding a basic set of these so that you can message backers and manage orders.
 * There is a payment options component that allows you to define different packages or levels for people to puchase/support at.  You can turn it on and off with a configuration setting.
+
 ## Getting Started
+
 *Note: This assumes you have Ruby 1.9.2 or later installed properly and have a basic working knowledge of how to use RubyGems*
 
 First you'll need to fork and clone this repo
