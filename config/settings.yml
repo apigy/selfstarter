@@ -14,14 +14,14 @@ project_goal: 100000
 # This'll be both the page title (<title></title>) and the name in the header
 product_name: "Selfstarter"
 
-# This will be used in sentences like Hooray Youve just reserved product_description
+# This will be used in sentences like Hooray You've just reserved product_description
 product_description: "a set of widgets"
 
 # An image showcasing your product -- it'll show up when you pin your product
 # It should be in app/assets/images
 product_image_path: "my-product-image.png"
 
-# The message on the preorder page, Lockitron's 
+# The message on the preorder page, Lockitron's is ""
 value_proposition: "Roll your own crowdfunding"
 
 # YouTube or Vimeo Video URL (The embed URL, without the query string options)
@@ -58,7 +58,7 @@ charge_limit: 25.00
 
 # On Lockitron, it's "backers"
 primary_stat: "backers"
-# This'll show up in the tweet as, "I'm forker number ..."
+# This'll show up in the tweet as, "I'm backer number ..."
 primary_stat_verb: 'backer'
 
 # The 2nd call to action button, towards the middle-ish of the page
