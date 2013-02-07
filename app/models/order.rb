@@ -56,9 +56,10 @@ class Order < ActiveRecord::Base
   end
 
   # goal is a dollar amount, not a number of backers, beause you may be using the multiple payment options component
-  # by setting Settings.use_payment_options == true
+  # by setting @settings.use_payment_options == true
   def self.goal
-    Settings.project_goal
+    @settings = Settings.find(1)
+    @settings.project_goal
   end
 
   def self.percent
@@ -71,7 +72,8 @@ class Order < ActiveRecord::Base
   end
 
   def self.revenue
-    if Settings.use_payment_options
+    @settings = Settings.find(1)
+    if @settings.use_payment_options
       PaymentOption.joins(:orders).where("token != ? OR token != ?", "", nil).pluck('sum(amount)')[0].to_f
     else
       Order.completed.sum(:price).to_f

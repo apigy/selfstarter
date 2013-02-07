@@ -171,14 +171,16 @@ describe Order do
 
     describe ".goal" do
       it "returns the project goal from Settings" do
-        Order.goal.should == Settings.project_goal
+        @settings = Settings.find(1)
+        Order.goal.should == @settings.project_goal
       end
     end
 
     describe ".revenue" do
       it "multiplies the #current with price from Settings" do
+        @settings = Settings.find(1)
         Order.stub(:current).and_return(4)
-        Settings.stub(:price).and_return(6)
+        @settings.stub(:price).and_return(6)
 
         Order.revenue.should == 24
       end

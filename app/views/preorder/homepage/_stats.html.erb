@@ -1,15 +1,15 @@
 <div class="wrapper clearfix">
   <div id="video">
-    <% if Settings.use_video_placeholder %>
+    <% if @settings.use_video_placeholder %>
       <div id="video_image">
         <img alt="video_place_holder" width='512px' height='385px' src="/assets/video_placeholder.png" />
       </div>
       <div id="player" class="hidden" style="display: none;">
         <object width="512" height="385">
-          <param name="movie" value="<%= Settings.video_embed_url %>?autohide=1&showinfo=0&rel=0&autoplay=1" />
+          <param name="movie" value="<%= @settings.video_embed_url %>?autohide=1&showinfo=0&rel=0&autoplay=1" />
           <param name="allowFullScreen" value="true" />
           <param name="allowscriptaccess" value="always" />
-          <embed src="<%= Settings.video_embed_url %>?autohide=1&showinfo=0&rel=0&autoplay=1" type="application/x-shockwave-flash" width="512" height="385" allowscriptaccess="always" allowfullscreen="true"></embed>
+          <embed src="<%= @settings.video_embed_url %>?autohide=1&showinfo=0&rel=0&autoplay=1" type="application/x-shockwave-flash" width="512" height="385" allowscriptaccess="always" allowfullscreen="true"></embed>
         </object>
       </div>
     <% else %>
@@ -21,17 +21,17 @@
     <ul>
       <li class="stats" id="backers">
         <%= number_with_delimiter Order.backers, :delimiter => "," %>
-        <span><%= Settings.primary_stat %></span>
+        <span><%= @settings.primary_stat %></span>
       </li>
       <li class="stats">
         <%= number_to_currency Order.revenue, :precision => 0 %>
-        <span>of <%= number_to_currency Settings.project_goal.to_f, :precision => 0 %></span>
+        <span>of <%= number_to_currency @settings.project_goal.to_f, :precision => 0 %></span>
       </li>
 
-      <% if Settings.expiration_date.present? %>
+      <% if @settings.expiration_date.present? %>
         <li class="stats" id="days">
-          <%= distance_of_time_in_words_to_now(Settings.expiration_date).gsub(/\D/, "") %>
-          <span><%= distance_of_time_in_words_to_now(Settings.expiration_date).gsub(/\d/, "").gsub("about", "") %> left</span>
+          <%= distance_of_time_in_words_to_now(@settings.expiration_date).gsub(/\D/, "") %>
+          <span><%= distance_of_time_in_words_to_now(@settings.expiration_date).gsub(/\d/, "").gsub("about", "") %> left</span>
         </li>
       <% else %>
         <li class="stats" id="days">
@@ -50,15 +50,15 @@
       <div id="progress_bg">
         <div id="progress">
         </div>
-        <div id='progress_text'><%= Order.percent %>% <%= Settings.progress_text %></div>
+        <div id='progress_text'><%= Order.percent %>% <%= @settings.progress_text %></div>
       </div>
     <% end %>
     
     <div id="reserve_container">
-      <p id="ship_date"><%= Settings.ships %></p>
-      <a href="/preorder/checkout" class="blue_button reserve"><%= Settings.call_to_action %></a>
-      <p id="price"><%= Settings.price_human %></p>
-      <p><%= Settings.dont_give_them_a_reason_to_say_no %></p>
+      <p id="ship_date"><%= @settings.ships %></p>
+      <a href="/preorder/checkout" class="blue_button reserve"><%= @settings.call_to_action %></a>
+      <p id="price"><%= @settings.price_human %></p>
+      <p><%= @settings.dont_give_them_a_reason_to_say_no %></p>
       <%= like_button %>
     </div>
     

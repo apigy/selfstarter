@@ -23,3 +23,6 @@ config/environments/*.local.yml
 
 # yes, I use an ide
 .idea/*
+
+# yes, we use macs
+.DS_Store

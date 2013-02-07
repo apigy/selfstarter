@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130107010733) do
+ActiveRecord::Schema.define(:version => 20130207215028) do
 
   create_table "orders", :id => false, :force => true do |t|
     t.string   "token"
@@ -46,6 +46,36 @@ ActiveRecord::Schema.define(:version => 20130107010733) do
     t.integer  "limit"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+  end
+
+  create_table "settings", :force => true do |t|
+    t.string   "product_name"
+    t.float    "project_goal"
+    t.string   "product_description"
+    t.string   "product_image_path"
+    t.string   "value_proposition"
+    t.string   "video_embed_url"
+    t.boolean  "use_video_placeholder"
+    t.string   "amazon_access_key"
+    t.string   "amazon_secret_key"
+    t.float    "price"
+    t.boolean  "use_payment_options"
+    t.text     "payment_description"
+    t.float    "charge_limit"
+    t.string   "primary_stat"
+    t.string   "primary_stat_verb"
+    t.string   "middle_reserve_text"
+    t.datetime "expiration_date"
+    t.string   "progress_text"
+    t.string   "ships"
+    t.string   "call_to_action"
+    t.string   "price_human"
+    t.string   "dont_give_them_a_reason_to_say_no"
+    t.string   "facebook_app_id"
+    t.string   "tweet_text"
+    t.string   "google_id"
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
   end
 
   create_table "users", :force => true do |t|
