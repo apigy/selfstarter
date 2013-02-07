@@ -1,12 +1,12 @@
 <div class="gray_background">
   <div class="wrapper clearfix">
-    <div class="main_content <%= "payment_options" if Settings.use_payment_options %>">
+    <div class="main_content <%= "payment_options" if @settings.use_payment_options %>">
       <h3>Check out</h3>
       <p>
         All of your payment information will be secured and stored with Amazon Payments. If you don't have an Amazon account, simply select "I'm a new Customer" on the next page.
         <br />
         <br />
-        <% if Settings.use_payment_options %>
+        <% if @settings.use_payment_options %>
           Select a payment option and enter your email address below.
         <% else %>
           Enter your email address below.
