@@ -5,6 +5,7 @@ gem 'rails', '3.2.11'
 group :development do
   gem 'sqlite3'
   gem 'pry-rails'
+  gem 'annotate', ">=2.5.0"
 end
 
 group :production do

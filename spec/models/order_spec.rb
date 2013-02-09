@@ -1,3 +1,30 @@
+# == Schema Information
+#
+# Table name: orders
+#
+#  token             :string(255)
+#  transaction_id    :string(255)
+#  address_one       :string(255)
+#  address_two       :string(255)
+#  city              :string(255)
+#  state             :string(255)
+#  zip               :string(255)
+#  country           :string(255)
+#  status            :string(255)
+#  number            :string(255)
+#  uuid              :string(255)      primary key
+#  user_id           :string(255)
+#  price             :decimal(, )
+#  shipping          :decimal(, )
+#  tracking_number   :string(255)
+#  phone             :string(255)
+#  name              :string(255)
+#  expiration        :date
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  payment_option_id :integer
+#
+
 describe Order do
 
   context "attributes" do
