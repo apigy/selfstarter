@@ -32,7 +32,7 @@ class Order < ActiveRecord::Base
   before_validation :generate_uuid!, :on => :create
   belongs_to :user
   belongs_to :payment_option
-  scope :completed, where("token != ? OR token != ?", "", nil)
+  scope :completed, where("token != ? OR token IS NOT NULL", "")
   self.primary_key = 'uuid'
 
   # This is where we create our Caller Reference for Amazon Payments, and prefill some other information.
