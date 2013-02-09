@@ -32,6 +32,8 @@ GEM
       activesupport (>= 3.0.14)
       multi_xml (~> 0.2.0)
       rest-client (~> 1.6.1)
+    annotate (2.5.0)
+      rake
     arel (3.0.2)
     bourne (1.1.2)
       mocha (= 0.10.5)
@@ -154,6 +156,7 @@ PLATFORMS
 
 DEPENDENCIES
   amazon_flex_pay
+  annotate (>= 2.5.0)
   coffee-rails (~> 3.2.1)
   jquery-rails
   pg
