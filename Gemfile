@@ -28,6 +28,9 @@ end
 # jQuery
 gem 'jquery-rails'
 
+gem 'execjs'
+gem 'therubyracer'
+
 # Kickstarter's awesome Amazon Flexible Payments gem
 gem 'amazon_flex_pay'
 
