@@ -156,6 +156,7 @@ DEPENDENCIES
   amazon_flex_pay
   coffee-rails (~> 3.2.1)
   jquery-rails
+  json (~> 1.7.7)
   pg
   pry-rails
   rails (= 3.2.13)
