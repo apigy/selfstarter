@@ -25,6 +25,7 @@ product_image_path: "my-product-image.png"
 value_proposition: "Roll your own crowdfunding"
 
 # YouTube or Vimeo Video URL (The embed URL, without the query string options)
+# Replace /embed/ in your video url path with /v/ for video playback to work.
 video_embed_url: "https://www.youtube.com/v/D1L3o88GKew"
 
 # If set to true, then the image at "/assets/video_placeholder.png" will be shown in place of the youtube
