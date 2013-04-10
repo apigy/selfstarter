@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   before_validate :generate_uuid!, :on => :create
   
   def generate_uuid!
-    self.uuid = SecureRandom.hex(9)
-  end
+    begin
+      self.uuid = SecureRandom.hex(16)
+    end while Order.find_by_uuid(self.uuid).present?
+    end
 end
