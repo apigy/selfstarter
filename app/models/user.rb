@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   attr_accessible :email
   has_many :orders
-  before_validate :generate_uuid!, :on => :create
+  before_validation :generate_uuid!, :on => :create
   validates_presence_of :uuid
   self.primary_key = 'uuid'
   
