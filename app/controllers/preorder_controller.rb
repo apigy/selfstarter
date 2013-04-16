@@ -20,7 +20,6 @@ class PreorderController < ApplicationController
     end
 
     @order = Order.prefill!(:name => Settings.product_name, :price => price, :user_id => @user.id, :payment_option => payment_option)
-    Notifier.donate_email(@user, payment_option).deliver
 
     # This is where all the magic happens. We create a multi-use token with Amazon, letting us charge the user's Amazon account
     # Then, if they confirm the payment, Amazon POSTs us their shipping details and phone number
@@ -38,10 +37,13 @@ class PreorderController < ApplicationController
     unless params[:callerReference].blank?
       @order = Order.postfill!(params)
       @user = User.find(@order.user_id)
+      @payment_option = PaymentOption.find(@order.payment_option_id)
     end
     # "A" means the user cancelled the preorder before clicking "Confirm" on Amazon Payments.
     if params['status'] != 'A' && @order.present?
       # Send e-mail notification
+      Notifier.donate_email(@user, payment_option).deliver
+
       redirect_to :action => :share, :uuid => @order.uuid
     else
       redirect_to root_url
