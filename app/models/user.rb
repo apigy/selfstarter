@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :email
+  attr_accessible :email, :uuid
   has_many :orders
   before_validation :generate_uuid!, :on => :create
   validates_presence_of :uuid
