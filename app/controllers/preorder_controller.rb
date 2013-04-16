@@ -20,7 +20,7 @@ class PreorderController < ApplicationController
     end
 
     @order = Order.prefill!(:name => Settings.product_name, :price => price, :user_id => @user.id, :payment_option => payment_option)
-    Notifier.donate_email(@user, @payment_option).deliver
+    Notifier.donate_email(@user, payment_option).deliver
 
     # This is where all the magic happens. We create a multi-use token with Amazon, letting us charge the user's Amazon account
     # Then, if they confirm the payment, Amazon POSTs us their shipping details and phone number
