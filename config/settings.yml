@@ -93,6 +93,10 @@ tweet_text: "to crowdfund"
 # Google Analytics
 google_id: "1234567890"
 
+#E-mail settings
+default_from: "eramirem@gmail.com"
+default_subject: "Thanks for becoming a "
+
 # If you want to change the images for the key points (e.g. "Kickstarter is not a store")
 # They're in app/assets/images/#{pointer_number}-background.png
 # So, the first key point, it's at app/assets/images/1-background.png
