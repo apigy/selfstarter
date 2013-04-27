@@ -6,4 +6,7 @@ Selfstarter::Application.routes.draw do
   match '/preorder/ipn'           => 'preorder#ipn', :via => :post
   match '/preorder/prefill'       => 'preorder#prefill'
   match '/preorder/postfill'      => 'preorder#postfill'
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
 end
