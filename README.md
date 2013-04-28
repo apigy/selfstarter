@@ -98,6 +98,9 @@ Amazon Payments works great for us, but it may not work out for everyone. If you
 
 ### Tests
 
-There aren't any tests yet. Tests are very welcome!
+There are some tests, but not 100% test coverage. Tests are very welcome!
 
-
+```bash
+rake spec COVERAGE=true
+open coverage/index.html
+```
