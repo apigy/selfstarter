@@ -36,9 +36,14 @@ class PreorderController < ApplicationController
   def postfill
     unless params[:callerReference].blank?
       @order = Order.postfill!(params)
+      @user = User.find(@order.user_id)
+      @payment_option = PaymentOption.find(@order.payment_option_id)
     end
     # "A" means the user cancelled the preorder before clicking "Confirm" on Amazon Payments.
     if params['status'] != 'A' && @order.present?
+      # Send e-mail notification
+      Notifier.donate_email(@user, payment_option).deliver
+
       redirect_to :action => :share, :uuid => @order.uuid
     else
       redirect_to root_url
