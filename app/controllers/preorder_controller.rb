@@ -1,3 +1,5 @@
+require 'mailchimp'
+
 class PreorderController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => :ipn
 
@@ -9,6 +11,12 @@ class PreorderController < ApplicationController
 
   def prefill
     @user  = User.find_or_create_by_email!(params[:email])
+
+    if Settings.use_mailchimp
+      api = Mailchimp::API.new(Settings.mailchimp_api_key)
+      # you may want other options set here, see http://apidocs.mailchimp.com/api/
+      success = api.listSubscribe(id: Settings.mailchimp_list_id, email_address: params[:email])
+    end
 
     if Settings.use_payment_options
       payment_option_id = params['payment_option']
