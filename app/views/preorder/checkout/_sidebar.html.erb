@@ -3,4 +3,17 @@
   <p>
     We recommend that you only charge backers when you can ship, otherwise your payment provider won't be happy.
   </p>
+  
+  <br />
+  <br />
+	
+	<h5>Not ready to back us just yet? Sign up for a reminder!</h5>
+
+	<%= form_tag preorder_reminder_path do %>
+	<%= flash[:error] %>
+    <div>Email: <%= text_field_tag :email %></div>
+    <div><%= submit_tag 'Remind Me', class:"blue_button", id:"extra-padding" %></div>
+	<% end %>
+  
+
 </div>

@@ -37,3 +37,5 @@ gem 'amazon_flex_pay'
 gem 'rails_config'
 
 gem 'rb-readline'
+
+gem 'rake', '~> 10.1.0'

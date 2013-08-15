@@ -51,4 +51,17 @@ class PreorderController < ApplicationController
 
   def ipn
   end
+
+  #customer method for creating reminders
+  def reminder
+    @user = User.find_or_create_by_email!(params[:email])
+    if @user.save
+      UserMailer.reminder_email(@user).deliver
+      redirect_to preorder_path
+    else
+      flash[:error] = "Please enter a valid e-mail"
+      redirect_to preorder_checkout_path
+    end
+
+  end
 end
