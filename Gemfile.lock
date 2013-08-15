@@ -101,6 +101,7 @@ GEM
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
     rake (10.0.3)
+    rb-readline (0.5.0)
     rdoc (3.12)
       json (~> 1.4)
     rest-client (1.6.7)
@@ -159,8 +160,9 @@ DEPENDENCIES
   json (~> 1.7.7)
   pg
   pry-rails
-  rails (= 3.2.13)
+  rails
   rails_config
+  rb-readline
   rspec-rails (~> 2.0)
   sass-rails (~> 3.2.3)
   shoulda
