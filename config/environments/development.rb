@@ -41,8 +41,8 @@ Selfstarter::Application.configure do
   config.action_mailer.smtp_settings = {
     address: "smtp.mandrillapp.com",
     port: 587,
-    user_name: "ronaldvictorino@gmail.com",
-    password: "QaHxq9FClM87dd0ztnOU_A",
+    user_name: "",
+    password: "",
     authentication: "login",
     enable_starttls_auto: true
   }
