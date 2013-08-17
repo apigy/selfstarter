@@ -39,3 +39,5 @@ gem 'rails_config'
 gem 'rb-readline'
 
 gem 'rake', '~> 10.1.0'
+
+gem 'delayed_job_active_record'

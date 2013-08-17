@@ -56,7 +56,7 @@ class PreorderController < ApplicationController
   def reminder
     @user = User.find_or_create_by_email!(params[:email])
     if @user.save
-      UserMailer.reminder_email(@user).deliver
+      Delayed::Job.enqueue(EmailReminder.new(@user), (Settings.expiration_date - 172800).day.from_now)
       redirect_to preorder_path
     else
       flash[:error] = "Please enter a valid e-mail"
