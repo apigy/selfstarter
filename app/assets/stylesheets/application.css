@@ -22,3 +22,9 @@
 .pull-right {
     float: right;
 }
+
+#extra-padding {
+	margin-top: 5px;
+	border: none;
+	padding: 15px;
+}

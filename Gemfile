@@ -1,8 +1,7 @@
 source 'https://rubygems.org'
 
-ruby '1.9.3'
 
-gem 'rails', '3.2.13'
+gem 'rails'
 gem 'json', '~> 1.7.7'
 
 group :development do
@@ -36,3 +35,9 @@ gem 'amazon_flex_pay'
 
 # Configuration File
 gem 'rails_config'
+
+gem 'rb-readline'
+
+gem 'rake', '~> 10.1.0'
+
+gem 'delayed_job_active_record'
