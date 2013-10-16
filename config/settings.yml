@@ -26,7 +26,7 @@ value_proposition: "a plug-and-play projector for a mobile world"
 
 # YouTube or Vimeo Video URL (The embed URL, without the query string options)
 # Replace /embed/ in your video url path with /v/ for video playback to work.
-video_embed_url: "http://www.youtube.com/watch?v=Po8oh8dDcdc"
+video_embed_url: "www.youtube.com/v/Po8oh8dDcdc"
 
 # If set to true, then the image at "/assets/video_placeholder.png" will be shown in place of the youtube
 # video.  When the user clicks it, the vid will replace the image and start playing.
