@@ -74,7 +74,7 @@ progress_text: "Funded!"
 # Call to action section
 
 # On Lockitron, it's "First Batch Ships in March 2013"
-ships: "Ships EArly Summer of 2014"
+ships: "Ships Early Summer of 2014"
 
 # On Lockitron, it's "Reserve Now"
 call_to_action: "Preorder Now"
@@ -88,7 +88,7 @@ dont_give_them_a_reason_to_say_no: "You won't be charged until it ships, guarant
 facebook_app_id: "1234567890"
 # Tweets are prefixed with "I'm #{Settings.primary_stat} number X for #{Settings.product_name}"
 # Maybe mention something about your product vision -- e.g. "to replace keys with my phone"
-tweet_text: "to easily present from wherever"
+tweet_text: "It's time to share again."
 
 # Google Analytics
 google_id: "1234567890"
