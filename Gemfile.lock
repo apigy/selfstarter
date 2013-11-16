@@ -51,6 +51,9 @@ GEM
     execjs (1.4.0)
       multi_json (~> 1.0)
     hike (1.2.1)
+    httparty (0.11.0)
+      multi_json (~> 1.0)
+      multi_xml (>= 0.5.2)
     i18n (0.6.1)
     journey (1.0.4)
     jquery-rails (2.1.4)
@@ -61,6 +64,8 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    mailchimp (0.0.9)
+      httparty
     metaclass (0.0.1)
     method_source (0.8.1)
     mime-types (1.22)
@@ -157,6 +162,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   jquery-rails
   json (~> 1.7.7)
+  mailchimp
   pg
   pry-rails
   rails (= 3.2.13)

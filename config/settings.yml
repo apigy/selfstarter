@@ -55,6 +55,12 @@ payment_description: "You really should change this text because people will see
 # this value will be added to the price to create a charge limit
 charge_limit: 25.00
 
+# Mailchimp settings -- only if you want to integrate with Mailchimp
+
+use_mailchimp: false
+mailchimp_api_key: "YOUR_MAILCHIMP_API_KEY"
+mailchimp_list_id: "YOUR_MAILCHIMP_LIST_ID"
+
 # Stats settings
 
 # On Lockitron, it's "backers"

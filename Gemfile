@@ -36,3 +36,6 @@ gem 'amazon_flex_pay'
 
 # Configuration File
 gem 'rails_config'
+
+# Mailchimp
+gem 'mailchimp'
