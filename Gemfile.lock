@@ -138,6 +138,7 @@ GEM
     uglifier (2.2.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    wepay (0.0.1)
 
 PLATFORMS
   ruby
@@ -158,3 +159,4 @@ DEPENDENCIES
   sqlite3
   thin
   uglifier (>= 1.0.3)
+  wepay

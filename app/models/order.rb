@@ -2,7 +2,9 @@ class Order < ActiveRecord::Base
   before_validation :generate_uuid!, :on => :create
   belongs_to :user
   belongs_to :payment_option
-  scope :completed, -> { where("token != ? OR token != ?", "", nil) }
+  belongs_to :payment_service
+
+  scope :completed, where("token != ? OR token != ?", "", nil)
   self.primary_key = 'uuid'
 
   # This is where we create our Caller Reference for Amazon Payments, and prefill some other information.
@@ -13,9 +15,24 @@ class Order < ActiveRecord::Base
     @order.price          = options[:price]
     @order.number         = Order.next_order_number
     @order.payment_option = options[:payment_option] if !options[:payment_option].nil?
+    @order.payment_service = options[:payment_service] unless options[:payment_service].nil?
     @order.save!
 
     @order
+  end
+
+  def wepay_postfill(options = {})
+    self.status = options['state']
+    if options.has_key?('shipping_address')
+      self.address_one     = options['shipping_address']['address1']
+      self.address_two     = options['shipping_address']['address2']
+      self.city            = options['shipping_address']['city'] 
+      self.state           = options['shipping_address']['state']
+      self.zip             = options['shipping_address']['zip']
+      self.country         = options['shipping_address']['country']
+      self.name            = options['payer_name']
+      self.save!
+    end
   end
 
   # After authenticating with Amazon, we get the rest of the details
