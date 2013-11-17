@@ -1,11 +1,8 @@
 class Order < ActiveRecord::Base
-  attr_accessible :address_one, :address_two, :city, :country, :number, :state, :status, :token, :transaction_id, :zip,
-                  :shipping, :tracking_number, :name, :price, :phone, :expiration, :payment_option
-  attr_readonly :uuid
   before_validation :generate_uuid!, :on => :create
   belongs_to :user
   belongs_to :payment_option
-  scope :completed, where("token != ? OR token != ?", "", nil)
+  scope :completed, -> { where("token != ? OR token != ?", "", nil) }
   self.primary_key = 'uuid'
 
   # This is where we create our Caller Reference for Amazon Payments, and prefill some other information.
@@ -23,7 +20,7 @@ class Order < ActiveRecord::Base
 
   # After authenticating with Amazon, we get the rest of the details
   def self.postfill!(options = {})
-    @order = Order.find_by_uuid!(options[:callerReference])
+    @order = Order.find_by!(:uuid => options[:callerReference])
     @order.token             = options[:tokenID]
     if @order.token.present?
       @order.address_one     = options[:addressLine1]
@@ -52,7 +49,7 @@ class Order < ActiveRecord::Base
   def generate_uuid!
     begin
       self.uuid = SecureRandom.hex(16)
-    end while Order.find_by_uuid(self.uuid).present?
+    end while Order.find_by(:uuid => self.uuid).present?
   end
 
   # goal is a dollar amount, not a number of backers, beause you may be using the multiple payment options component

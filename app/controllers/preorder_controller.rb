@@ -1,5 +1,5 @@
 class PreorderController < ApplicationController
-  skip_before_filter :verify_authenticity_token, :only => :ipn
+  skip_before_action :verify_authenticity_token, :only => :ipn
 
   def index
   end
@@ -8,7 +8,7 @@ class PreorderController < ApplicationController
   end
 
   def prefill
-    @user  = User.find_or_create_by_email!(params[:email])
+    @user = User.find_or_create_by(:email => params[:email])
 
     if Settings.use_payment_options
       payment_option_id = params['payment_option']
@@ -46,7 +46,7 @@ class PreorderController < ApplicationController
   end
 
   def share
-    @order = Order.find_by_uuid(params[:uuid])
+    @order = Order.find_by(:uuid => params[:uuid])
   end
 
   def ipn
