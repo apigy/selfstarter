@@ -72,3 +72,4 @@ PaymentOption.create(
             limit: -1
         }
     ])
+PaymentService.create([ {name: 'amazon'}, {name: 'wepay'}])
