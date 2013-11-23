@@ -14,9 +14,9 @@
   }
   #checkout
   {
-    #email
+    input
     {
-      padding: 15px;
+      padding: 10px;
       border-radius: 10px;
       border: 1px solid #CCC;
       width: 350px;
@@ -26,12 +26,18 @@
       {
       border: 1px solid orange;
     }
-    #amazon_button
+    #stripe_button
     {
       margin-top: 5px;
       padding: 15px;
       border: none;
+      width: 350px;
     }
+  }
+  #stripe_errors
+  {
+    display: none;
+    color: red;
   }
 }
 
@@ -64,7 +70,7 @@
       }
     }
   }
-  #amazon_button
+  #stripe_button
   {
     display: inline !important;
   }
