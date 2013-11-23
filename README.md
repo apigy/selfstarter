@@ -94,7 +94,7 @@ Relatedly, some analytics would be nice. It'd be good to know how many reservati
 
 ### Alternate Payment Processors
 
-Amazon Payments works great for us, but it may not work out for everyone. If you'd rather use Stripe, WePay, or any other payment processor, feel free to send out a pull request.
+Amazon Payments works great for us, but it may not work out for everyone. If you'd rather use Stripe, WePay, or any other payment processor, feel free to send out a pull request. Stripe and WePay are ready to go. A stripe branch is [here](https://github.com/paterson/selfstarter/tree/stripe) and a WePay branch is [here](https://github.com/novito/selfstarter)
 
 ### Tests
 
