@@ -7,11 +7,14 @@ class Order < ActiveRecord::Base
   # note - completed scope removed, because any entries in Order *have* to be completed ones.
 
   def self.fill!(options = {}) 
-    @order                = Order.new
-    @order.name           = options[:name]
-    @order.user_id        = options[:user_id]
-    @order.price          = options[:price]
-    @order.number         = Order.next_order_number
+    @order                    = Order.new
+    @order.name               = options[:name]
+    @order.user_id            = options[:user_id]
+    @order.price              = options[:price]
+    @order.currency           = options[:currency]
+    @order.payment_option_id  = options[:payment_option_id]
+    @order.number             = Order.next_order_number
+
     @order.save!
 
     @order
@@ -48,7 +51,7 @@ class Order < ActiveRecord::Base
 
   def self.revenue
     if Settings.use_payment_options
-      PaymentOption.joins(:orders).where("token != ? OR token != ?", "", nil).pluck('sum(amount)')[0].to_f
+      PaymentOption.joins(:orders).sum(:price).to_f
     else
       Order.sum(:price).to_f
     end 

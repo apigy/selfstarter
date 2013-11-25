@@ -36,10 +36,17 @@ video_embed_url: "https://www.youtube.com/v/D1L3o88GKew"
 # NOTE: this only works for youtube video at the moment.  If its not for youtube, then just leave this property blank
 use_video_placeholder: true
 
+#payments
+
+use_payment_options: true
+
+
 # Stripe stuff. Stripe.com 
 
-stripe_api_key: "YOUR_STRIPE_API_KEY"
-stripe_public_key: "YOUR_STRIPE_PUBLIC_KEY"
+#stripe_api_key: "YOUR_STRIPE_API_KEY"
+#stripe_public_key: "YOUR_STRIPE_PUBLIC_KEY"
+stripe_public_key: "pk_test_EoabQpqYyWvwkwhzWo3v5W9q"
+stripe_api_key: "sk_test_DoXPXUXZSn0F8jg1ccNvUsV6"
 currency: "usd" # usd, eur etc
 price: 	19.95
 payment_description: "You really should change this text because people will see it on their list of transactions!"
