@@ -31,7 +31,7 @@ bundle install --without production
 
 Now let's create the database:
 ```bash
-rake db:migrate
+rake db:setup
 ```
 
 If you're using the payment options component (use_payment_options = true in settings.yml) then need to seed some data for the options:
