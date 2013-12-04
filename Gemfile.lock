@@ -69,6 +69,8 @@ GEM
       slop (~> 3.4)
     pry-rails (0.3.2)
       pry (>= 0.9.10)
+    quiet_assets (1.0.2)
+      railties (>= 3.1, < 5.0)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -150,6 +152,7 @@ DEPENDENCIES
   json (~> 1.7.7)
   pg
   pry-rails
+  quiet_assets
   rails (= 4.0.0)
   rails_config
   rspec-rails (~> 2.0)
