@@ -5,7 +5,12 @@ describe Admin::DashboardController do
   render_views
 
   context "Authentication" do
-    it "should return a 401 page if user does not have valid credentials" do
+    it "should return a 401 page if user logins with no credentials" do
+      get 'show'
+      expect(response.status).to eq(401)
+    end
+    it "should return a 401 page if user logins with invalid credentials" do
+      http_login("shipwrecked", "")
       get 'show'
       expect(response.status).to eq(401)
     end
