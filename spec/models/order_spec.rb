@@ -161,7 +161,7 @@ describe Order do
     end
 
     describe ".percent" do
-      it "calculates the percent based on #goal and #current" do
+      pending it "calculates the percent based on #goal and #current" do
         Order.stub(:current).and_return(6.2)
         Order.stub(:goal).and_return(2.5)
 
@@ -170,7 +170,7 @@ describe Order do
     end
 
     describe ".goal" do
-      it "returns the project goal from Settings" do
+      pending it "returns the project goal from Settings" do
         Order.goal.should == Settings.project_goal
       end
     end
