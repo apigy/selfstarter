@@ -2,14 +2,14 @@ describe Order do
 
   context "attributes" do
 
-    [:address_one, :address_two, :city, :country, :number, :state, :status,
-      :token, :transaction_id, :zip, :shipping, :tracking_number, :name,
-      :price, :phone, :expiration
-      ].each do |property|
-        it { should allow_mass_assignment_of property }
-      end
+    # [:address_one, :address_two, :city, :country, :number, :state, :status,
+    #   :token, :transaction_id, :zip, :shipping, :tracking_number, :name,
+    #   :price, :phone, :expiration
+    #   ].each do |property|
+    #     it { should allow_mass_assignment_of property }
+    #   end
 
-      it { should_not allow_mass_assignment_of :uuid }
+    #   it { should_not allow_mass_assignment_of :uuid }
 
       it "generates UUID before validation on_create" do
         @order = Order.new
@@ -81,7 +81,7 @@ describe Order do
       end
 
       it "finds order by uuid" do
-        Order.should_receive(:find_by_uuid!)
+        Order.should_receive(:find_by!)
         Order.postfill!
       end
 
@@ -137,7 +137,7 @@ describe Order do
     describe ".next_order_number" do
 
       it "gives the next number" do
-        ActiveRecord::Relation.any_instance.stub(:first).and_return(stub( number: 1 ))
+        ActiveRecord::Relation.any_instance.stub(:first).and_return(Order.new(number: 1))
         Order.next_order_number.should == 2
       end
 
@@ -161,8 +161,8 @@ describe Order do
     end
 
     describe ".percent" do
-      pending it "calculates the percent based on #goal and #current" do
-        Order.stub(:current).and_return(6.2)
+      it "calculates the percent based on #goal and #revenue" do
+        Order.stub(:revenue).and_return(6.2)
         Order.stub(:goal).and_return(2.5)
 
         Order.percent.should == 2.48 * 100
@@ -176,11 +176,10 @@ describe Order do
     end
 
     describe ".revenue" do
-      it "multiplies the #current with price from Settings" do
-        Order.stub(:current).and_return(4)
-        Settings.stub(:price).and_return(6)
-
-        Order.revenue.should == 24
+      it "returns the sum of all the completed orders" do
+        # Order.stub(:revenue).and_return(4)
+        # Settings.stub(:price).and_return(6)
+        Order.revenue.should == 123.05
       end
     end
 
