@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130107010733) do
+ActiveRecord::Schema.define(version: 20131210193006) do
 
   create_table "orders", id: false, force: true do |t|
     t.string   "token"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20130107010733) do
     t.string   "status"
     t.string   "number"
     t.string   "uuid"
-    t.string   "user_id"
+    t.integer  "user_id",           limit: 255
     t.decimal  "price"
     t.decimal  "shipping"
     t.string   "tracking_number"
