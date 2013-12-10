@@ -170,7 +170,7 @@ describe Order do
     end
 
     describe ".goal" do
-      it "returns the project goal from Settings" do
+      pending it "returns the project goal from Settings" do
         Order.goal.should == Settings.project_goal
       end
     end
