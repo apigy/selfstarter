@@ -52,6 +52,13 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (2.0.2)
+    factory_girl (4.3.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.3.0)
+      factory_girl (~> 4.3.0)
+      railties (>= 3.0.0)
+    faker (1.2.0)
+      i18n (~> 0.5)
     hike (1.2.3)
     i18n (0.6.5)
     jquery-rails (3.0.4)
@@ -155,6 +162,8 @@ PLATFORMS
 DEPENDENCIES
   amazon_flex_pay
   coffee-rails (~> 4.0.0)
+  factory_girl_rails
+  faker
   jquery-rails
   jquery-ui-rails
   json (~> 1.7.7)

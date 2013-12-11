@@ -12,7 +12,7 @@ describe Order do
     #   it { should_not allow_mass_assignment_of :uuid }
 
       it "generates UUID before validation on_create" do
-        @order = Order.new
+        @order = FactoryGirl.build :order
         @order.valid?
         @order.uuid.should_not be_nil
       end
@@ -26,44 +26,41 @@ describe Order do
     describe ".prefill!" do
 
       before do
-        @options = {
-          name: 'marin',
-          user_id: 12983,
-          price: 123.12
-        }
-        @order = Order.prefill!(@options)
+        @order = FactoryGirl.build :order, name: 'marin', user_id: 12983, price: 123.12
       end
 
       it "sets the name" do
-        @order.name.should == @options[:name]
+        @order.name.should == 'marin'
       end
 
       it "sets user_id" do
-        @order.user_id.should == @options[:user_id]
+        @order.user_id.should == 12983
       end
 
       it "sets the price" do
-        @order.price.should == @options[:price]
+        @order.price.should == 123.12
       end
 
       it "saves" do
         Order.any_instance.should_receive :save!
-        Order.prefill!(@options)
+        Order.prefill!(FactoryGirl.attributes_for(:order))
       end
 
       it "uses the right order number" do
         numbah = Order.next_order_number
-        Order.prefill!(@options).number.should == numbah
+        params = FactoryGirl.attributes_for(:order)
+        @user = FactoryGirl.create :user
+        params[:user_id] = @user.id
+        Order.prefill!(params).number.should == numbah
       end
 
     end
 
     describe ".postfill!" do
-      fixtures :orders
-
       before do
+        @order = FactoryGirl.create(:order)
         @options = {
-          callerReference: 'ec781fa2-c5e6-4af9-8049-4dee15a85296',
+          callerReference: @order.uuid,
           tokenID: 128736127863,
           addressLine1: '102 Fake address',
           addressLine2: 'Apt 12, 3rd fl',
@@ -75,9 +72,6 @@ describe Order do
           country: 'United States',
           expiry: (Time.now + 99999).to_s
         }
-
-        Order.stub!(:find_by_uuid!).and_return orders(:one)
-        @order = Order.postfill!(@options)
       end
 
       it "finds order by uuid" do
@@ -86,43 +80,53 @@ describe Order do
       end
 
       it "sets the token" do
+        @order = Order.postfill!(@options)
         @order.token.should == @options[:tokenID]
       end
 
       it "checks if token is present" do
+        @order = Order.postfill!(@options)
         Order.postfill!.should be_nil
       end
 
       it "sets addresses" do
+        @order = Order.postfill!(@options)
         @order.address_one.should == @options[:addressLine1]
         @order.address_two.should == @options[:addressLine2]
       end
 
       it "sets city" do
+        @order = Order.postfill!(@options)
         @order.city.should == @options[:city]
       end
 
       it "sets state" do
+        @order = Order.postfill!(@options)
         @order.state.should == @options[:state]
       end
 
       it "sets status" do
+        @order = Order.postfill!(@options)
         @order.status.should == @options[:status]
       end
 
       it "sets zip" do
+        @order = Order.postfill!(@options)
         @order.zip.should == @options[:zip]
       end
 
       it "sets country" do
+        @order = Order.postfill!(@options)
         @order.country.should == @options[:country]
       end
 
       it "sets phone" do
+        @order = Order.postfill!(@options)
         @order.phone.should == @options[:phoneNumber]
       end
 
       it "sets expiration" do
+        @order = Order.postfill!(@options)
         @order.expiration.should == Date.parse(@options[:expiry])
       end
 
@@ -137,7 +141,7 @@ describe Order do
     describe ".next_order_number" do
 
       it "gives the next number" do
-        ActiveRecord::Relation.any_instance.stub(:first).and_return(Order.new(number: 1))
+        FactoryGirl.create :order # has #number => 1
         Order.next_order_number.should == 2
       end
 
@@ -177,8 +181,8 @@ describe Order do
 
     describe ".revenue" do
       it "returns the sum of all the completed orders" do
-        # Order.stub(:revenue).and_return(4)
-        # Settings.stub(:price).and_return(6)
+        #Order.stub(:revenue).and_return(4)
+        #Settings.stub(:price).and_return(6)
         Order.revenue.should == 123.05
       end
     end
