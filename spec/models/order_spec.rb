@@ -77,8 +77,9 @@ describe Order do
       end
 
       it "finds order by uuid" do
-        Order.should_receive(:find_by!)
-        Order.postfill!
+        @order = Order.postfill!(@options)
+        encoded_uuid = @options[:callerReference].force_encoding('UTF-8')
+        Order.find_by!(uuid: encoded_uuid).should_not be_nil
       end
 
       it "sets the token" do
@@ -88,7 +89,7 @@ describe Order do
 
       it "checks if token is present" do
         @order = Order.postfill!(@options)
-        Order.postfill!.should be_nil
+        @order.token.should_not be_nil
       end
 
       it "sets addresses" do
@@ -185,7 +186,9 @@ describe Order do
       it "returns the sum of all the completed orders" do
         #Order.stub(:revenue).and_return(4)
         #Settings.stub(:price).and_return(6)
-        Order.revenue.should == 123.05
+        FactoryGirl.create :completed_order, price: 20
+        FactoryGirl.create :completed_order, price: 20
+        Order.revenue.should == 40
       end
     end
 
