@@ -12,7 +12,7 @@ describe Order do
     #   it { should_not allow_mass_assignment_of :uuid }
 
       it "generates UUID before validation on_create" do
-        @order = FactoryGirl.build :order
+        @order = Order.new
         @order.valid?
         @order.uuid.should_not be_nil
       end
@@ -26,32 +26,34 @@ describe Order do
     describe ".prefill!" do
 
       before do
-        @order = FactoryGirl.build :order, name: 'marin', user_id: 12983, price: 123.12
+        @options = {
+          name: 'marin',
+          user_id: 12983,
+          price: 123.12
+        }
+        @order = Order.prefill!(@options)
       end
 
       it "sets the name" do
-        @order.name.should == 'marin'
+        @order.name.should == @options[:name]
       end
 
       it "sets user_id" do
-        @order.user_id.should == 12983
+        @order.user_id.should == @options[:user_id]
       end
 
       it "sets the price" do
-        @order.price.should == 123.12
+        @order.price.should == @options[:price]
       end
 
       it "saves" do
         Order.any_instance.should_receive :save!
-        Order.prefill!(FactoryGirl.attributes_for(:order))
+        Order.prefill!(@options)
       end
 
       it "uses the right order number" do
         numbah = Order.next_order_number
-        params = FactoryGirl.attributes_for(:order)
-        @user = FactoryGirl.create :user
-        params[:user_id] = @user.id
-        Order.prefill!(params).number.should == numbah
+        Order.prefill!(@options).number.should == numbah
       end
 
     end
