@@ -28,8 +28,8 @@ describe Admin::DashboardController do
 
   context "#show" do
     it "should assigns all existing orders to @orders" do
-      @user = User.create(email: "shipwrecked@lighthouselabs.ca")
-      @order = @user.orders.create(name: "Order 1", price: 100)
+      @user = FactoryGirl.create :user, email: "shipwrecked@lighthouselabs.ca"
+      @order = FactoryGirl.create :order, user: @user
       http_login
       get 'show'
       expect(assigns[:orders]).to eq([@order])
