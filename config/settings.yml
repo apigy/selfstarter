@@ -57,7 +57,8 @@ use_payment_options: false
 # "amazon" => Amazon Payments
 # "stripe" => Stripe
 # Amazon is the default; anything that doesn't match another option will be treated as "amazon"
-payment_processor: "stripe"
+payment_processor: "amazon"
+#payment_processor: "stripe"
 
 payment_description: "You really should change this text because people will see it on Amazon's order page!!!!!"
 
