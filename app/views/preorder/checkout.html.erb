@@ -1,15 +1,34 @@
+<% if Settings.payment_processor == "stripe" %>
+  <%= javascript_include_tag "https://js.stripe.com/v1/" %>
+  <%= javascript_include_tag "checkout.js" %>
+  <script>
+    Stripe.setPublishableKey("<%= ENV['STRIPE_PUBLIC_KEY'] || Settings.stripe_public_key %>")
+  </script>
+<% end %>
+
 <div class="gray_background">
   <div class="wrapper clearfix">
     <div class="main_content <%= "payment_options" if Settings.use_payment_options %>">
       <h3>Check out</h3>
       <p>
-        All of your payment information will be secured and stored with Amazon Payments. If you don't have an Amazon account, simply select "I'm a new Customer" on the next page.
-        <br />
-        <br />
-        <% if Settings.use_payment_options %>
-          Select a payment option and enter your email address below.
+        <% if Settings.payment_processor == "stripe" %>
+         All of your payment information will be secured and stored with Stripe.
         <% else %>
-          Enter your email address below.
+         All of your payment information will be secured and stored with Amazon Payments. If you don't have an Amazon account, simply select "I'm a new Customer" on the next page.
+        <% end %>
+        <br />
+        <br />
+        <%
+        if Settings.payment_processor == "stripe"
+          details = "details"
+        else
+          details = "email address"
+        end
+        %>
+        <% if Settings.use_payment_options %>
+          Select a payment option and enter your <%= details%> below.
+        <% else %>
+          Enter your <%= details%> below.
         <% end %>
 
       </p>
@@ -19,13 +38,27 @@
           <div class="checkout_controls_wrapper">
             <div class="checkout_controls_inner">
               <%= email_field_tag "email", nil, :placeholder => "Email address", :required => "required", :id => "email" %>
-              <%= hidden_field_tag "preorder", true %>
-              <%= hidden_field_tag "quantity", params[:quantity] %>
-              <%= submit_tag "Checkout", :class => "blue_button disabled", :id => "amazon_button" %>
+              <% if Settings.payment_processor == "stripe" %>
+                <%= text_field_tag "card_number", nil, :placeholder => "Card Number", :required => "required", :id => "card_number" %>
+                <%= text_field_tag "cvv", nil, :placeholder => "CVV", :required => "required", :id => "cvv" %>
+                <%= text_field_tag "expires", nil, :placeholder => "Expires mm/yyyy", :required => "required", :id => "expires" %>
+                <%= hidden_field_tag :stripe_token %>
+                <%= submit_tag "Order!", :class => "blue_button", :id => "checkout_button" %>
+              <% else %>
+                <%= hidden_field_tag "preorder", true %>
+                <%= hidden_field_tag "quantity", params[:quantity] %>
+                <%= submit_tag "Checkout", :class => "blue_button disabled", :id => "checkout_button" %>
+              <% end %>
             </div>
           </div>
         </div>
       <% end %>
+      <br />
+      <div id="payment_errors">
+        Something went wrong, please check all your details are correct.
+        <br />
+        <span id="payment_errors_info" />
+      </div>
     </div>
     <%= render 'preorder/checkout/sidebar' %>
   </div>

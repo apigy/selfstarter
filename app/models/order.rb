@@ -31,7 +31,7 @@ class Order < ActiveRecord::Base
       @order.zip             = options[:zip]
       @order.phone           = options[:phoneNumber]
       @order.country         = options[:country]
-      @order.expiration      = Date.parse(options[:expiry])
+      @order.expiration      = Date.parse(options[:expiry]) if !options[:expiry].nil?
       @order.save!
 
       @order

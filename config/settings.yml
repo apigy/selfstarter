@@ -43,10 +43,21 @@ amazon_access_key: "YOUR_AMAZON_ACCESS_KEY"
 amazon_secret_key: "YOUR_AMAZON_SECRET_KEY"
 price: 	19.95
 
+# Stripe settings.  These can be overridden using STRIPE_API_KEY and STRIPE_PUBLIC_KEY environment variables
+stripe_api_key: "YOUR_STRIPE_API_KEY"
+stripe_public_key: "YOUR_STRIPE_PUBLIC_KEY"
+
+
 # if use_payment_options is set to true, then a set of radio buttons will be displayed with various payment options.
 # There is a PaymentOption model for storing info about payment options.  To set up your payment options you should
 # put code in seeds.rb, then run rake db:seed
 use_payment_options: false
+
+# payment_processor determines the payment processor to use.
+# "amazon" => Amazon Payments
+# "stripe" => Stripe
+# Amazon is the default; anything that doesn't match another option will be treated as "amazon"
+payment_processor: "stripe"
 
 payment_description: "You really should change this text because people will see it on Amazon's order page!!!!!"
 
