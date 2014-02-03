@@ -18,7 +18,10 @@ class PreorderController < ApplicationController
     else
       price = Settings.price
     end
-
+    
+    msg = UserMailer.welcome_email(@user, params[:email])
+    msg.deliver!
+    
     @order = Order.prefill!(:name => Settings.product_name, :price => price, :user_id => @user.id, :payment_option => payment_option)
 
     # This is where all the magic happens. We create a multi-use token with Amazon, letting us charge the user's Amazon account
