@@ -37,3 +37,6 @@ gem 'amazon_flex_pay'
 
 # Configuration File
 gem 'rails_config'
+
+# For Heroku
+gem 'rails_12factor'
