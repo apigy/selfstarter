@@ -5,11 +5,14 @@ class PaymentOptionChecker
   end
 
   def price
-    payment_option.try(:amount) || Settings.price
+    if use_payment_options?
+      payment_option.try(:amount)
+    else
+      Settings.price
+    end
   end
 
   def payment_option
-    if use_payment_options?
       PaymentOption.find(payment_option_id)
       raise Exception.new("No payment option was selected") if payment_option.nil?
     end
