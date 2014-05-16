@@ -100,4 +100,6 @@ Amazon Payments works great for us, but it may not work out for everyone. If you
 
 There aren't any tests yet. Tests are very welcome!
 
+## License
 
+Selfstarter is licensed under the [MIT License](https://tldrlegal.com/license/mit-license).
