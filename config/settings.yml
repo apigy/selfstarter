@@ -36,6 +36,14 @@ video_embed_url: "https://www.youtube.com/v/D1L3o88GKew"
 # NOTE: this only works for youtube video at the moment.  If its not for youtube, then just leave this property blank
 use_video_placeholder: true
 
+# Payment service
+payment_service: 'amazon'
+
+# Wepay settings
+wepay_client_id: "YOUR_WEPAY_CLIENT_ID"
+wepay_secret_key: "YOUR_WEPAY_SECRET_KEY"
+wepay_access_token: "YOUR_WEPAY_ACCESS_TOKEN"
+
 # Amazon settings -- you'll need an Amazon Payments account, sign up here --> http://bit.ly/SGksTv
 
 # To find your access key and secret key, head over to here --> http://bit.ly/R4I4ky (Follow that guide in the Seller Central page)
@@ -48,7 +56,7 @@ price: 	19.95
 # put code in seeds.rb, then run rake db:seed
 use_payment_options: false
 
-payment_description: "You really should change this text because people will see it on Amazon's order page!!!!!"
+payment_description: "You really should change this text because people will see it on Payment Service's order page!!!!!"
 
 # Amazon limits how much we can charge people with their Multi-Use tokens.
 # You probably should add some leeway to account for international shipping
