@@ -28,7 +28,7 @@ class PreorderController < ApplicationController
     callback_url = "#{request.scheme}://#{request.host}#{port}/preorder/postfill"
     redirect_to AmazonFlexPay.multi_use_pipeline(@order.uuid, callback_url,
                                                  :transaction_amount => price,
-                                                 :global_amount_limit => price + Settings.charge_limit,
+                                                 :global_amount_limit => Settings.charge_limit,
                                                  :collect_shipping_address => "True",
                                                  :payment_reason => Settings.payment_description)
   end
