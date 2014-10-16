@@ -8,11 +8,18 @@
   {
     float: left;
     margin: 0 16px;
+    @media (max-width: $wrapper_breakpoint) {
+      float: none;
+      text-align: center;
+    }
     a {
       display: block;
       height: 48px;
       opacity: 0.2;
       text-indent: -10000px;
+      @media (max-width: $wrapper_breakpoint) {
+        margin: 10px auto;
+      }
     }
     a:hover {
       opacity: 1;

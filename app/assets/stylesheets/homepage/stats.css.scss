@@ -31,6 +31,16 @@
     padding-right: 26px;
     padding-left: 26px;
     text-align: left;
+    @media (max-width: $mobile_breakpoint) {
+      padding-right: 10px;
+      padding-left: 10px;
+      &:first {
+        padding-left: 0;
+      }
+      &:last {
+        padding-right: 0;
+      }
+    }
     span
     {
       color: #868686;
@@ -39,6 +49,12 @@
       display: block;
       font-family: $primary_font, $secondary_font, $tertiary_font;
     }
+  }
+  @media (max-width: $wrapper_breakpoint) {
+    float: none;
+    width: auto;
+    padding: 0 50px;
+    margin: 40px auto 0 auto;
   }
 }
 body.lt-ie9
@@ -62,6 +78,7 @@ body.lt-ie9
   border-radius: 30px;
   width: 383px;
   background: #dbdbdb;
+  overflow: hidden;
   #progress
   {
     height: 40px;
@@ -92,6 +109,9 @@ body.lt-ie9
     text-align: center;
     position: relative;
     top: -35px;
+  }
+  @media (max-width: $wrapper_breakpoint) {
+    width: 100%;
   }
 }
 .small

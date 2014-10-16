@@ -1,10 +1,19 @@
 #faqs {
   padding-bottom: 30px;
   border-bottom: 1px solid #dfdfdf;
+  @media (max-width: $wrapper_breakpoint) {
+    padding-left: 50px;
+    padding-right: 50px;
+    width: auto;
+  }
   ul {
     margin-top: 50px;
     float: left;
     width: 50%;
+    @media (max-width: $wrapper_breakpoint) {
+      float: none;
+      width: auto;
+    }
     li
     {
       width: 400px;
@@ -15,6 +24,10 @@
         margin-top: 10px;
         line-height: 1.4;
         font-size: 18px;
+      }
+      @media (max-width: $wrapper_breakpoint) {
+        width: 100%;
+        margin: 0 0 30px 0;
       }
     }
   }
