@@ -47,9 +47,14 @@
 
 #middle_reserve
 {
-  padding: 60px;
+  padding: 60px 0;
+  @media (max-width: $wrapper_breakpoint) {
+    width: auto;
+  }
   h2
   {
     margin-bottom: 26px;
+    margin-left: 50px;
+    margin-right: 50px;
   }
 }

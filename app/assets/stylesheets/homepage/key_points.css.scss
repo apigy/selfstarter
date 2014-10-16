@@ -8,6 +8,11 @@
 
 .point_copy {
   width: 440px;
+  @media (max-width: $wrapper_breakpoint) {
+    width: auto;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
   h3 {
     margin: 20px 0 30px 0;
   }
@@ -27,7 +32,10 @@ h3 {
 #one {
   background: url(image_path("1-background.png")) no-repeat bottom left;
   height: 320px;
-  width: 936px;
+  width: $wrapper_width;
+  @media (max-width: $wrapper_breakpoint) {
+    width: 100%;
+  }
 }
 
 #two {
@@ -45,6 +53,15 @@ h3 {
   height: 320px;
 }
 
+@media (max-width: $mobile_breakpoint) {
+  #one, #two, #three, #four {
+    height: auto;
+  }
+}
+
 .right {
   margin-left: 500px;
+  @media (max-width: $wrapper_breakpoint) {
+    margin-left: 0;
+  }
 }

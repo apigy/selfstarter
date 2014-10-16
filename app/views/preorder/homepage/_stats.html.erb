@@ -1,20 +1,26 @@
 <div class="wrapper clearfix">
   <div id="video">
-    <% if Settings.use_video_placeholder %>
-      <div id="video_image">
-        <img alt="video_place_holder" width='512px' height='385px' src="/assets/video_placeholder.png" />
-      </div>
-      <div id="player" class="hidden" style="display: none;">
-        <object width="512" height="385">
-          <param name="movie" value="<%= Settings.video_embed_url %>?autohide=1&showinfo=0&rel=0&autoplay=1" />
-          <param name="allowFullScreen" value="true" />
-          <param name="allowscriptaccess" value="always" />
-          <embed src="<%= Settings.video_embed_url %>?autohide=1&showinfo=0&rel=0&autoplay=1" type="application/x-shockwave-flash" width="512" height="385" allowscriptaccess="always" allowfullscreen="true"></embed>
-        </object>
-      </div>
-    <% else %>
-      <iframe width='512' height='385' src="<%= video_url %>"></iframe>
-    <% end %>
+    <div class="embed-responsive embed-responsive-4by3"><!-- or: embed-responsive-16by9 -->
+      <% if Settings.use_video_placeholder %>
+        <div id="video_image">
+          <img alt="video_place_holder" class="embed-responsive-item" src="/assets/video_placeholder.png" />
+        </div>
+        <!--
+        <div id="player" class="hidden" style="display: none;">
+          <object>
+            <param name="movie" value="<%= Settings.video_embed_url %>?autohide=1&showinfo=0&rel=0&autoplay=1" />
+            <param name="allowFullScreen" value="true" />
+            <param name="allowscriptaccess" value="always" />
+            <embed class="embed-responsive-item" src="<%= Settings.video_embed_url %>?autohide=1&showinfo=0&rel=0&autoplay=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true"></embed>
+          </object>
+        </div>
+-->
+      <iframe id="player" style="display: none;" class="embed-responsive-item" src="<%= Settings.video_embed_url %>?autohide=1&showinfo=0&rel=0&autoplay=1" allowfullscreen></iframe>
+
+      <% else %>
+      <iframe class="embed-responsive-item" src="<%= video_url %>" allowfullscreen></iframe>
+      <% end %>
+    </div>
   </div>
 
   <div id="backing">
@@ -40,7 +46,7 @@
           </li>
       <% end %>
     </ul>
-    
+
     <% if Order.revenue.to_f < Order.goal.to_f %>
       <div id='progress_bg' class='small'>
         <div id='progress' class='' style='width: <%= Order.percent %>%;'>
@@ -53,7 +59,7 @@
         <div id='progress_text'><%= Order.percent %>% <%= Settings.progress_text %></div>
       </div>
     <% end %>
-    
+
     <div id="reserve_container">
       <p id="ship_date"><%= Settings.ships %></p>
       <a href="/preorder/checkout" class="blue_button reserve"><%= Settings.call_to_action %></a>
@@ -61,7 +67,7 @@
       <p><%= Settings.dont_give_them_a_reason_to_say_no %></p>
       <%= like_button %>
     </div>
-    
+
   </div>
-  
+
 </div>

@@ -74,7 +74,7 @@ progress_text: "Implemented"
 # Call to action section
 
 # On Lockitron, it's "First Batch Ships in March 2013"
-ships: "Ships...sometime"
+ships: "Ships... sometime"
 
 # On Lockitron, it's "Reserve Now"
 call_to_action: "Reserve Now"
