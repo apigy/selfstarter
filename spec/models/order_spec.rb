@@ -5,10 +5,10 @@ describe Order do
       it "generates UUID before validation on_create" do
         @order = Order.new
         @order.valid?
-        @order.uuid.should_not be_nil
+        expect(@order.uuid).not_to be_nil
       end
 
-      it { Order.primary_key.should == 'uuid' }
+      it { expect(Order.primary_key).to eq('uuid') }
 
     end
 
@@ -26,15 +26,15 @@ describe Order do
       end
 
       it "sets the name" do
-        @order.name.should == @options[:name]
+        expect(@order.name).to eq(@options[:name])
       end
 
       it "sets user_id" do
-        @order.user_id.should == @options[:user_id]
+        expect(@order.user_id).to eq(@options[:user_id])
       end
 
       it "sets the price" do
-        @order.price.should == @options[:price]
+        expect(@order.price).to eq(@options[:price])
       end
 
       it "saves" do
