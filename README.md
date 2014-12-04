@@ -16,12 +16,18 @@ Selfstarter is a starting point. We made some specific choices with Selfstarter 
 
 ## Getting Started
 
-*Note: This assumes you have Ruby 1.9.2 or later installed properly and have a basic working knowledge of how to use RubyGems*
+*Note: This assumes you have Ruby 2.0.0 installed properly. Use "ruby --version" to check your Ruby version and consult [this installation page](https://www.ruby-lang.org/en/installation/) as needed.*
 
 First you'll need to fork and clone this repo
 
 ```bash
 git clone https://github.com/lockitron/selfstarter.git
+```
+
+Go into the cloned directory
+
+```bash
+cd selfstarter
 ```
 
 Let's get all our dependencies setup:
@@ -43,6 +49,8 @@ Let's get it running:
 ```bash
 rails s
 ```
+
+You can now view the site on your browser at http://localhost:3000.
 
 ### Customizing
 
