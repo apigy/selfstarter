@@ -22,4 +22,5 @@ config/environments/*.local.yml
 .rvmrc
 
 # yes, I use an ide
+*.iml
 .idea/*
