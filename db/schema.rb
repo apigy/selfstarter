@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130107010733) do
+ActiveRecord::Schema.define(version: 20150306231531) do
 
   create_table "orders", id: false, force: true do |t|
     t.string   "token"
@@ -47,6 +47,41 @@ ActiveRecord::Schema.define(version: 20130107010733) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "payment_pagar_mes", force: true do |t|
+    t.string   "card_number"
+    t.string   "card_holder_name"
+    t.string   "card_expiration_month"
+    t.string   "card_expiration_year"
+    t.string   "card_cvv"
+    t.string   "card_hash"
+    t.string   "payment_amount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "payments", force: true do |t|
+    t.string   "card_number"
+    t.string   "card_holder_name"
+    t.string   "card_expiration_month"
+    t.string   "card_expiration_year"
+    t.string   "card_cvv"
+    t.string   "card_hash"
+    t.string   "payment_amount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "transactions", force: true do |t|
+    t.string   "amount"
+    t.string   "card_hash"
+    t.string   "status"
+    t.integer  "payment_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "transactions", ["payment_id"], name: "index_transactions_on_payment_id"
 
   create_table "users", force: true do |t|
     t.string   "email"
