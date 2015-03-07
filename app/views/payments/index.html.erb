@@ -1,0 +1,38 @@
+<h4>Listing payments</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>Card number</th>
+      <th>Card holder name</th>
+      <th>Card expiration month</th>
+      <th>Card expiration year</th>
+      <th>Card cvv</th>
+      <th>Card hash</th>
+      <th>Payment amount</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @payments.each do |payment| %>
+      <tr>
+        <td><%= payment.card_number %></td>
+        <td><%= payment.card_holder_name %></td>
+        <td><%= payment.card_expiration_month %></td>
+        <td><%= payment.card_expiration_year %></td>
+        <td><%= payment.card_cvv %></td>
+        <td><%= payment.payment_amount %></td>
+        <td><%= link_to 'Show', payment %></td>
+        <td><%= link_to 'Edit', edit_payment_path(payment) %></td>
+        <td><%= link_to 'Destroy', payment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Payment', new_payment_path %>
