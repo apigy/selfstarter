@@ -24,6 +24,11 @@ First you'll need to fork and clone this repo
 git clone https://github.com/lockitron/selfstarter.git
 ```
 
+Cd into the project
+```bash
+cd selfstarter
+```
+
 Let's get all our dependencies setup:
 ```bash
 bundle install --without production
@@ -82,7 +87,7 @@ In it's current state, Selfstarter is very skeletal. We welcome your pull reques
 
 ### Email Updates
 
-Using Amazon FPS will send users a notification when they place an order, however, it's nice to notify people when they place an order. 
+Using Amazon FPS will send users a notification when they place an order, however, it's nice to notify people when they place an order.
 
 Something that we built into Lockitron.com was "Remind Me" functionality. The idea behind this is that you can capture potential backers and notify them near the end of your campaign that they should reserve your product. We have no data on this yet, however, it seems to be part of why Kickstarter campaigns pick up a lot of steam in their final hours.
 
