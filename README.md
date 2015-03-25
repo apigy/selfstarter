@@ -24,6 +24,7 @@ First you'll need to fork and clone this repo
 git clone https://github.com/lockitron/selfstarter.git
 ```
 
+Cd into the project
 ```bash
 cd selfstarter
 ```
