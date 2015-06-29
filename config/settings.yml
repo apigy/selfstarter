@@ -7,26 +7,26 @@
 
 # Set your project goal here - dollar amount
 # NOTE: if you manually want to adjust your progress to test the site, head over to the Order model (app/models/order.rb)
-project_goal: 100000
+project_goal: 25000
 
 # If you want to edit the FAQ, head over to app/views/preorder/homepage/_faqs.html.erb
 
 # This'll be both the page title (<title></title>) and the name in the header
-product_name: "Selfstarter"
+product_name: "Milliways Camp 2015"
 
 # This will be used in sentences like Hooray You've just reserved product_description
-product_description: "a set of widgets"
+product_description: "Milliways Camp 2015"
 
 # An image showcasing your product -- it'll show up when you pin your product
 # It should be in app/assets/images
-product_image_path: "my-product-image.png"
+product_image_path: "milliways_logo_512x512.png"
 
 # The message on the preorder page, Lockitron's is ""
-value_proposition: "Roll your own crowdfunding"
+value_proposition: "Build the Milliways Camp 2015 Village"
 
 # YouTube or Vimeo Video URL (The embed URL, without the query string options)
 # Replace /embed/ in your video url path with /v/ for video playback to work.
-video_embed_url: "https://www.youtube.com/v/D1L3o88GKew"
+video_embed_url: "https://www.youtube.com/watch?v=qb_hqexKkw8"
 
 # If set to true, then the image at "/assets/video_placeholder.png" will be shown in place of the youtube
 # video.  When the user clicks it, the vid will replace the image and start playing.
@@ -48,7 +48,7 @@ price: 	19.95
 # put code in seeds.rb, then run rake db:seed
 use_payment_options: false
 
-payment_description: "You really should change this text because people will see it on Amazon's order page!!!!!"
+payment_description: "Milliways Camp 2015"
 
 # Amazon limits how much we can charge people with their Multi-Use tokens.
 # You probably should add some leeway to account for international shipping
@@ -58,26 +58,26 @@ charge_limit: 25.00
 # Stats settings
 
 # On Lockitron, it's "backers"
-primary_stat: "backers"
+primary_stat: "donors"
 # This'll show up in the tweet as, "I'm backer number ..."
-primary_stat_verb: 'backer'
+primary_stat_verb: 'donor'
 
 # The 2nd call to action button, towards the middle-ish of the page
-middle_reserve_text: "Reserve Now"
+middle_reserve_text: "Donate Now"
 
 # When the project should end
 expiration_date: <%= DateTime.now + 29 %>
 
 # Text to show inside the progress bar, when the goal reaches/exceeds 100%
-progress_text: "Implemented"
+progress_text: "Funded"
 
 # Call to action section
 
 # On Lockitron, it's "First Batch Ships in March 2013"
-ships: "Ships...sometime"
+ships: "August 13-17, 2015"
 
 # On Lockitron, it's "Reserve Now"
-call_to_action: "Reserve Now"
+call_to_action: "Donate Now"
 # On Lockitron, this is "Only $149 for a limited time"
 price_human: "It costs money!"
 
