@@ -24,7 +24,8 @@ class PreorderController < ApplicationController
       :price => price,
       :user_id => @user.id,
       :payment_option => payment_option,
-      :email => params[:email])
+      :email => params[:email],
+      :is_paid => false)
 
     redirect_to action: :postfill
   end
