@@ -1,12 +1,12 @@
 
 /* For modern browsers */
 .clearfix:before,
-.clearfix:after 
+.clearfix:after
 {
   content:"";
   display:table;
 }
-.clearfix:after 
+.clearfix:after
 {
     clear:both;
 }
@@ -44,7 +44,7 @@ form
   margin-top: 15px;
 }
 
-body, input, textarea 
+body, input, textarea
 {
   font-size: $font_size;
   font-family: $primary_font, $secondary_font, $tertiary_font;
@@ -53,18 +53,18 @@ body, input, textarea
   -webkit-font-smoothing: antialiased;
 }
 
-a 
+a
 {
   text-decoration: none;
   color: $link_color;
 }
 
-a:hover 
+a:hover
 {
   text-decoration: underline;
 }
 
-i 
+i
 {
   font-style: italic;
 }
@@ -103,14 +103,12 @@ details summary::-webkit-details-marker { display:none; content: ""; }
 
 h1 {
   margin: 0 auto;
-  margin-left: 380px;
-  width: 174px;
   font-family: Helvetica;
   font-size: 42px;
   font-weight: bold;
   color: $h1_color;
   letter-spacing: -.05em;
-  float: left;
+  text-align: center;
   a
   {
     color: $h1_color;
@@ -151,7 +149,7 @@ h5 {
   text-align: center;
 }
 
-.gray_background 
+.gray_background
 {
   width:  100%;
   padding: 50px 0;
@@ -221,7 +219,7 @@ body.lt-ie9 {
   background-image: -o-linear-gradient(90deg, $button_top_gradient_hover 0%, $button_bottom_gradient_hover 100%); /* gradient fill */
   background-image: -webkit-linear-gradient(90deg, $button_top_gradient_hover 0%, $button_bottom_gradient_hover 100%); /* gradient fill */
   background-image: linear-gradient(90deg, $button_top_gradient_hover 0%, $button_bottom_gradient_hover 100%); /* gradient fill */
-  text-decoration: none;  
+  text-decoration: none;
 }
 
 .blue_button:active {

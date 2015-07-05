@@ -9,6 +9,8 @@ Selfstarter::Application.configure do
   # Log error messages when you accidentally call methods on nil.
   config.whiny_nils = true
 
+  config.assets.precompile += %w( application.js application.css )
+
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
@@ -34,4 +36,9 @@ Selfstarter::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  config.action_mailer.delivery_method = :sendmail
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_options = {from: 'denis@stoneship.org'}
 end

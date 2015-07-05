@@ -3,11 +3,11 @@
     <div class="main_content <%= "payment_options" if Settings.use_payment_options %>">
       <h3>Check out</h3>
       <p>
-        All of your payment information will be secured and stored with Amazon Payments. If you don't have an Amazon account, simply select "I'm a new Customer" on the next page.
+        In order save overhead costs, we are not using a payment provider.  We are accepting donations via EU Bank Transfers, or PayPal.
         <br />
         <br />
         <% if Settings.use_payment_options %>
-          Select a payment option and enter your email address below.
+          Select a donation level/gift enter your informaton below.
         <% else %>
           Enter your email address below.
         <% end %>
@@ -18,10 +18,17 @@
         <div class="checkout_controls">
           <div class="checkout_controls_wrapper">
             <div class="checkout_controls_inner">
-              <%= email_field_tag "email", nil, :placeholder => "Email address", :required => "required", :id => "email" %>
+              <div class="form-row">
+                <%= email_field_tag "email", nil, :placeholder => "Email address", :required => "required", :id => "email" %>
+              </div>
               <%= hidden_field_tag "preorder", true %>
               <%= hidden_field_tag "quantity", params[:quantity] %>
-              <%= submit_tag "Checkout", :class => "blue_button disabled", :id => "amazon_button" %>
+              <div class="form-row">
+                <%= text_field_tag 'captcha', nil, :placeholder => 'What is the answer to life, the universe, and everything?', :required => "required", :id => 'captcha' %>
+              </div>
+              <div class="form-row">
+                <%= submit_tag "Checkout", :class => "blue_button disabled", :id => "amazon_button" %>
+              </div>
             </div>
           </div>
         </div>

@@ -13,6 +13,12 @@
   }
 }
 
+.faq_list {
+  li {
+    list-style: circle;
+  }
+}
+
 h3 {
   font-size: 42px;
   font-family: $primary_font, $secondary_font, $tertiary_font;
