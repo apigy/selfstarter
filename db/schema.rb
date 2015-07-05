@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150629185608) do
+ActiveRecord::Schema.define(version: 20150705130531) do
 
   create_table "orders", id: false, force: true do |t|
     t.string   "token"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20150629185608) do
     t.datetime "updated_at"
     t.integer  "payment_option_id"
     t.boolean  "is_paid"
+    t.string   "random_token"
   end
 
   create_table "payment_options", force: true do |t|

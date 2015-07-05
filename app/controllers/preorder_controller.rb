@@ -24,13 +24,13 @@ class PreorderController < ApplicationController
       :price => price,
       :user_id => @user.id,
       :payment_option => payment_option,
-      :email => params[:email],
-      :is_paid => false)
+      :email => params[:email])
 
-    redirect_to action: :postfill
+    redirect_to action: :postfill, uuid: @order.uuid
   end
 
   def postfill
+    @order = Order.find_by(:uuid => params[:uuid])
   end
 
   def share
