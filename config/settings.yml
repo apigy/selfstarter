@@ -12,10 +12,10 @@ project_goal: 30000
 # If you want to edit the FAQ, head over to app/views/preorder/homepage/_faqs.html.erb
 
 # This'll be both the page title (<title></title>) and the name in the header
-product_name: "Milliways Camp 2015"
+product_name: "Milliways Village 2015"
 
 # This will be used in sentences like Hooray You've just reserved product_description
-product_description: "Milliways Camp 2015"
+product_description: "Milliways Village 2015"
 
 # An image showcasing your product -- it'll show up when you pin your product
 # It should be in app/assets/images
@@ -74,7 +74,7 @@ progress_text: "Funded"
 # Call to action section
 
 # On Lockitron, it's "First Batch Ships in March 2013"
-ships: "CCC Camp: August 13-17, 2015"
+ships: "Milliways Village: August 13-17, 2015"
 
 # On Lockitron, it's "Reserve Now"
 call_to_action: "Donate Now"
