@@ -13,9 +13,17 @@ class Order < ActiveRecord::Base
     @order.price          = options[:price]
     @order.number         = Order.next_order_number
     @order.payment_option = options[:payment_option] if !options[:payment_option].nil?
+    @order.is_paid        = false
+    @order.random_token   = generate_random_token
     @order.save!
 
     @order
+  end
+
+  def self.generate_random_token
+    res = []
+    12.times { res << ('A'..'Z').to_a.sample }
+    res.join('').scan(/.{1,4}/).join('-')
   end
 
   # After authenticating with Amazon, we get the rest of the details
@@ -72,7 +80,7 @@ class Order < ActiveRecord::Base
       PaymentOption.joins(:orders).where("token != ? OR token != ?", "", nil).pluck('sum(amount)')[0].to_f
     else
       Order.completed.sum(:price).to_f
-    end 
+    end
   end
 
   validates_presence_of :name, :price, :user_id
