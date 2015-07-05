@@ -26,6 +26,8 @@ class PreorderController < ApplicationController
       :payment_option => payment_option,
       :email => params[:email])
 
+    OrderMailer.order_confirmation(@order).deliver
+
     redirect_to action: :postfill, uuid: @order.uuid
   end
 

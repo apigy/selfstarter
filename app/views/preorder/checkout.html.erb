@@ -18,10 +18,17 @@
         <div class="checkout_controls">
           <div class="checkout_controls_wrapper">
             <div class="checkout_controls_inner">
-              <%= email_field_tag "email", nil, :placeholder => "Email address", :required => "required", :id => "email" %>
+              <div class="form-row">
+                <%= email_field_tag "email", nil, :placeholder => "Email address", :required => "required", :id => "email" %>
+              </div>
               <%= hidden_field_tag "preorder", true %>
               <%= hidden_field_tag "quantity", params[:quantity] %>
-              <%= submit_tag "Checkout", :class => "blue_button disabled", :id => "amazon_button" %>
+              <div class="form-row">
+                <%= text_field_tag 'captcha', nil, :placeholder => 'What is the answer to life, the universe, and everything?', :required => "required", :id => 'captcha' %>
+              </div>
+              <div class="form-row">
+                <%= submit_tag "Checkout", :class => "blue_button disabled", :id => "amazon_button" %>
+              </div>
             </div>
           </div>
         </div>

@@ -14,25 +14,28 @@
   }
   #checkout
   {
-    #email
+    #email, #captcha
     {
-      padding: 15px;
+      padding: 10px 15px;
       border-radius: 10px;
       border: 1px solid #CCC;
-      width: 350px;
+      width: 530px;
       outline: none;
     }
     .invalid
-      {
+    {
       border: 1px solid orange;
     }
     #amazon_button
     {
-      margin-top: 5px;
-      padding: 15px;
+      padding: 10px;
       border: none;
     }
   }
+}
+
+.form-row {
+  margin: 20px 0;
 }
 
 .main_content.payment_options
@@ -46,22 +49,6 @@
     .checkout_controls_inner
     {
       padding-top: 12px;
-    }
-    height: 100px;
-    div.checkout_controls_wrapper.fix_to_bottom.checkout_ready
-    {
-      background-color: #FAFAFA;
-      width: 100%;
-      position: fixed;
-      bottom: 0px ;
-      top: auto;
-      .checkout_controls_inner
-      {
-        @extend .checkout_controls_inner;
-        width: 560px;
-        border-top: 1px solid #D2D2D2;
-        padding-bottom: 90px;
-      }
     }
   }
   #amazon_button
