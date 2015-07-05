@@ -5,9 +5,16 @@ class PreorderController < ApplicationController
   end
 
   def checkout
+
   end
 
   def prefill
+
+    if params[:captcha] != "42"
+      redirect_to action: :captcha_failed
+      return
+    end
+
     @user = User.find_or_create_by(:email => params[:email])
 
     if Settings.use_payment_options
@@ -41,4 +48,10 @@ class PreorderController < ApplicationController
 
   def ipn
   end
+
+  def captcha_failed
+
+  end
+
+
 end
