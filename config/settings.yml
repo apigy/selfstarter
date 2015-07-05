@@ -41,12 +41,12 @@ use_video_placeholder: true
 # To find your access key and secret key, head over to here --> http://bit.ly/R4I4ky (Follow that guide in the Seller Central page)
 amazon_access_key: "YOUR_AMAZON_ACCESS_KEY"
 amazon_secret_key: "YOUR_AMAZON_SECRET_KEY"
-price: 	19.95
+price: 	25
 
 # if use_payment_options is set to true, then a set of radio buttons will be displayed with various payment options.
 # There is a PaymentOption model for storing info about payment options.  To set up your payment options you should
 # put code in seeds.rb, then run rake db:seed
-use_payment_options: false
+use_payment_options: true
 
 payment_description: "Milliways Camp 2015"
 
@@ -74,7 +74,7 @@ progress_text: "Funded"
 # Call to action section
 
 # On Lockitron, it's "First Batch Ships in March 2013"
-ships: "August 13-17, 2015"
+ships: "CCC Camp: August 13-17, 2015"
 
 # On Lockitron, it's "Reserve Now"
 call_to_action: "Donate Now"
@@ -82,7 +82,7 @@ call_to_action: "Donate Now"
 price_human: "It costs money!"
 
 # The paragraph below the price. You'd probably say something about how you're not going to charge them before it ships (so it's less risky).
-dont_give_them_a_reason_to_say_no: "You'll get this exact site. All you'll need to get started is a great product."
+dont_give_them_a_reason_to_say_no: "Pre-order your Milliways Challeng Coin now!"
 
 # Social Stuff
 facebook_app_id: "1234567890"
