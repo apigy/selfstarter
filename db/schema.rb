@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130107010733) do
+ActiveRecord::Schema.define(version: 20131125094222) do
 
   create_table "orders", id: false, force: true do |t|
     t.string   "token"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20130107010733) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "payment_option_id"
+    t.string   "currency"
   end
 
   create_table "payment_options", force: true do |t|
@@ -46,6 +47,7 @@ ActiveRecord::Schema.define(version: 20130107010733) do
     t.integer  "limit"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "currency"
   end
 
   create_table "users", force: true do |t|

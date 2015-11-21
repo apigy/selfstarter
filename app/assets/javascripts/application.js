@@ -18,3 +18,4 @@
 //= require jquery.textchange
 //= require preorder
 //= require_tree .
+//= require checkout

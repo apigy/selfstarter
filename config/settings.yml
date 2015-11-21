@@ -36,24 +36,20 @@ video_embed_url: "https://www.youtube.com/v/D1L3o88GKew"
 # NOTE: this only works for youtube video at the moment.  If its not for youtube, then just leave this property blank
 use_video_placeholder: true
 
-# Amazon settings -- you'll need an Amazon Payments account, sign up here --> http://bit.ly/SGksTv
+#payments
 
-# To find your access key and secret key, head over to here --> http://bit.ly/R4I4ky (Follow that guide in the Seller Central page)
-amazon_access_key: "YOUR_AMAZON_ACCESS_KEY"
-amazon_secret_key: "YOUR_AMAZON_SECRET_KEY"
+use_payment_options: true
+
+
+# Stripe stuff. Stripe.com 
+
+#stripe_api_key: "YOUR_STRIPE_API_KEY"
+#stripe_public_key: "YOUR_STRIPE_PUBLIC_KEY"
+stripe_public_key: "pk_test_EoabQpqYyWvwkwhzWo3v5W9q"
+stripe_api_key: "sk_test_DoXPXUXZSn0F8jg1ccNvUsV6"
+currency: "usd" # usd, eur etc
 price: 	19.95
-
-# if use_payment_options is set to true, then a set of radio buttons will be displayed with various payment options.
-# There is a PaymentOption model for storing info about payment options.  To set up your payment options you should
-# put code in seeds.rb, then run rake db:seed
-use_payment_options: false
-
-payment_description: "You really should change this text because people will see it on Amazon's order page!!!!!"
-
-# Amazon limits how much we can charge people with their Multi-Use tokens.
-# You probably should add some leeway to account for international shipping
-# this value will be added to the price to create a charge limit
-charge_limit: 25.00
+payment_description: "You really should change this text because people will see it on their list of transactions!"
 
 # Stats settings
 
