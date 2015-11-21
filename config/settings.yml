@@ -12,7 +12,7 @@ project_goal: 100000
 # If you want to edit the FAQ, head over to app/views/preorder/homepage/_faqs.html.erb
 
 # This'll be both the page title (<title></title>) and the name in the header
-product_name: "Selfstarter"
+product_name: "2theGig"
 
 # This will be used in sentences like Hooray You've just reserved product_description
 product_description: "a set of widgets"
@@ -22,7 +22,7 @@ product_description: "a set of widgets"
 product_image_path: "my-product-image.png"
 
 # The message on the preorder page, Lockitron's is ""
-value_proposition: "Roll your own crowdfunding"
+value_proposition: "If you are paid to play, you need this app!"
 
 # YouTube or Vimeo Video URL (The embed URL, without the query string options)
 # Replace /embed/ in your video url path with /v/ for video playback to work.
