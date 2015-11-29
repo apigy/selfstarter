@@ -45,8 +45,8 @@ use_payment_options: true
 
 #stripe_api_key: "YOUR_STRIPE_API_KEY"
 #stripe_public_key: "YOUR_STRIPE_PUBLIC_KEY"
-stripe_public_key: "pk_test_EoabQpqYyWvwkwhzWo3v5W9q"
-stripe_api_key: "sk_test_DoXPXUXZSn0F8jg1ccNvUsV6"
+stripe_public_key: "pk_test_dFxDEPCmXwyF4ZhFNajbinzq"
+stripe_api_key: "sk_test_6lvT24JSNeJh9dZqT8RPVko4"
 currency: "usd" # usd, eur etc
 price: 	19.95
 payment_description: "You really should change this text because people will see it on their list of transactions!"
