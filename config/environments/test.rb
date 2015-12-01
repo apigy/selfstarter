@@ -1,6 +1,9 @@
 Selfstarter::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
+  #UPDATED for new rails version
+  config.eager_load = false
+  
   # The test environment is used exclusively to run your application's
   # test suite. You never need to work with it otherwise. Remember that
   # your test database is "scratch space" for the test suite and is wiped
@@ -30,7 +33,8 @@ Selfstarter::Application.configure do
   config.action_mailer.delivery_method = :test
 
   # Raise exception on mass assignment protection for Active Record models
-  config.active_record.mass_assignment_sanitizer = :strict
+  #disabled for rails 4.2
+  #config.active_record.mass_assignment_sanitizer = :strict
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr

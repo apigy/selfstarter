@@ -17,6 +17,7 @@ $(document).ready(function () {
       else {
         //error
         $('#stripe_errors').show()
+        console.log('error ' + error + ' result: ' + JSON.stringify(result, null, 4));
         return false;
       }
     });

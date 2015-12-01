@@ -2,12 +2,13 @@ class PreorderController < ApplicationController
   skip_before_action :verify_authenticity_token, :only => :ipn
 
   require "stripe"
-  Stripe.api_key = Settings.stripe_api_key
+  Stripe.api_key = "sk_test_6lvT24JSNeJh9dZqT8RPVko4"
 
   def index
   end
 
   def checkout
+    @stripe = Stripe.api_key
   end
 
   def order
