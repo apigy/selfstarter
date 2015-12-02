@@ -5,11 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+PaymentOption.destroy_all;
+
 PaymentOption.create(
     [
         {
             amount: 10.00,
-            amount_display: '$10',
+            amount_display: '$999',
             description: '<strong>Basic level: </strong>You receive a great big thankyou from us!  You Rock',
             shipping_desc: '',
             delivery_desc: '',

@@ -13,8 +13,8 @@
 //= require html5shiv-printshiv
 //= require jquery
 //= require jquery_ujs
-//= require jquery.ui.all
 //= require jquery.details
 //= require jquery.textchange
 //= require preorder
 //= require_tree .
+//= require checkout

@@ -12,7 +12,7 @@ project_goal: 100000
 # If you want to edit the FAQ, head over to app/views/preorder/homepage/_faqs.html.erb
 
 # This'll be both the page title (<title></title>) and the name in the header
-product_name: "Selfstarter"
+product_name: "To The Gig!"
 
 # This will be used in sentences like Hooray You've just reserved product_description
 product_description: "a set of widgets"
@@ -22,11 +22,14 @@ product_description: "a set of widgets"
 product_image_path: "my-product-image.png"
 
 # The message on the preorder page, Lockitron's is ""
-value_proposition: "Roll your own crowdfunding"
+value_proposition: "If you are paid to play, you need this app!"
 
 # YouTube or Vimeo Video URL (The embed URL, without the query string options)
 # Replace /embed/ in your video url path with /v/ for video playback to work.
-video_embed_url: "https://www.youtube.com/v/D1L3o88GKew"
+#video_embed_url: "https://www.youtube.com/v/MkQcZ8A01AA"
+video_embed_url: "https://www.youtube.com/v/61fiCMV5IDI"
+
+
 
 # If set to true, then the image at "/assets/video_placeholder.png" will be shown in place of the youtube
 # video.  When the user clicks it, the vid will replace the image and start playing.
@@ -34,26 +37,22 @@ video_embed_url: "https://www.youtube.com/v/D1L3o88GKew"
 # NOTE: you can set this to false, and no image will be use - first frame of the video will be displayed
 #
 # NOTE: this only works for youtube video at the moment.  If its not for youtube, then just leave this property blank
-use_video_placeholder: true
+use_video_placeholder: false
 
-# Amazon settings -- you'll need an Amazon Payments account, sign up here --> http://bit.ly/SGksTv
+#payments
 
-# To find your access key and secret key, head over to here --> http://bit.ly/R4I4ky (Follow that guide in the Seller Central page)
-amazon_access_key: "YOUR_AMAZON_ACCESS_KEY"
-amazon_secret_key: "YOUR_AMAZON_SECRET_KEY"
+use_payment_options: true
+
+
+# Stripe stuff. Stripe.com 
+
+#stripe_api_key: "YOUR_STRIPE_API_KEY"
+#stripe_public_key: "YOUR_STRIPE_PUBLIC_KEY"
+stripe_public_key: "pk_test_dFxDEPCmXwyF4ZhFNajbinzq"
+stripe_api_key: "sk_test_6lvT24JSNeJh9dZqT8RPVko4"
+currency: "usd" # usd, eur etc
 price: 	19.95
-
-# if use_payment_options is set to true, then a set of radio buttons will be displayed with various payment options.
-# There is a PaymentOption model for storing info about payment options.  To set up your payment options you should
-# put code in seeds.rb, then run rake db:seed
-use_payment_options: false
-
-payment_description: "You really should change this text because people will see it on Amazon's order page!!!!!"
-
-# Amazon limits how much we can charge people with their Multi-Use tokens.
-# You probably should add some leeway to account for international shipping
-# this value will be added to the price to create a charge limit
-charge_limit: 25.00
+payment_description: "You really should change this text because people will see it on their list of transactions!"
 
 # Stats settings
 

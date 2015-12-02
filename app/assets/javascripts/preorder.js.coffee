@@ -38,7 +38,7 @@ Selfstarter =
           wrapper.removeClass('fix_to_bottom')
 
       $(window).on "scroll", ->
-        onScroll()
+        #onScroll()
 
       # the radio button selection should bring up the email field and button
       $('.payment_options ol li').on "click", ->
@@ -46,7 +46,7 @@ Selfstarter =
         $(".payment_radio").parents("ol>li").removeClass("checkout_option_selected")
         $(this).addClass("checkout_option_selected")
         $(this).children(".payment_radio").attr "checked", "checked"
-        onScroll()
+        #onScroll()
         $('.checkout_controls_wrapper').addClass "checkout_ready"
 $ ->
   Selfstarter.init()

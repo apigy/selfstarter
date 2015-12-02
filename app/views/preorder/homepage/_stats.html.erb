@@ -9,7 +9,7 @@
           <param name="movie" value="<%= Settings.video_embed_url %>?autohide=1&showinfo=0&rel=0&autoplay=1" />
           <param name="allowFullScreen" value="true" />
           <param name="allowscriptaccess" value="always" />
-          <embed src="<%= Settings.video_embed_url %>?autohide=1&showinfo=0&rel=0&autoplay=1" type="application/x-shockwave-flash" width="512" height="385" allowscriptaccess="always" allowfullscreen="true"></embed>
+          <embed src="<%= Settings.video_embed_url %>?autohide=1&showinfo=0&rel=0&autoplay=1" type="application/x-shockwave-flash" width="512" height="385" webkit-playsinline="true" allowscriptaccess="always" allowfullscreen="true"></embed>
         </object>
       </div>
     <% else %>
@@ -56,7 +56,7 @@
     
     <div id="reserve_container">
       <p id="ship_date"><%= Settings.ships %></p>
-      <a href="/preorder/checkout" class="blue_button reserve"><%= Settings.call_to_action %></a>
+      <a href="/preorder/order" class="blue_button reserve"><%= Settings.call_to_action %></a>
       <p id="price"><%= Settings.price_human %></p>
       <p><%= Settings.dont_give_them_a_reason_to_say_no %></p>
       <%= like_button %>
