@@ -34,7 +34,7 @@ video_embed_url: "https://www.youtube.com/v/MkQcZ8A01AA"
 # NOTE: you can set this to false, and no image will be use - first frame of the video will be displayed
 #
 # NOTE: this only works for youtube video at the moment.  If its not for youtube, then just leave this property blank
-use_video_placeholder: false
+use_video_placeholder: true
 
 #payments
 
@@ -45,8 +45,8 @@ use_payment_options: true
 
 #stripe_api_key: "YOUR_STRIPE_API_KEY"
 #stripe_public_key: "YOUR_STRIPE_PUBLIC_KEY"
-stripe_public_key: "pk_test_dFxDEPCmXwyF4ZhFNajbinzq"
-stripe_api_key: "sk_test_6lvT24JSNeJh9dZqT8RPVko4"
+stripe_public_key: <%= ENV['STRIPE_PUBLIC_KEY'] %>
+stripe_api_key: <%= ENV['STRIPE_API_KEY'] %>
 currency: "usd" # usd, eur etc
 price: 	19.95
 payment_description: "You really should change this text because people will see it on their list of transactions!"
@@ -81,13 +81,13 @@ price_human: "It costs money!"
 dont_give_them_a_reason_to_say_no: "You'll get this exact site. All you'll need to get started is a great product."
 
 # Social Stuff
-facebook_app_id: "1234567890"
+facebook_app_id: <%= ENV['FB_ID'] %>
 # Tweets are prefixed with "I'm #{Settings.primary_stat} number X for #{Settings.product_name}"
 # Maybe mention something about your product vision -- e.g. "to replace keys with my phone"
 tweet_text: "to crowdfund"
 
 # Google Analytics
-google_id: "1234567890"
+google_id: <%= ENV['GOOGLE_ID'] %>
 
 # If you want to change the images for the key points (e.g. "Kickstarter is not a store")
 # They're in app/assets/images/#{pointer_number}-background.png

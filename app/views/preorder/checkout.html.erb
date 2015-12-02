@@ -3,14 +3,13 @@
     <div class="main_content <%= "payment_options" if Settings.use_payment_options %>">
       <h3>Preorder</h3>
       <p>
-        <%= "#{@stripe}" %>
         All of your payment information will be secured and stored with Stripe.
         <br />
         <br />
         Please Enter your details below.
 
       </p>
-      <%= form_tag "/preorder/order", :id => "checkout" do %>
+      <%= form_tag "/preorder/order", :id => "checkout", :html => { :id => "checkout" } do %>
         <%= render 'preorder/payment_options' %>
         <div class="checkout_controls">
           <div class="checkout_controls_wrapper">

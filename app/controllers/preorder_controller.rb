@@ -2,7 +2,7 @@ class PreorderController < ApplicationController
   skip_before_action :verify_authenticity_token, :only => :ipn
 
   require "stripe"
-  Stripe.api_key = "sk_test_6lvT24JSNeJh9dZqT8RPVko4"
+  Stripe.api_key = ENV['STRIPE_API_KEY']
 
   def index
   end
@@ -12,27 +12,32 @@ class PreorderController < ApplicationController
   end
 
   def order
-    @user = User.find_or_create_by(:email => params[:email])
+    @user = User.find_or_create_by(email: params[:email])
     client = Stripe::Customer.create(
-      :email => params[:email]
+      email: params[:email],
+      source: params[:stripe_token]
     )
-    card = client.cards.create(:card => params[:stripe_token])
-    client.default_card = card.id
-    order_details
+    #this is irrelevant for the new way stripe handles payments it seems
+    #card = client.cards.create(:card => params[:stripe_token])
+    #client.default_card = card.id 
+    
+    #changed this because it created instance variables but there's no need to, we create an hash in order_details that gets saved to "details" and then we can call details[:field_we_want] - it's more explicit
+    details = order_details
     charge = Stripe::Charge.create(
-      :amount => @integer_amount,
-      :currency => @currency,
-      :customer => client.id,
-      :description => @description
+      amount: details[:integer_amount],
+      currency: details[:currency],
+      customer: client.id,
+      description: details[:description],
     )
 
     raise Exception.new("Couldn't charge Card. Please try again") unless charge.paid
     options = {
-      :user_id => @user.id,
-      :price => @amount, #store in decimal in db, not integer
-      :currency => @currency,
-      :name => Settings.product_name,
-      :payment_option_id => @payment_option_id
+      user_id: @user.id,
+      price: details[:decimal_amount], #store in decimal in db, not integer
+      currency: details[:currency],
+      name: Settings.product_name,
+      payment_option_id: details[:payment_option_id],
+      transaction_id: charge.id
     }
     @order = Order.fill!(options)
     redirect_to :action => :share, :uuid => @order.uuid
@@ -40,18 +45,30 @@ class PreorderController < ApplicationController
 
   def order_details
     if Settings.use_payment_options
-      @payment_option_id = params['payment_option']
-      raise Exception.new("No payment option was selected") if @payment_option_id.nil?
-      payment_option = PaymentOption.find(@payment_option_id)
-      @amount = payment_option.amount
-      @currency = payment_option.currency
-      @description = payment_option.description
+      payment_option_id = params['payment_option']
+      raise Exception.new("No payment option was selected") if payment_option_id.nil?
+      payment_option = PaymentOption.find(payment_option_id)
+      amount = payment_option.amount
+      #in case the seed file doesn't contain currency it assigns 'usd'
+      if payment_option.currency
+        currency = payment_option.currency
+      else
+        currency = "USD"
+      end
+      description = payment_option.description
     else
-      @amount = Settings.price
-      @currency = Settings.currency
-      @description = Settings.payment_description
+      amount = Settings.price
+      currency = Settings.currency
+      description = Settings.payment_description
     end
-    @integer_amount = (@amount * 100).to_i # to integer
+    integer_amount = (amount * 100).to_i # to integer
+    details = {
+      payment_option_id: payment_option_id,
+      integer_amount: integer_amount,
+      decimal_amount: amount,
+      currency: currency,
+      description: description
+    }
   end
 
   def share

@@ -14,6 +14,7 @@ class Order < ActiveRecord::Base
     @order.currency           = options[:currency]
     @order.payment_option_id  = options[:payment_option_id]
     @order.number             = Order.next_order_number
+    @order.transaction_id     = options[:transaction_id]
 
     @order.save!
 
