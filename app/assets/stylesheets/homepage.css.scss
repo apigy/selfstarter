@@ -33,14 +33,14 @@
       cursor: pointer;
     }
   }
-  @media (max-width: $wrapper_breakpoint) {
+  @media screen and (max-device-width:$wrapper_breakpoint), screen and (max-width: $wrapper_breakpoint) {
     float: none;
     width: auto;
     height: auto;
     margin-left: auto;
     margin-right: auto;
   }
-  @media (max-width: $mobile_breakpoint) {
+  @media screen and (max-device-width:$mobile_breakpoint), screen and (max-width: $mobile_breakpoint) {
      width: 100%;
      height: auto;
   }

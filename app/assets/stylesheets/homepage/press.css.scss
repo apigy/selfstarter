@@ -8,7 +8,7 @@
   {
     float: left;
     margin: 0 16px;
-    @media (max-width: $wrapper_breakpoint) {
+    @media screen and (max-device-width:$wrapper_breakpoint), screen and (max-width: $wrapper_breakpoint) {
       float: none;
       text-align: center;
     }
@@ -17,7 +17,7 @@
       height: 48px;
       opacity: 0.2;
       text-indent: -10000px;
-      @media (max-width: $wrapper_breakpoint) {
+      @media screen and (max-device-width:$wrapper_breakpoint), screen and (max-width: $wrapper_breakpoint) {
         margin: 10px auto;
       }
     }

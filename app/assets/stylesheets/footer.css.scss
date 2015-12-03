@@ -1,7 +1,7 @@
 .footer
 {
   padding: 40px 0;
-  @media (max-width: $wrapper_breakpoint) {
+  @media screen and (max-device-width:$wrapper_breakpoint), screen and (max-width: $wrapper_breakpoint)  {
     padding: 40px;
   }
   ul

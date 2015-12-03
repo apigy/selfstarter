@@ -48,7 +48,7 @@
 #middle_reserve
 {
   padding: 60px 0;
-  @media (max-width: $wrapper_breakpoint) {
+  @media screen and (max-device-width:$wrapper_breakpoint), screen and (max-width: $wrapper_breakpoint) {
     width: auto;
   }
   h2

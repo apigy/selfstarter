@@ -110,7 +110,7 @@ h1 {
   color: $h1_color;
   letter-spacing: -.05em;
   float: left;
-  @media (max-width: $wrapper_breakpoint) {
+  @media screen and (max-device-width:$wrapper_breakpoint), screen and (max-width: $wrapper_breakpoint) {
     margin-left: 50px;
   }
   a
@@ -147,7 +147,7 @@ h5 {
 .wrapper {
   width: $wrapper_width;
   margin: 0 auto;
-  @media (max-width: $wrapper_breakpoint) {
+  @media screen and (max-device-width:$wrapper_breakpoint), screen and (max-width: $wrapper_breakpoint) {
     width: 100%;
   }
 }

@@ -31,7 +31,7 @@
     padding-right: 26px;
     padding-left: 26px;
     text-align: left;
-    @media (max-width: $mobile_breakpoint) {
+    @media screen and (max-device-width:$mobile_breakpoint), screen and (max-width: $mobile_breakpoint) {
       padding-right: 10px;
       padding-left: 10px;
       &:first {
@@ -50,7 +50,7 @@
       font-family: $primary_font, $secondary_font, $tertiary_font;
     }
   }
-  @media (max-width: $wrapper_breakpoint) {
+  @media screen and (max-device-width:$wrapper_breakpoint), screen and (max-width: $wrapper_breakpoint) {
     float: none;
     width: auto;
     padding: 0 50px;
@@ -110,7 +110,7 @@ body.lt-ie9
     position: relative;
     top: -35px;
   }
-  @media (max-width: $wrapper_breakpoint) {
+  @media screen and (max-device-width:$wrapper_breakpoint), screen and (max-width: $wrapper_breakpoint) {
     width: 100%;
   }
 }

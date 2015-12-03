@@ -4,11 +4,12 @@
 }
 .big_wrapper .wrapper {
   padding: 35px 0;
+
 }
 
 .point_copy {
   width: 440px;
-  @media screen and (max-width: $wrapper_breakpoint) {
+  @media screen and (max-device-width:$wrapper_breakpoint), screen and (max-width: $wrapper_breakpoint) {
     width: auto;
     padding-left: 50px;
     padding-right: 50px;
@@ -33,7 +34,7 @@ h3 {
   background: url(image_path("1-background.png")) no-repeat bottom left;
   height: 320px;
   width: $wrapper_width;
-  @media screen and (max-width: $wrapper_breakpoint) {
+  @media screen and (max-device-width:$wrapper_breakpoint), screen and (max-width: $wrapper_breakpoint) {
     width: 100%;
   }
 }
@@ -41,19 +42,28 @@ h3 {
 #two {
   background: url(image_path("2-background.png")) no-repeat bottom left;
   height: 320px;
+  @media screen and (max-device-width:$wrapper_breakpoint), screen and (max-width: $wrapper_breakpoint) {
+    width: 100%;
+  }
 }
 
 #three {
   background: url(image_path("3-background.png")) no-repeat bottom left;
   height: 320px;
+  @media screen and (max-device-width:$wrapper_breakpoint), screen and (max-width: $wrapper_breakpoint) {
+    width: 100%;
+  }
 }
 
 #four {
   background: url(image_path("4-background.png")) no-repeat bottom left;
   height: 320px;
+  @media screen and (max-device-width:$wrapper_breakpoint), screen and (max-width: $wrapper_breakpoint) {
+    width: 100%;
+  }
 }
 
-@media screen and (max-width: $mobile_breakpoint) {
+@media screen and (max-device-width:$mobile_breakpoint), screen and (max-width: $mobile_breakpoint)  {
   #one, #two, #three, #four {
     height: auto;
   }
@@ -61,7 +71,7 @@ h3 {
 
 .right {
   margin-left: 500px;
-  @media screen and (max-width: $wrapper_breakpoint) {
+  @media screen and (max-device-width:$wrapper_breakpoint), screen and (max-width: $wrapper_breakpoint) {
     margin-left: 0;
   }
 }

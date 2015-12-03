@@ -46,3 +46,11 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+html, body {
+  height: 100%; 
+  overflow: auto; 
+  margin: 0;
+  overflow-scrolling: touch;
+  -webkit-overflow-scrolling: touch;
+}

@@ -30,7 +30,7 @@
   h4 {
     width: 400px;
     text-align: center;
-    @media (max-width: $wrapper_breakpoint) {
+    @media screen and (max-device-width:$wrapper_breakpoint), screen and (max-width: $wrapper_breakpoint) {
       width: 100%;
     }
   }
