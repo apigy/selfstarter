@@ -182,14 +182,16 @@ if PaymentOption.count == 0
       payment.update!(currency: 'USD')
     end
 else 
-    PaymentOption.find(9).update!(
-      amount: "1000.00",
-      amount_display: "$1000",
-      description: "<strong>Updating a single record</strong> (the one with id 1 - set by .find(1)) without destroying records.</br>",
-      shipping_desc: "add $3 to ship outside the US",
-      delivery_desc: "Estimated delivery: Oct 2013",
-      limit: -1
-    )
+=begin
+  PaymentOption.find(9).update!(
+    amount: "1000.00",
+    amount_display: "$1000",
+    description: "<strong>Updating a single record</strong> (the one with id 1 - set by .find(1)) without destroying records.</br>",
+    shipping_desc: "add $3 to ship outside the US",
+    delivery_desc: "Estimated delivery: Oct 2013",
+    limit: -1
+  )
+=end
 end
     
        
