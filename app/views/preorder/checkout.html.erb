@@ -14,20 +14,12 @@
         <div class="checkout_controls">
           <div class="checkout_controls_wrapper">
             <div class="checkout_controls_inner">
-              <%= email_field_tag "email", nil, :placeholder => "Email address", :required => "required", :id => "email" %>
-              <%= text_field_tag "card_number", nil, :placeholder => "Card Number", :required => "required", :id => "card_number" %>
-              <%= text_field_tag "cvv", nil, :placeholder => "CVV", :required => "required", :id => "cvv" %>
-              <%= text_field_tag "expires", nil, :placeholder => "Expires mm/yyyy", :required => "required", :id => "expires" %>
-              <%= hidden_field_tag :stripe_token %>
-              <%= submit_tag "Order!", :class => "blue_button", :id => "stripe_button" %>
+              <button class="payable checkoutbtn" data-description="option" data-amount="option">Pay through Stripe! </button>
             </div>
           </div>
         </div>
       <% end %>
       <br />
-      <div id="stripe_errors">
-        Something went wrong, please check all your details are correct
-      </div>
     </div>
     <%= render 'preorder/checkout/sidebar' %>
   </div>

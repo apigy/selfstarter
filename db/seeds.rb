@@ -114,7 +114,7 @@ if PaymentOption.count == 0
       [
           {
               amount: 10.00,
-              amount_display: '$999',
+              amount_display: '$10',
               description: '<strong>Basic level: </strong>You receive a great big thankyou from us!  You Rock',
               shipping_desc: '',
               delivery_desc: '',

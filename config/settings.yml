@@ -13,6 +13,13 @@ project_goal: 100000
 
 # This'll be both the page title (<title></title>) and the name in the header
 product_name: "2theGig"
+#if display_logo is set to true it will show up instead of the product_name although the title still uses the product name - if you set display_logo to true set logo_image to the name of your image as well - to turn this off just set display_logo to false
+display_logo: true
+logo_image: "ToTheGigLogo.png"
+#width & height will be used to display the image, you can use any number plus the unit such as px em rem % vw vh or auto 
+#example '200em' 'auto' '10%' or '30vw'
+l_width: '300px'
+l_height: 'auto'
 
 # This will be used in sentences like Hooray You've just reserved product_description
 product_description: "a set of widgets"
@@ -88,6 +95,18 @@ tweet_text: "to crowdfund"
 
 # Google Analytics
 google_id: <%= ENV['GOOGLE_ID'] %>
+
+#Set if payment is in the main page or in options page
+pay_in_page: true
+
+#If payment is in page you can set 2 options
+payment_button_1: "Text for button" #this is the text for the button
+payment_description_1: "Some good copy that can maybe do it a bit easily" #this is the text that comes in front
+#you have to set the price as integer so 1000 is equivalent to 10.00$ or 10$
+payment_price_1: 1000
+payment_button_2: "Second button"
+payment_description_2: "Another good copy that fits just right to the button"
+payment_price_2: 10000
 
 # If you want to change the images for the key points (e.g. "Kickstarter is not a store")
 # They're in app/assets/images/#{pointer_number}-background.png

@@ -1,5 +1,9 @@
 <div id="header">
-  <div class="wrapper clearfix">
-    <h1 id="lockitron_header"><a href="/"><%= Settings.product_name %></a></h1>
-  </div>
+    <% if !Settings.display_logo %>
+      <h1 id="lockitron_header"><a href="/"><%= Settings.product_name %></a></h1>
+    <% else %>
+      <div class="center">
+        <%= link_to image_tag(Settings.logo_image, alt: Settings.product_name, width:"#{Settings.l_width}", height:"#{Settings.l_height}" ), root_path, class: "main-logo" %>
+      </div>
+    <% end %>
 </div>

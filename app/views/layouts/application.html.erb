@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
   <head>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
     <title><%= Settings.product_name %></title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
-    <%= javascript_include_tag "https://js.stripe.com/v1/", "application" %>
-    <script>
-      Stripe.setPublishableKey("<%= Settings.stripe_public_key %>")
-    </script>
+    <%= javascript_include_tag "https://checkout.stripe.com/checkout.js", "application" %>
+    <meta class="imagelink" data-link="<%= asset_path('ToTheGigLogo128px.png') %>">
   </head>
   <!--[if lt IE 9 ]><body class="lt-ie9"><![endif]-->
   <!--[if (gt IE 9)|!(IE)]><!--> <body><!--<![endif]-->
     <%= render 'preorder/header' %>
-    <%= yield %>
+    <div class="maincontent">
+      <%= yield %>
+    </div>
     <%= render 'preorder/footer' %>
   </body>
 </html>

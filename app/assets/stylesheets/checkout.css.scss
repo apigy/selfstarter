@@ -108,7 +108,9 @@
         position: relative;
         color: black;
         line-height: 20px;
-
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
         input
         {
           display: inline;

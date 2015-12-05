@@ -8,39 +8,47 @@ class PreorderController < ApplicationController
   end
 
   def checkout
-    @stripe = Stripe.api_key
+    #@stripe = Stripe.api_key
   end
 
   def order
-    @user = User.find_or_create_by(email: params[:email])
+    token = params[:token]
+    email = params[:email]
+    amount = params[:paymentinfo][:amount]
+    description = params[:paymentinfo][:description]
+    p_id = params[:paymentinfo][:p_id]
+    @user = User.find_or_create_by(email: email)
     client = Stripe::Customer.create(
-      email: params[:email],
-      source: params[:stripe_token]
+      email: email,
+      source: token
     )
     #this is irrelevant for the new way stripe handles payments it seems
     #card = client.cards.create(:card => params[:stripe_token])
     #client.default_card = card.id 
     
     #changed this because it created instance variables but there's no need to, we create an hash in order_details that gets saved to "details" and then we can call details[:field_we_want] - it's more explicit
-    details = order_details
+    #details = order_details
     charge = Stripe::Charge.create(
-      amount: details[:integer_amount],
-      currency: details[:currency],
+      amount: amount,
+      currency: 'USD',
       customer: client.id,
-      description: details[:description],
+      description: description,
     )
-
+    amount_decimal = amount[0...-2]
+    amount_decimal = amount_decimal.to_f
     raise Exception.new("Couldn't charge Card. Please try again") unless charge.paid
     options = {
       user_id: @user.id,
-      price: details[:decimal_amount], #store in decimal in db, not integer
-      currency: details[:currency],
+      price: amount_decimal, #store in decimal in db, not integer
+      currency: 'USD',
       name: Settings.product_name,
-      payment_option_id: details[:payment_option_id],
+      payment_option_id: p_id,
       transaction_id: charge.id
     }
     @order = Order.fill!(options)
-    redirect_to :action => :share, :uuid => @order.uuid
+    respond_to do |format|
+      format.json { render plain: share_path(@order.uuid) }
+    end
   end
 
   def order_details

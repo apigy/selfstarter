@@ -1,6 +1,8 @@
-<div class="big_wrapper">
-  <div class="wrapper center" id="middle_reserve">
-    <h2><%= Settings.ships %></h2>
-    <a href="/preorder/order" class="blue_button reserve"><%= Settings.middle_reserve_text %></a>
+<% if !Settings.pay_in_page %>
+  <div class="big_wrapper">
+    <div class="wrapper center" id="middle_reserve">
+      <h2><%= Settings.ships %></h2>
+      <a href="/preorder/order" class="blue_button reserve"><%= Settings.middle_reserve_text %></a>
+    </div>
   </div>
-</div>
+<% end %>

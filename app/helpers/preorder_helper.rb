@@ -33,4 +33,8 @@ module PreorderHelper
   def order_count(payment_option)
     Order.where(payment_option_id: payment_option).count # count of orders that have a token from amazon and are for this payment option
   end
+  
+  def setSizeLogo 
+    
+  end
 end

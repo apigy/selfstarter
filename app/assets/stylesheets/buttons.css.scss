@@ -1,0 +1,138 @@
+.payable {
+  background-color: #00baff;
+  cursor: pointer;
+  border-radius: 5px;
+  color: white;
+}
+
+.checkoutbtn {
+  padding: 20px 40px 20px 40px;
+  font-size: 1.5rem;
+}
+
+.payable:hover {
+  background-color: #015675;
+  cursor: pointer !important;
+}
+
+.center {
+  text-align: center;
+  margin: auto;
+}
+
+.column-flex {
+  flex: 1;
+  flex-direction: column;
+}
+
+.flex {
+  flex: 1;
+}
+.flexbigger {
+  flex: 1;
+  flex-grow: 4;
+}
+
+.main-logo {
+}
+
+.options-box {
+  width: 400px;
+  height: 200px;
+  display: flex;
+  .row {
+    display: flex;
+    flex-flow: row nowrap;
+    flex: 1;
+  }
+  .column {
+    display: flex;
+    flex-flow: column nowrap;
+    flex: 1;
+    button {
+      flex: 1;
+      background-color: #00baff;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 1.2rem;
+      p {
+        color: white !important;
+        padding: 0px 0px;
+      }
+    }
+    button:hover {
+      background-color: #015675;
+      cursor: pointer !important;
+    }
+    p {
+      flex: 1;
+      align-self: center;
+      margin: auto;
+      padding-top: 10px;
+    }
+  }
+  .spacerflex {
+    display: none;
+    flex: 1;
+  }
+}
+
+#header {
+  display: flex;
+  justify-content: center;
+  a {
+    flex: 1;
+  }
+  h1 {
+    margin: auto;
+  }
+}
+
+.smalldisplay {
+  padding: 0px 15vw 0px 15vw;
+}
+
+@media screen and (max-device-width:$wrapper_breakpoint), screen and (max-width: $wrapper_breakpoint) {
+  .maincontent {
+    padding: 0px 5vw 0px 5vw;
+  }
+  .main_content {
+    max-width: 90vw;
+  }
+  ol
+  {
+    list-style: none;
+    margin: 0px 50px 0px 0px;
+    word-wrap: normal;
+    width: 90vw;
+    li {
+      max-width: 70vw;
+    }
+  }
+  .options-box {
+    width: 80vw;
+    margin-left: -30px;
+    .spacerflex {
+      display: flex;
+      flex: 1;
+    }
+    #options_button {
+      flex: 2;
+    }
+    #options_description {
+      flex: 3;
+    }
+  }
+  #backing {
+    margin-left: -10px;
+  }
+}
+
+@media screen and (max-device-width:$mobile_breakpoint), screen and (max-width: $mobile_breakpoint) {
+  .maincontent {
+    padding: 0px 5vw 0px 5vw;
+  }
+  fieldset {
+    max-width: 90vw;
+  }
+}
