@@ -41,7 +41,7 @@ video_embed_url: "https://www.youtube.com/embed/MkQcZ8A01AA"
 # NOTE: you can set this to false, and no image will be use - first frame of the video will be displayed
 #
 # NOTE: this only works for youtube video at the moment.  If its not for youtube, then just leave this property blank
-use_video_placeholder: true
+use_video_placeholder: false
 
 #payments
 
@@ -100,13 +100,13 @@ google_id: <%= ENV['GOOGLE_ID'] %>
 pay_in_page: true
 
 #If payment is in page you can set 2 options
-payment_button_1: "Text for button" #this is the text for the button
-payment_description_1: "Some good copy that can maybe do it a bit easily" #this is the text that comes in front
+payment_button_1: "Become a Founder!" #this is the text for the button
+payment_description_1: "Get a founders t-shirt and GOLD note on your profile. $250" #this is the text that comes in front
 #you have to set the price as integer so 1000 is equivalent to 10.00$ or 10$
-payment_price_1: 1000
-payment_button_2: "Second button"
-payment_description_2: "Another good copy that fits just right to the button"
-payment_price_2: 10000
+payment_price_1: 25000
+payment_button_2: "Special Pre-Launch Rate"
+payment_description_2: "Get 1 year for only $49.99 now"
+payment_price_2: 4999
 
 # If you want to change the images for the key points (e.g. "Kickstarter is not a store")
 # They're in app/assets/images/#{pointer_number}-background.png
