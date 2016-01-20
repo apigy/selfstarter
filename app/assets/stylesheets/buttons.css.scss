@@ -3,6 +3,7 @@
   cursor: pointer;
   border-radius: 5px;
   color: white;
+  max-height: 70px;
 }
 
 .checkoutbtn {
@@ -38,7 +39,7 @@
 
 .options-box {
   width: 400px;
-  height: 200px;
+  height: 500px;
   display: flex;
   .row {
     display: flex;
@@ -49,6 +50,7 @@
     display: flex;
     flex-flow: column nowrap;
     flex: 1;
+    margin-bottom: 10px;
     button {
       flex: 1;
       background-color: #00baff;
@@ -68,7 +70,6 @@
       flex: 1;
       align-self: center;
       margin: auto;
-      padding-top: 10px;
     }
   }
   .spacerflex {
@@ -119,8 +120,9 @@
     #options_button {
       flex: 2;
     }
-    #options_description {
+    #options_description_1, #options_description_2 {
       flex: 3;
+      margin: 20px 0px 0px 0px;
     }
   }
   #backing {
@@ -134,5 +136,20 @@
   }
   fieldset {
     max-width: 90vw;
+  }
+}
+
+#options_description_1, #options_description_2 {
+  font-size: 20px;
+  text-align: left;
+  margin: 0px;
+  padding: 0px;
+  p {
+    margin: 0px;
+    padding: 0px;
+  }
+  h2 {
+    padding: 0px;
+    font-size: 20px;
   }
 }

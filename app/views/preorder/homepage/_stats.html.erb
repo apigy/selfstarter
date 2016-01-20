@@ -56,24 +56,32 @@
     <div id="reserve_container">
       <% if Settings.pay_in_page %>
         <div class="options-box">
-          <div class="row">
-            <div class="column" id="options_button">
-              <button class="payable" id="first_option" data-description="<%= Settings.payment_button_1 %>" data-amount="<%= Settings.payment_price_1 %>" data-option="1"><p><%= Settings.payment_button_1 %><p></button>
-              <button class="payable" id="second_option" data-description="<%= Settings.payment_button_2 %>" data-amount="<%= Settings.payment_price_2 %>" data-option="2"><p><%= Settings.payment_button_2 %><p></button>
+          <div class="column">
+            <div class="column" id="options_button_1">
+              <button class="payable" id="first_option" data-description="<%= Settings.payment_button_1 %>" data-amount="<%= Settings.payment_price_1 %>" data-option="1"><p><%= Settings.payment_button_1 %></p></button>
+            </div>
+            <div class="column" id="options_description_1">
+              <h2><%= Settings.payment_headline_1 %></h2>
+              <p><%= Settings.payment_description_1 %></p>
             </div>
             <div class="spacerflex"></div>
-            <div class="column" id="options_description">
-              <p><%= Settings.payment_description_1 %></p>
+            <div class="column" id="options_button_2">
+              <button class="payable" id="second_option" data-description="<%= Settings.payment_button_2 %>" data-amount="<%= Settings.payment_price_2 %>" data-option="2">
+                <p><%= Settings.payment_button_2 %></p>
+              </button>
+            </div>
+            <div class="column" id="options_description_2">
+              <h2><%= Settings.payment_headline_2 %></h2>
               <p><%= Settings.payment_description_2 %></p>
             </div>
           </div>
         </div>
       <% else %>
-      <p id="ship_date"><%= Settings.ships %></p>
-      <a href="/preorder/order" class="blue_button reserve"><%= Settings.call_to_action %></a>
-      <p id="price"><%= Settings.price_human %></p>
-      <p><%= Settings.dont_give_them_a_reason_to_say_no %></p>
-      <%= like_button %>
+        <p id="ship_date"><%= Settings.ships %></p>
+        <a href="/preorder/order" class="blue_button reserve"><%= Settings.call_to_action %></a>
+        <p id="price"><%= Settings.price_human %></p>
+        <p><%= Settings.dont_give_them_a_reason_to_say_no %></p>
+        <%= like_button %>
       <% end %>
     </div>
     

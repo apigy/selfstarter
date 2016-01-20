@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.2.2'
+raise 'Ruby should be >2.1' unless RUBY_VERSION.to_f > 2.1
 
 gem 'rails', '4.2.1'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
