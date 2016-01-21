@@ -33,7 +33,7 @@ value_proposition: "If you are paid to play, you need this app!"
 
 # YouTube or Vimeo Video URL (The embed URL, without the query string options)
 # Replace /embed/ in your video url path with /v/ for video playback to work.
-video_embed_url: "https://www.youtube.com/v/MkQcZ8A01AA"
+video_embed_url: "https://www.youtube.com/embed/MkQcZ8A01AA"
 
 # If set to true, then the image at "/assets/video_placeholder.png" will be shown in place of the youtube
 # video.  When the user clicks it, the vid will replace the image and start playing.
