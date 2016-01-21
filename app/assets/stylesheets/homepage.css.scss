@@ -18,6 +18,7 @@
 
 #video
 {
+  margin-top: 150px;
   display: flex;
   float: left;
   width: 512px;
@@ -35,6 +36,7 @@
     }
   }
   @media screen and (max-device-width:$wrapper_breakpoint), screen and (max-width: $wrapper_breakpoint) {
+    margin-top: 0px;
     float: none;
     width: auto;
     height: auto;

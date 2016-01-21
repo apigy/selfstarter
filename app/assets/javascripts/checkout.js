@@ -89,5 +89,5 @@ Windows: function() { return navigator.userAgent.match(/IEMobile/i); },
 any: function() { return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows()); } };
 
 
-$(document).on('page:change', ready);
+$(document).ready(ready);
 

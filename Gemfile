@@ -8,6 +8,9 @@ gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 #needed for rails 4.2
 gem "config"
 
+#magnific-popup
+gem 'magnific-popup-rails'
+
 group :development do
   gem 'sqlite3'
   gem 'pry-rails'
@@ -33,7 +36,7 @@ group :development, :test do
 end
 
 #turbolinks
-gem 'turbolinks'
+#gem 'turbolinks'
 
 #gem 'jbuilder', '~> 2.0'
 

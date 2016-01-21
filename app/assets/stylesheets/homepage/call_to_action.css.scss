@@ -1,7 +1,7 @@
 #reserve_container
 {
   float: left;
-  padding-top: 20px;
+  padding-top: 0px;
   border-top: 1px solid #fff;
   -moz-box-shadow:    0 -1px 0 #cbcbcb; /* drop shadow */
   -webkit-box-shadow: 0 -1px 0 #cbcbcb; /* drop shadow */
@@ -56,5 +56,11 @@
     margin-bottom: 26px;
     margin-left: 50px;
     margin-right: 50px;
+  }
+}
+
+.options-box {
+  h2, p {
+    margin: 0px;
   }
 }

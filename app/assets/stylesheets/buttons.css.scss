@@ -4,6 +4,7 @@
   border-radius: 5px;
   color: white;
   max-height: 70px;
+  min-height: 70px;
 }
 
 .checkoutbtn {
@@ -50,16 +51,17 @@
     display: flex;
     flex-flow: column nowrap;
     flex: 1;
-    margin-bottom: 10px;
+    justify-content: center;
+    padding: 0px;
+    margin: 0px;
     button {
-      flex: 1;
+      //flex: 1;
       background-color: #00baff;
       cursor: pointer;
       border-radius: 5px;
       font-size: 1.2rem;
       p {
         color: white !important;
-        padding: 0px 0px;
       }
     }
     button:hover {
@@ -67,7 +69,6 @@
       cursor: pointer !important;
     }
     p {
-      flex: 1;
       align-self: center;
       margin: auto;
     }
@@ -117,12 +118,12 @@
       display: flex;
       flex: 1;
     }
-    #options_button {
-      flex: 2;
+    #options_button_1, #options_button_2 {
+      flex: 1;
     }
     #options_description_1, #options_description_2 {
       flex: 3;
-      margin: 20px 0px 0px 0px;
+      margin: 30px 0px 0px 5px;
     }
   }
   #backing {
@@ -142,14 +143,20 @@
 #options_description_1, #options_description_2 {
   font-size: 20px;
   text-align: left;
-  margin-bottom: 20px;
   padding: 0px;
+  height: 250px;
   p {
-    margin: 0px;
-    padding: 0px;
   }
   h2 {
     padding: 0px;
-    font-size: 15px;
+    margin-bottom: 5px;
+    font-size: 20px;
   }
 }
+
+#options_button_1, #optiona_button_2 {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
+

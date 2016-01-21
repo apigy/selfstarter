@@ -13,9 +13,9 @@
 //= require html5shiv-printshiv
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require jquery.details
 //= require jquery.textchange
 //= require preorder
 //= require checkout
-//= require_tree .
+//= require magnific-popup
+//= require popup
