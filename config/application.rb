@@ -19,6 +19,7 @@ module Selfstarter
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
     # --- Standard Rails Config ---
+    config.action_dispatch.default_headers['X-Frame-Options'] = "ALLOW-FROM https://www.youtube.com"
 
   end
 end
