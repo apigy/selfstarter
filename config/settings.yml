@@ -58,6 +58,9 @@ currency: "usd" # usd, eur etc
 price: 	19.95
 payment_description: "You really should change this text because people will see it on their list of transactions!"
 
+# Printful API
+printful_key: <%= ENV['PRINTFUL_KEY'] %>
+
 # Stats settings
 
 # On Lockitron, it's "backers"
@@ -96,24 +99,25 @@ tweet_text: "to crowdfund"
 # Google Analytics
 google_id: <%= ENV['GOOGLE_ID'] %>
 
-#Set if payment is in the main page or in options page
+# Set if payment is in the main page or in options page
 pay_in_page: true
 
-#If payment is in page you can set 2 options
+# If payment is in page you can set 2 options
 
-#this is the text for the button
+# this is the text for the button
 payment_button_1: "Become a founder"
-#this is the headline
+# this is the headline
 payment_headline_1: "Be one of only 200 “Founders” and fund our development!"
-#this is the description
+# this is the description
 payment_description_1: "You’ll get a limited addition Founders T-Shirt, and a “Gold” note on your profile for $250! "
-#you have to set the price as integer so 1000 is equivalent to 10.00$ or 10$
-payment_price_1: 1000
-#this is the link to learn more
+# you have to set the price as integer so 1000 is equivalent to 10.00$ or 10$
+payment_price_1: 25000
+
+# second button
 payment_button_2: "Pre-buy At our Special Rate"
 payment_headline_2: "Get a years service at this SPECIAL introductory rate"
 payment_description_2: "Pre-order for just $49.95, the whole first year. "
-payment_price_2: 10000
+payment_price_2: 4995
 
 # If you want to change the images for the key points (e.g. "Kickstarter is not a store")
 # They're in app/assets/images/#{pointer_number}-background.png

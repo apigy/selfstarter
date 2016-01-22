@@ -7,4 +7,50 @@
   max-width: 500px;
   margin: 20px auto;
   color: #000;
+  h2 {
+    font-size: 1.5em;
+    text-align: left;
+    font-weight: 400;
+  }
+  select {
+    text-align: center;
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 25px;
+  }
+  label {
+    font-size: 1em;
+    text-align: left;
+    font-weight: 100;
+  }
+  input[type=radio] {
+    text-align:left;
+    margin: 10px;
+  }
+  #alert_no_selection {
+    margin: 20px 0px 20px 0px;
+    padding: 0px 10px 0px 10px;
+    color: red;
+  }
+  
+  button {
+    margin:auto;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    min-width: 100%;
+    max-width: 100%;
+    width: 200px;
+    padding: 20px;
+    background-color: #00baff;
+    cursor: pointer;
+    border-radius: 5px;
+    color: white;
+    max-height: 70px;
+    min-height: 70px;
+    font-size: 1.3em;
+  }
+  button:hover {
+    background-color: #015675;
+    cursor: pointer !important;
+  }
 }

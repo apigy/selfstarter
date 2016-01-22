@@ -1,0 +1,13 @@
+<div id="select_details" class="white-popup mfp-hide">
+  <h2>Details for the tee</h2>
+  <%= label_tag "size", "Size" %>
+  <%= select_tag "size", options_for_select([["S", "S"], ["M", "M"], ["L", "L"], ["XL", "XL"], ["XXL", "XXL"]]), include_blank: "Choose an option" %>
+  <%= label_tag "Male" %>
+  <%= radio_button_tag "gender", "Male" %>
+  <%= label_tag "Female" %>
+  <%= radio_button_tag "gender", "Female" %>
+  <div style="display: none" id="alert_no_selection">
+    <p>You have to choose a size and for who is the t-shirt</p>
+  </div>
+  <button class="close_select_modal">Select</button>
+</div>

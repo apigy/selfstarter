@@ -16,7 +16,7 @@ var ready = function() {
                 paymentinfo
               },
               success: function(data) {
-                  window.location.href = data;
+                selectDetails(data);
               }
       });
     }
@@ -68,6 +68,28 @@ function setData() {
     p_id: p_id
   };
   return information;
+};
+
+function selectDetails(data) {
+  $.magnificPopup.open({
+    items: {
+      src: "#select_details"
+    },
+    type: 'inline',
+    modal: true
+  }, 0);
+	$(document).on('click', '.close_select_modal', function (e) {
+    var size = $('select#size').val();
+    var gender = $('input[name=gender]:checked').val();
+    if (size && gender) {
+      $.magnificPopup.close();
+      window.location.href = data;
+    } else {
+      $('#alert_no_selection').show(400, 'swing', setTimeout(function() {
+        $('#alert_no_selection').hide(400, 'swing');
+      }, 3000));
+    }
+	});
 };
 
 jQuery(function($) {
