@@ -16,7 +16,7 @@ var ready = function() {
                 paymentinfo
               },
               success: function(data) {
-                selectDetails(data);
+                selectDetails(data, paymentinfo.founder);
               }
       });
     }
@@ -62,34 +62,55 @@ function setData() {
   var amount = _this.data('amount');
   var description = _this.data('description');
   var p_id = _this.data('option');
+  var founder = _this.data('special')
   var information = {
     amount: amount,
     description: description,
-    p_id: p_id
+    p_id: p_id,
+    founder: founder
   };
   return information;
 };
 
-function selectDetails(data) {
-  $.magnificPopup.open({
-    items: {
-      src: "#select_details"
-    },
-    type: 'inline',
-    modal: true
-  }, 0);
-	$(document).on('click', '.close_select_modal', function (e) {
-    var size = $('select#size').val();
-    var gender = $('input[name=gender]:checked').val();
-    if (size && gender) {
-      $.magnificPopup.close();
-      window.location.href = data;
-    } else {
-      $('#alert_no_selection').show(400, 'swing', setTimeout(function() {
-        $('#alert_no_selection').hide(400, 'swing');
-      }, 3000));
-    }
-	});
+function printfulCall(redirectTo) {
+  $.ajax({
+          url: '/preorder/printfulcall',
+          type: "POST",
+          dataType: "html",
+          data: {
+
+          },
+          success: function(data) {
+            alert(JSON.stringify(data));
+            window.location.href = redirectTo;
+          }
+  });
+};
+
+function selectDetails(data, founder) {
+  if (founder == "founder") {
+    $.magnificPopup.open({
+      items: {
+        src: "#select_details"
+      },
+      type: 'inline',
+      modal: true
+    }, 0);
+  	$(document).on('click', '.close_select_modal', function (e) {
+      var size = $('select#size').val();
+      var gender = $('input[name=gender]:checked').val();
+      if (size && gender) {
+        $.magnificPopup.close();
+        printfulCall(data);
+      } else {
+        $('#alert_no_selection').show(400, 'swing', setTimeout(function() {
+          $('#alert_no_selection').hide(400, 'swing');
+        }, 3000));
+      }
+  	});
+  } else {
+    window.location.href = data;
+  }
 };
 
 jQuery(function($) {

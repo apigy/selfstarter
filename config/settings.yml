@@ -112,6 +112,7 @@ payment_headline_1: "Be one of only 200 “Founders” and fund our development!
 payment_description_1: "You’ll get a limited addition Founders T-Shirt, and a “Gold” note on your profile for $250! "
 # you have to set the price as integer so 1000 is equivalent to 10.00$ or 10$
 payment_price_1: 25000
+special_1: "founder"
 
 # second button
 payment_button_2: "Pre-buy At our Special Rate"

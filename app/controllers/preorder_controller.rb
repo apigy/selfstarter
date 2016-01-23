@@ -1,4 +1,8 @@
 class PreorderController < ApplicationController
+  require 'printfulclient'
+  require  'pp'
+  PRINTFUL_KEY = Settings.printful_key
+  
   skip_before_action :verify_authenticity_token, :only => :ipn
 
   require "stripe"
@@ -81,6 +85,36 @@ class PreorderController < ApplicationController
 
   def share
     @order = Order.find_by(:uuid => params[:uuid])
+  end
+  
+  def printfulcall
+    pf = PrintfulClient.new(PRINTFUL_KEY)
+    files = pf.get('files')
+    pf.post('orders', {
+      recipient: {
+        name: "Test User",
+        address1: "Test Adress Somewhere #123",
+        city: "San Diego",
+        state_code: 'CA',
+        country_code: 'US',
+        zip: '91502'
+      },
+      items: [
+        {
+          variant_id: 1138,
+          quantity: 1,
+          name: 'ToTheGIG Tee',
+          files: [ {
+            id: '1205889',
+          }
+        ]
+        }
+      ]
+    })
+    orders = pf.get('orders')
+    respond_to do |format|
+      format.json { render json: orders }
+    end
   end
 
   def ipn
