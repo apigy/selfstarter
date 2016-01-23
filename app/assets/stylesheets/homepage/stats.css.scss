@@ -1,12 +1,13 @@
 #backing
 {
-  float: left;
+  display: block;
+  float: right;
   width: 383px;
-  margin: 20px 0 0 40px;
+  margin: 20px 0 40px 40px;
   #backers
   {
     border-left: none;
-    padding-left: 0;
+
     ul
     {
       float: left;
@@ -53,8 +54,19 @@
   @media screen and (max-device-width:$wrapper_breakpoint), screen and (max-width: $wrapper_breakpoint) {
     float: none;
     width: auto;
-    padding: 0 50px;
+    padding: 0px 5px;
     margin: 40px auto 0 auto;
+  }
+  @media screen and (max-device-width:$mobile_breakpoint), screen and (max-width: $mobile_breakpoint) {
+    margin: 0px;
+    margin-top: 40px;
+    padding: 0px;
+    float: none;
+    width: auto;
+    .stats {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
   }
 }
 body.lt-ie9
@@ -67,6 +79,7 @@ body.lt-ie9
 }
 #progress_bg
 {
+  //margin-bottom: 50px;
   margin-top: 20px;
   float: left;
   height: 40px;
@@ -112,6 +125,9 @@ body.lt-ie9
   }
   @media screen and (max-device-width:$wrapper_breakpoint), screen and (max-width: $wrapper_breakpoint) {
     width: 100%;
+  }
+  @media screen and (max-device-width:$mobile_breakpoint), screen and (max-width: $mobile_breakpoint) {
+  
   }
 }
 .small

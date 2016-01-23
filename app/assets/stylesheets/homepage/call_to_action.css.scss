@@ -1,7 +1,6 @@
 #reserve_container
 {
   float: left;
-  padding-top: 0px;
   border-top: 1px solid #fff;
   -moz-box-shadow:    0 -1px 0 #cbcbcb; /* drop shadow */
   -webkit-box-shadow: 0 -1px 0 #cbcbcb; /* drop shadow */
@@ -34,6 +33,9 @@
     margin: 0 auto 10px auto;
     width: 300px;
   }
+  @media screen and (max-device-width:$mobile_breakpoint), screen and (max-width: $mobile_breakpoint) {
+    width: 100%;
+  }
 }
 .reserve
 {
@@ -59,8 +61,3 @@
   }
 }
 
-.options-box {
-  h2, p {
-    margin: 0px;
-  }
-}
