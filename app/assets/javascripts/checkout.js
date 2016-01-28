@@ -22,38 +22,39 @@ var ready = function() {
     }
   });
   
-  $('.payable').unbind().on('click', function(e) {
-    // Open Checkout with further options
-    var description = $(this).data('description');
-    var amount = $(this).data('amount');
-    if (description == "option") {
-      if ($("input:checked").length > 0) {
-        var option = $("input:checked");
-        description = option.siblings('.description').find('strong').text();
-        description = description.replace(':','');
-        amount = option.data('amount');
-        option.addClass('chosenoption');
+  $.each(['payable', 'button'], function() {
+    $('.' + this).unbind().on('click', function(e) {
+      // Open Checkout with further options
+      var description = $(this).data('description');
+      var amount = $(this).data('amount');
+      if (description == "option") {
+        if ($("input:checked").length > 0) {
+          var option = $("input:checked");
+          description = option.siblings('.description').find('strong').text();
+          description = description.replace(':','');
+          amount = option.data('amount');
+          option.addClass('chosenoption');
+        } else {
+          alert('You have to choose an option!');
+          return false
+        }
       } else {
-        alert('You have to choose an option!');
-        return false
+        $(this).addClass('chosenoption');
       }
-    } else {
-      $(this).addClass('chosenoption');
-    }
-  
-    handler.open({
-      name: 'ToTheGig',
-      description: description,
-      amount: amount
+
+      handler.open({
+        name: 'ToTheGig',
+        description: description,
+        amount: amount
+      });
+      e.preventDefault();
     });
-    e.preventDefault();
-  });
 
-  // Close Checkout on page navigation
-  $(window).on('popstate', function() {
-    handler.close();
+    // Close Checkout on page navigation
+    $(window).on('popstate', function() {
+      handler.close();
+    });
   });
-
 };
 
 

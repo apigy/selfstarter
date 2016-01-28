@@ -115,7 +115,7 @@ payment_price_1: 25000
 special_1: "founder"
 
 # second button
-payment_button_2: "Pre-buy At our Special Rate"
+payment_button_2: "Special Rate Pre-buy"
 payment_headline_2: "Get a years service at this SPECIAL introductory rate"
 payment_description_2: "Pre-order for just $49.95, the whole first year. "
 payment_price_2: 4995
