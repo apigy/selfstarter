@@ -59,7 +59,7 @@ class PreorderController < ApplicationController
       transaction_id: charge.id
     }
     @order = Order.fill!(options)
-    @user.update!(stripe_charge_id: charge.id)
+    @user.update(stripe_charge_id: charge.id)
     session[:user_order] = { user_id: @user.id, order_uuid: @order.uuid }
     respond_to do |format|
       format.json { render json: { path: share_path(@order.uuid), shipping: params[:shipping] } }
@@ -141,7 +141,7 @@ class PreorderController < ApplicationController
     response = pf.place_order(token)
     
     @user = User.find(session[:user_order][:user_id])
-    @user.update!(api_order_id: response[:order_id], order_data: response[:answer])
+    @user.update(api_order_id: response[:order_id], order_data: response[:answer])
     
     respond_to do |format|
       format.json { render plain: share_path(session[:user_order][:order_uuid]) }
