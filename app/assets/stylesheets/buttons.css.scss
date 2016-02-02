@@ -57,7 +57,7 @@
     button {
       //flex: 1;
       display: flex;
-      background-color: #00baff;
+      background-color: #ff8f22;
       cursor: pointer;
       border-radius: 5px;
       font-size: 1rem;
@@ -67,7 +67,7 @@
       }
     }
     button:hover {
-      background-color: #015675;
+      background-color: #be5815;
       cursor: pointer !important;
     }
     p {
@@ -199,7 +199,7 @@
   flex: 1;
   justify-content: center;
   align-items: center;
-  height: 25px;
+  height: 50px;
   cursor: pointer;
   border-radius: 5px;
   border: 1px solid transparent;

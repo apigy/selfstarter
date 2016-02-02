@@ -11,26 +11,18 @@
       <p>You have to choose a size and for who is the t-shirt.</p>
     </div>
     <hr>
-    <div id="address_details">
-      <h2>Shipping details</h2>
-      <%= label_tag "country", "Country"%>
-      <%= country_select("country", "country", priority_countries: ["US"]) %>
-      <%= text_field_tag "address", nil, placeholder: "Street / Main address"  %>
-      <%= text_field_tag "city", nil, placeholder: "City" %>
-      <%= text_field_tag "state", nil, placeholder: "State" %>
-      <%= text_field_tag "zip", nil, placeholder: "ZIP Code" %>
-    </div>  
-    <div style="display: none" id="alert_shipping">
-      <p style="display: none" id="alert_state">That state wasn't recognized, make sure you're typing it correctly</p>
-      <p style="display: none" id="alert_zip">The zipcode you entered doesn't appear to be valid</p>
-    </div>
     <div style="display: none" id="alert_not_available">
       <p>It seems our tees provider doesn't have that size available right now. We'll get in touch soon!</p>
     </div>
-    <button class="close_select_modal">Submit</button>
   </div>
   <div style="display: none" id="color_holder">
     <h2>Choose your color!</h2>
     <div class="column-flex"></div>
+  </div>
+  <div id="submit_holder">
+    <button class="confirm_select_modal">Choose</button>
+  </div>
+  <div id="cancel_holder">
+    <button class="close_select_modal">Cancel</button>
   </div>
 </div>

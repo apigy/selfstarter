@@ -11,9 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131125094222) do
+ActiveRecord::Schema.define(version: 20160202222114) do
 
-  create_table "orders", id: false, force: true do |t|
+  create_table "orders", id: false, force: :cascade do |t|
     t.string   "token"
     t.string   "transaction_id"
     t.string   "address_one"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20131125094222) do
     t.string   "currency"
   end
 
-  create_table "payment_options", force: true do |t|
+  create_table "payment_options", force: :cascade do |t|
     t.decimal  "amount"
     t.string   "amount_display"
     t.text     "description"
@@ -50,10 +50,7 @@ ActiveRecord::Schema.define(version: 20131125094222) do
     t.string   "currency"
   end
 
-  create_table "users", force: true do |t|
-    t.string   "email"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+# Could not dump table "users" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
 end

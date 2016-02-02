@@ -28,13 +28,14 @@ module ScalablepressClientModule
 	# creates uri and calls response
   def start_api(uri, elements)
     parameters = {}
-    token = SCALABLE_KEY
+    passkey = SCALABLE_KEY
+    designId = Settings.designId
   
     c = Curl::Easy.new
     c.url = uri
     c.http_auth_types = :basic
     c.username = ''
-    c.password = token
+    c.password = passkey
     c.verbose = true
     c.encoding = ''
     c.http_post(Curl::PostField.content('type', 'dtg'),
@@ -48,7 +49,7 @@ module ScalablepressClientModule
                 Curl::PostField.content('address[state]', elements[:address_state].to_s),
                 Curl::PostField.content('address[zip]', elements[:address_zip].to_s),
                 Curl::PostField.content('address[country]', elements[:address_country].to_s),
-                Curl::PostField.content('designId', "56a8b147c2bea75a4095bcd3"))
+                Curl::PostField.content('designId', designId))
     response = JSON.parse(c.body_str, symbolize_names: true)
     check_availability_status(response, elements[:color])
   end
@@ -68,6 +69,31 @@ module ScalablepressClientModule
     else
       return { status: 'ok', total: response[:total], subtotal: response[:subtotal], fees: response[:fees], tax: response[:tax], shipping: response[:shipping], orderToken: response[:orderToken], mode: response[:mode] }
     end
+  end
+  
+  def place_order(token)
+    passkey = SCALABLE_KEY
+    uri = API_URL + 'quote/' + token
+    
+    c = Curl::Easy.new
+    c.url = uri
+    c.http_auth_types = :basic
+    c.username = ''
+    c.password = passkey
+    c.verbose = true
+    c.encoding = ''
+    c.perform
+    response = c.body_str
+    
+    if response['total'].to_f <= 30.00
+      uri = API_URL + 'order'
+      c.url = uri
+      c.http_post(Curl::PostField.content('orderToken', token))
+      response = c.body_str
+    else
+      #send email
+    end
+    return { order_id: token, answer: response }
   end
 end
 

@@ -61,10 +61,6 @@ payment_description: "You really should change this text because people will see
 # Printful API
 printful_key: <%= ENV['PRINTFUL_KEY'] %>
 
-# ScalablePress API
-scalable_key: <%= ENV['SCALABLE_KEY'] %>
-
-# Stats settings
 
 # On Lockitron, it's "backers"
 primary_stat: "backers"
@@ -130,6 +126,11 @@ m_colors: ['ash', 'safety green']
 m_hex: ['#d7d6d8', '#cde82b']
 w_colors: ['light blue', 'safety pink']
 w_hex: ['#afcdf3', '#e989a4']
+
+### the designId for the order################
+designId: "56a8b147c2bea75a4095bcd3"
+### ScalablePress API#########################
+scalable_key: <%= ENV['SCALABLE_KEY'] %>
 
 # If you want to change the images for the key points (e.g. "Kickstarter is not a store")
 # They're in app/assets/images/#{pointer_number}-background.png

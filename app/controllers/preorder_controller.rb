@@ -14,6 +14,8 @@ class PreorderController < ApplicationController
       order
     when "scalablepresscall"
       scalablepress_call
+    when "scalablepressorder"
+      scalablepress_order
     end
   end
   
@@ -57,9 +59,10 @@ class PreorderController < ApplicationController
       transaction_id: charge.id
     }
     @order = Order.fill!(options)
-    session[:user_order] = { user_id: @user_id, transaction_id: charge.id }
+    @user.update!(stripe_charge_id: charge.id)
+    session[:user_order] = { user_id: @user.id, order_uuid: @order.uuid }
     respond_to do |format|
-      format.json { render plain: share_path(@order.uuid) }
+      format.json { render json: { path: share_path(@order.uuid), shipping: params[:shipping] } }
     end
   end
 
@@ -132,6 +135,19 @@ class PreorderController < ApplicationController
     end
   end
   
+  def scalablepress_order
+    token = params[:token]
+    pf = ScalablepressClient.new
+    response = pf.place_order(token)
+    
+    @user = User.find(session[:user_order][:user_id])
+    @user.update!(api_order_id: response[:order_id], order_data: response[:answer])
+    
+    respond_to do |format|
+      format.json { render plain: share_path(session[:user_order][:order_uuid]) }
+    end
+  end
+  
   def define_elements_scalable(request, type_of_request, params)
     elements = {}
     case type_of_request
@@ -142,13 +158,14 @@ class PreorderController < ApplicationController
         elements[:gender] = params[:gender]
         elements[:size] = params[:size]
         elements[:product] = elements[:gender] == 'male' ? "gildan-ultra-cotton-t-shirt" : "gildan-ultra-ladies-t-shirt"
-        elements[:address_name] = "Charles Palanzo"
+        elements[:address_name] = params[:address][:names]
         elements[:address_address] = params[:address][:address]
         elements[:address_city] = params[:address][:city]
         elements[:address_state] = params[:address][:state]
         elements[:address_zip] = params[:address][:zip]
         elements[:address_country] = params[:address][:country]
         test = test_shirt_availability(elements)
+        session[:user_order].deep_merge!({ name: elements[:address_name]})
       end
     end
     return test if test

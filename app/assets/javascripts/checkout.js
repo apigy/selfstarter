@@ -4,7 +4,9 @@ var ready = function() {
     key: 'pk_test_dFxDEPCmXwyF4ZhFNajbinzq',
     image: $('.imagelink').data('link'),
     locale: 'auto',
-    token: function(token) {
+    shippingAddress: true,
+    billingAddress: true,
+    token: function(token, args) {
       var paymentinfo = setData();
       $.ajax({
               url: '/preorder/order',
@@ -13,10 +15,11 @@ var ready = function() {
               data: {
                 token: token.id,
                 email: token.email,
+                shipping: args,
                 paymentinfo
               },
               success: function(data) {
-                selectDetails(data, paymentinfo.founder);
+                selectDetails(data, paymentinfo['founder']);
               }
       });
     }
@@ -25,10 +28,7 @@ var ready = function() {
   $.each(['payable', 'button'], function() {
     $('.' + this).unbind().on('click', function(e) {
       e.preventDefault();
-      var paymentinfo = setData();
-      selectDetails("data", paymentinfo.founder);
-    });
-      /*
+      //selectDetails("data", paymentinfo.founder);
       // Open Checkout with further options
       var description = $(this).data('description');
       var amount = $(this).data('amount');
@@ -45,21 +45,20 @@ var ready = function() {
         }
       } else {
         $(this).addClass('chosenoption');
+        handler.open({
+          name: 'ToTheGig',
+          description: description,
+          amount: amount,
+          shippingAddress: true,
+          billingAddress: true
+        });
       }
-
-      handler.open({
-        name: 'ToTheGig',
-        description: description,
-        amount: amount
-      });
-      e.preventDefault();
     });
     
     // Close Checkout on page navigation
     $(window).on('popstate', function() {
       handler.close();
     });
-    */
   });
 };
 
@@ -79,6 +78,7 @@ function setData() {
   return information;
 };
 
+/* this was for printful call
 function printfulCall(redirectTo) {
   $.ajax({
           url: '/preorder/printfulcall',
@@ -93,6 +93,7 @@ function printfulCall(redirectTo) {
           }
   });
 };
+*/
 
 function scalablepressCall(redirectTo, size, gender, address) {
   if (address) {
@@ -106,9 +107,7 @@ function scalablepressCall(redirectTo, size, gender, address) {
               address: address
             },
             success: function(data) {
-              console.log(data);
               checkResponse(data);
-              //window.location.href = redirectTo;
             }
     });
   }
@@ -148,15 +147,32 @@ function showColors(colors, eachToken) {
   $.each(colors, function(i, _this) {
     $('#color_holder').children('.column-flex').prepend("<div class='color-choice' style='background-color: " + _this + "' data-choice='" + eachToken[i] + "'></div>");
     $('.color-choice').off('click').on('click', function() {
-      alert($(this).data('choice'));
+      var token = $(this).data('choice');
+      scalablepressPlaceOrder(token);
     });
   });
+  $('#submit_holder').hide(200, 'swing');
   $('#details_holder').hide(200, 'swing');
   $('#color_holder').show(400, 'swing');
 };
 
+function scalablepressPlaceOrder(token) {
+  $.ajax({
+          url: '/preorder/scalablepressorder',
+          type: "POST",
+          dataType: "html",
+          data: {
+            token: token
+          },
+          success: function(data) {
+            window.location.href = data;
+          }
+  });
+};
+
 function selectDetails(data, founder) {
-  //if (founder == "founder") {
+  data = JSON.parse(data);
+  if (founder == "founder") {
     $.magnificPopup.open({
       items: {
         src: "#select_details"
@@ -165,33 +181,49 @@ function selectDetails(data, founder) {
       modal: true
     }, 0);
     
-  	$(document).on('click', '.close_select_modal', function (e) {
+  	$(document).on('click', '.confirm_select_modal', function (e) {
       var size = $('select#size').val().toLowerCase();
       var gender = $('input[name=gender]:checked').val()
       if (gender) {
         gender = gender.toLowerCase();
       }
       if (size && gender) {
-        check_status = checkStateZip();
-        scalablepressCall(data, size, gender, check_status);
+        //check_status = checkStateZip();
+        scalablepressCall(data, size, gender, format_address(data));
       } else {
         $('#alert_no_selection').show(400, 'swing', setTimeout(function() {
           $('#alert_no_selection').hide(400, 'swing');
         }, 3000));
       }
   	});
-    /*
-    $(document).on('click', '.submit_modal', function (e) {
-     $(".color-choice").each( function() {
-       alert($(this).data('choice'));
-     }); 
-    });
-    */
-    //} else {
-    //window.location.href = data;
-    //}
+    
+  	$(document).on('click', '.close_select_modal', function (e) {
+      $.magnificPopup.close();
+  	});
+
+  } else {
+    window.location.href = data['path'];
+  }
 };
 
+function format_address(data) {
+  shipping = data['shipping'];
+  var names = shipping['shipping_name'];
+  var country = shipping['shipping_address_country_code'];
+  var address = shipping['shipping_address_line1'];
+  var state = shipping['shipping_address_state'];
+  var city = shipping['shipping_address_city'];
+  var zip = shipping['shipping_address_zip'];
+  return {
+    names: names,
+    country: country,
+    address: address,
+    state: state,
+    city: city,
+    zip: zip
+  }
+}
+//This was used before//
 function checkStateZip() {
   var country = $('#country_country').val();
   var address = $('#address').val();
