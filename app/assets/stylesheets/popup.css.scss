@@ -3,7 +3,7 @@
   background: #FFF;
   font-weight: 400;
   padding: 20px;
-  width: 300px;
+  width: 400px;
   max-width: 500px;
   margin: 20px auto;
   color: #000;
@@ -11,6 +11,7 @@
     font-size: 1.5em;
     text-align: left;
     font-weight: 400;
+    margin-top: 20px;
   }
   select {
     text-align: center;
@@ -27,7 +28,7 @@
     text-align:left;
     margin: 10px;
   }
-  #alert_no_selection {
+  #alert_no_selection, #alert_shipping, #alert_not_available {
     margin: 20px 0px 20px 0px;
     padding: 0px 10px 0px 10px;
     color: red;
@@ -53,4 +54,25 @@
     background-color: #015675;
     cursor: pointer !important;
   }
+  #address_details {
+    input[type=text] {
+      width: 390px;
+      margin-bottom: 10px;
+    }
+  }
+  hr {
+    margin-top: 15px;
+  }
+}
+
+.glass {
+  display: none;
+  top: -5%;
+  left: -5%;
+  position: absolute;
+  z-index: 9999;
+  background-color: rgba(0,0,0,0.3);
+  width: 110%;
+  height: 110%;
+  color: orange;
 }

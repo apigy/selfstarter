@@ -194,6 +194,27 @@
   padding: 0px 5% 0px 5%;
 }
 
+.color-choice {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  height: 25px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  margin-bottom: 5px;
+}
+
+.color-choice:hover {
+  cursor: pointer;
+  border: 1px solid black;
+}
+
+.color_holder {
+  min-height: 70%;
+}
+
 .button {
   width: 300px;
   height: 45px;

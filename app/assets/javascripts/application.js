@@ -15,7 +15,10 @@
 //= require jquery_ujs
 //= require jquery.details
 //= require jquery.textchange
+//= require spin
 //= require preorder
 //= require checkout
 //= require magnific-popup
 //= require popup
+//= require jquery.spin
+

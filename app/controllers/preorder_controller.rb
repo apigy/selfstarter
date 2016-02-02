@@ -1,8 +1,5 @@
 class PreorderController < ApplicationController
-  require 'printfulclient'
-  require  'pp'
-  PRINTFUL_KEY = Settings.printful_key
-  
+  require 'scalablepressclient' 
   skip_before_action :verify_authenticity_token, :only => :ipn
 
   require "stripe"
@@ -10,6 +7,16 @@ class PreorderController < ApplicationController
 
   def index
   end
+  
+  def decide
+    case params[:to_action]
+    when "order"
+      order
+    when "scalablepresscall"
+      scalablepress_call
+    end
+  end
+  
 
   def checkout
     #@stripe = Stripe.api_key
@@ -50,6 +57,7 @@ class PreorderController < ApplicationController
       transaction_id: charge.id
     }
     @order = Order.fill!(options)
+    session[:user_order] = { user_id: @user_id, transaction_id: charge.id }
     respond_to do |format|
       format.json { render plain: share_path(@order.uuid) }
     end
@@ -116,7 +124,68 @@ class PreorderController < ApplicationController
       format.json { render json: orders }
     end
   end
-
+  
+  def scalablepress_call
+    files = define_elements_scalable("product", "begin_quote", params)
+    respond_to do |format|
+      format.json { render json: files.as_json }
+    end
+  end
+  
+  def define_elements_scalable(request, type_of_request, params)
+    elements = {}
+    case type_of_request
+    when 'begin_quote'
+      case request
+      when 'product'
+        elements[:path] = "quote"
+        elements[:gender] = params[:gender]
+        elements[:size] = params[:size]
+        elements[:product] = elements[:gender] == 'male' ? "gildan-ultra-cotton-t-shirt" : "gildan-ultra-ladies-t-shirt"
+        elements[:address_name] = "Charles Palanzo"
+        elements[:address_address] = params[:address][:address]
+        elements[:address_city] = params[:address][:city]
+        elements[:address_state] = params[:address][:state]
+        elements[:address_zip] = params[:address][:zip]
+        elements[:address_country] = params[:address][:country]
+        test = test_shirt_availability(elements)
+      end
+    end
+    return test if test
+  end
+  
+  def test_shirt_availability(elements)
+    files = []
+    if elements[:gender] == 'male'
+      colors = Settings.m_colors
+      colors_hex = Settings.m_hex
+    else
+      colors = Settings.w_colors
+      colors_hex = Settings.w_hex
+    end
+    colors.each_with_index do | color, i |
+      pf = ScalablepressClient.new
+      elements.deep_merge!({color: color})
+      response = pf.start_request(elements, true)
+      if response[:status] == "bad_value"
+        case response[:path]
+        when "products[0]"
+          response.delete(:path)
+          response.delete(:message)
+          files[i.to_i] = response.deep_merge!({ status: 'error', type: "product", field: "availability", size: elements[:size], gender: elements[:gender] })
+        when "address[state]"
+          return [{ status: "error", type: "address", field: "state" }]
+        when "address[zip]"
+          return [{ status: "error", type: "address", field: "zip" }]
+        end
+      else
+        response.deep_merge!({ color: color, size: elements[:size], gender: elements[:gender], color_hex: colors_hex[i.to_i] })
+        files[i.to_i] = response
+      end
+    end
+    return files
+  end
+  
   def ipn
   end
 end

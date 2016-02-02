@@ -61,6 +61,9 @@ payment_description: "You really should change this text because people will see
 # Printful API
 printful_key: <%= ENV['PRINTFUL_KEY'] %>
 
+# ScalablePress API
+scalable_key: <%= ENV['SCALABLE_KEY'] %>
+
 # Stats settings
 
 # On Lockitron, it's "backers"
@@ -119,6 +122,14 @@ payment_button_2: "Special Rate Pre-buy"
 payment_headline_2: "Get a years service at this SPECIAL introductory rate"
 payment_description_2: "Pre-order for just $49.95, the whole first year. "
 payment_price_2: 4995
+
+
+###################Scalable###################
+###man and woman descriptive and hex colours##
+m_colors: ['ash', 'safety green']
+m_hex: ['#d7d6d8', '#cde82b']
+w_colors: ['light blue', 'safety pink']
+w_hex: ['#afcdf3', '#e989a4']
 
 # If you want to change the images for the key points (e.g. "Kickstarter is not a store")
 # They're in app/assets/images/#{pointer_number}-background.png

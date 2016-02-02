@@ -28,14 +28,21 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'coffee-rails', '~> 4.1.0'
 
+#added for the selection of the address to ship https://github.com/stefanpenner/country_select#usage
+gem 'country_select'
 
+#spinner for "loading" on ajax calls
+gem 'spinjs-rails'
+
+#curb - to make usage like curl
+gem 'curb'
 
 group :development, :test do
   gem 'rspec-rails'
   gem 'shoulda'
 end
 
-#turbolinks
+#turbolinks - took it off as it makes straightforward integration with externally written JS more complex than what it should
 #gem 'turbolinks'
 
 #gem 'jbuilder', '~> 2.0'
