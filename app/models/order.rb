@@ -5,7 +5,8 @@ class Order < ActiveRecord::Base
   self.primary_key = 'uuid'
 
   # note - completed scope removed, because any entries in Order *have* to be completed ones.
-
+  
+  #micael - here is the fill! method. As you can see it's not a default method, it's just something that they coded into it. The hash is passed and then it's used to populate the fields. In the end it calls .save! which is the default method for saving object assignments into the DB, in this case since it has the ! ("bang") it executes it at the DB level creating the record. The method ends with @order, which means it returns the saved @order object. 
   def self.fill!(options = {}) 
     @order                    = Order.new
     @order.name               = options[:name]
@@ -21,6 +22,7 @@ class Order < ActiveRecord::Base
     @order
   end
 
+  #micael - this method here just checks if there are any orders in the DB already, in case there are (Order.count > 0) it returns 1 single value, by descending order (starting at the last) and converts it into integer adding 1 to it. Which makes sense. If the last order we have is 5, this returns 5 and adds 1, which gives us the number for the "next" order. If Order.count == 0 ( or negative), it doesn't trigger the first condition so the "else" block is executed and returns 1, meaning it's the first order.
   def self.next_order_number
     if Order.count > 0
       Order.order("number DESC").limit(1).first.number.to_i + 1
@@ -29,6 +31,7 @@ class Order < ActiveRecord::Base
     end
   end
 
+  #micael - this methods generates a random number that we use to populate the "uuid" (unique universal identifier), it's part of the SecureRandom module.
   def generate_uuid!
     begin
       self.uuid = SecureRandom.hex(16)

@@ -8,6 +8,7 @@
     <%= csrf_meta_tags %>
     <%= javascript_include_tag "https://checkout.stripe.com/checkout.js", "application" %>
     <meta class="imagelink" data-link="<%= asset_path('ToTheGigLogo128px.png') %>">
+    <meta class="stripe_pk" data-pk="<%= Settings.stripe_public_key %>">
   </head>
   <!--[if lt IE 9 ]><body class="lt-ie9"><![endif]-->
   <!--[if (gt IE 9)|!(IE)]><!--> <body><!--<![endif]-->
@@ -16,7 +17,6 @@
       <%= yield %>
     </div>
     <%= render 'preorder/footer' %>
-    <%= render 'popups/popup' %>
     <%= render 'popups/select_details' %>
     <div style="display: none" class="glass">
   </body>

@@ -126,6 +126,8 @@ m_colors: ['ash', 'safety green']
 m_hex: ['#d7d6d8', '#cde82b']
 w_colors: ['light blue', 'safety pink']
 w_hex: ['#afcdf3', '#e989a4']
+m_shirt_model: "gildan-ultra-cotton-t-shirt"
+w_shirt_model: "gildan-ultra-ladies-t-shirt"
 
 ### the designId for the order################
 designId: "56a8b147c2bea75a4095bcd3"
