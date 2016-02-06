@@ -61,6 +61,12 @@ payment_description: "You really should change this text because people will see
 # Printful API
 printful_key: <%= ENV['PRINTFUL_KEY'] %>
 
+# Mailgun API
+mailgun_key: <%= ENV['MAILGUN_KEY'] %>
+mailgun_domain: "2thegig.com"
+mailgun_from: "general@2thegig.com"
+mailgun_to: "palanzo@yahoo.com"
+
 
 # On Lockitron, it's "backers"
 primary_stat: "backers"

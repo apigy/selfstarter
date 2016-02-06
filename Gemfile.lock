@@ -94,6 +94,9 @@ GEM
     magnific-popup-rails (1.0.0)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    mailgun-ruby (1.0.3)
+      json (~> 1.8)
+      rest-client (~> 1.6)
     method_source (0.8.2)
     mime-types (2.99)
     mini_portile2 (2.0.0)
@@ -218,6 +221,7 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-rails
   magnific-popup-rails
+  mailgun-ruby (~> 1.0.3)
   pg
   pry-rails
   rails (= 4.2.1)

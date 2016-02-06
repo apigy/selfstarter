@@ -214,7 +214,7 @@ class PreorderController < ApplicationController
           #.each_with_index function we attribute an hash to that array index with the details of the error.
           #if you have 2 colors on the array as we have now. This means this cycle will first go as i = 0, so files[0] = .... and then will be run again as i=1, so files[1]
           #if you had more colors it will go on as i=2, etc,etc. We don't return nothing here, because we don't know how many colors there are to test. If it's the last one
-          #it will nonetheless end the cycle and then finish the function with a "reutnr files" which eventually returns the full array with all the errors.
+          #it will nonetheless end the cycle and then finish the function with a "return files" which eventually returns the full array with all the errors.
           #you can see I added to the response both the size and gender so that if we need that info to debug we have it.
           files[i.to_i] = response.deep_merge!({ status: 'error', type: "product", field: "availability", size: elements[:size], gender: elements[:gender] })
         when "address[state]"
@@ -246,19 +246,20 @@ class PreorderController < ApplicationController
     token = params[:token]
     #we initiate again an instance of the ScalablepressClient
     pf = ScalablepressClient.new
+    #here we use the session[:user_order] we had created before to fetch the correct user by it's id in our db.
+    user = User.find(session[:user_order][:user_id])
     #we make the call to the api - switch to lib/scalablepressclient.rb - method=> place_order
-    response = pf.place_order(token)
+    response = pf.place_order(token, user)
     #since an order will always be made effective unless the cost is higher than 30$ and since we set "response" both for returning the quote and for placing the order we can safely assume
     #we'll have those values and it won't break ever our app
-    #here we use the session[:user_order] we had created before to fetch the correct user by it's id in our db.
-    @user = User.find(session[:user_order][:user_id])
     #and here we update the user instance, to save both the order_id (the token used) and the full response given by the API. This way you can double check if any inconsistency rises. And 
     #you can see if a order was placed, left on hold or anything else. We used it as .json field inside the DB becuase PostGreSQL and rails have native support for it.
-    @user.update(api_order_id: response[:order_id], order_data: response[:answer])
+    user.update(api_order_id: response[:order_id], order_data: response[:answer])
     #here we kick our answer to ajax, which once again uses the session hash we created before to fetch the correct redirect path!
     respond_to do |format|
       #voilá! this hits the JS front-end and we redirect to the computed result of "share_path(for_this_order_id)"
-      format.json { render plain: share_path(session[:user_order][:order_uuid]) }
+      #format.json { render plain: share_path(session[:user_order][:order_uuid]) }
+      format.json { render json: response }
     end
   end
   

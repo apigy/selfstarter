@@ -136,7 +136,7 @@ function printfulCall(redirectTo) {
 */
 
 
-//this is the function that gets called once we receive a success callback from our ajax for creating a stripe charge, as you see it takes two values - data is what was returned by our app and founder is simple a boolean var stating if this payment includes a t-shirt order or not.
+//this is the function that gets called once we receive a success callback from our ajax for creating a stripe charge, as you see it takes two values - data is what was returned by our app and founder is simply a  var stating if this payment includes a t-shirt order or not.
 function selectDetails(data, founder) {
   //since we returned the data as a "json" object from our back-end we need to parse it so we can access it as a regular object.
   data = JSON.parse(data);
@@ -222,9 +222,7 @@ function format_address(data) {
 function scalablepressCall(redirectTo, size, gender, address) {
   //we start by making a jquery ajax call
   $.ajax({
-    //here we set the path of the call we already have this routed
           url: '/preorder/scalablepresscall',
-    //the type...
           type: "POST",
           dataType: "html",
     //here we pass the data we want to work with. The size, gender and the address which is actually the hash that was returned by format_address
@@ -319,7 +317,8 @@ function scalablepressPlaceOrder(token) {
           },
           success: function(data) {
             //and we just redirect the window to the path we'll get as an answer from our back-end - switch batch to preorder_controller.api to follow through
-            window.location.href = data;
+            //window.location.href = data;
+            console.log(data);
           }
   });
 };

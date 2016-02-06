@@ -8,6 +8,7 @@
 ##
 #we need to require 'json' because we need to do some parsing of the curb answers
 require 'json'
+require 'mailgun'
 
 module ScalablepressClientModule
 
@@ -24,7 +25,7 @@ module ScalablepressClientModule
     response = start_api(basic_uri, elements)
   end
 
-	# here we assemble together our first call - this functions takes both the parsed url and the elements hash with the values we need to make the call
+	# here we assemble together our first call - this functions takes both the url and the elements hash with the values we need to make the call
   def start_api(uri, elements)
     #we fetch the designId from the settings.yml - in case you want to use a different design you just need to change it in settings.yml
     designId = Settings.designId
@@ -41,7 +42,7 @@ module ScalablepressClientModule
     # but if you don't set the username to an empty string, it will not authenticate using curb.
     # so we set the username to ''
     c.username = ''
-    # then the password - with both this settings when we call the curl connection it will be as if we did -u ":password_api_key"
+    # then the password - with both these settings when we call the curl connection it will be as if we did -u ":password_api_key"
     c.password = SCALABLE_KEY
     # this just creates a verbose output when the command is run. We don't really need it, but if you test the app in localhost and open the terminal window you'll see that it
     # outputs the connection information as it is made - it's quite useful for debbuging
@@ -115,7 +116,7 @@ module ScalablepressClientModule
   end
   
   #this is the final call we need to make
-  def place_order(token)
+  def place_order(token, user)
     #first we create the uri to retrieve the order
     uri = API_URL + 'quote/' + token
     #then we repeat the same steps as before
@@ -129,8 +130,7 @@ module ScalablepressClientModule
     #but here, since we are doing a "get" request to the api to retrieve the "quote" we already made, we just need to call .perform on our instance of curl.
     c.perform
     #as before the response is saved into .body_str of our instance.
-    response = c.body_str
-    
+    response = c.body_str  
     #now we just make sure the value of the order is below 30$ . In the quote hash we got returned there's a 'total' key that holds the value 
     if response['total'].to_f <= 30.00
       #we already have an instance of curl opened so we just change the url
@@ -141,14 +141,31 @@ module ScalablepressClientModule
       #we save the answer
       response = c.body_str
     else
+      notification_mail('not_ordered', response, user)
       #this else is in case the order total is higher than 30$ 
       #send email or do something else
     end
+
     #here we return both the "order" id, as well as the "full" response we got from the API - this bubbbles to the function that called this function - so back to preorder_controller.rb
     #since at this point a quote will always be placed the only thing thatcan happen is the total value being higher than 30 and we've taken care of it as well
     return { order_id: token, answer: response }
   end
+  
+  def notification_mail(mail_type, response, user)
+    mg_client = Mailgun::Client.new Settings.mailgun_key
+    message_params = {:from    => Settings.mailgun_from,
+                      :to      => Settings.mailgun_to }
+    case mail_type
+    when 'not_ordered'
+      response = JSON.parse(response)
+      response.merge!(user.as_json)
+      message_params.merge!( { :subject => 'T-shirt order not completed',
+      :text    => JSON.pretty_generate(response) } )
+    end
+    mg_client.send_message Settings.mailgun_domain, message_params
+  end
 end
+
 
 class ScalablepressClient
    include ScalablepressClientModule

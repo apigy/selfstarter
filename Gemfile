@@ -4,6 +4,8 @@ raise 'Ruby should be >2.1' unless RUBY_VERSION.to_f > 2.1
 
 gem 'rails', '4.2.1'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+#mail-gun
+gem 'mailgun-ruby', '~>1.0.3', require: 'mailgun'
 
 #needed for rails 4.2
 gem "config"
