@@ -317,8 +317,9 @@ function scalablepressPlaceOrder(token) {
           },
           success: function(data) {
             //and we just redirect the window to the path we'll get as an answer from our back-end - switch batch to preorder_controller.api to follow through
-            //window.location.href = data;
-            console.log(data);
+            window.location.href = data;
+            //for debugging
+            //console.log(data);
           }
   });
 };

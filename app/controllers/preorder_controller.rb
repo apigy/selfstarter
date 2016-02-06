@@ -258,8 +258,9 @@ class PreorderController < ApplicationController
     #here we kick our answer to ajax, which once again uses the session hash we created before to fetch the correct redirect path!
     respond_to do |format|
       #voilá! this hits the JS front-end and we redirect to the computed result of "share_path(for_this_order_id)"
-      #format.json { render plain: share_path(session[:user_order][:order_uuid]) }
-      format.json { render json: response }
+      format.json { render plain: share_path(session[:user_order][:order_uuid]) }
+      #for debugging
+      #format.json { render json: response }
     end
   end
   
