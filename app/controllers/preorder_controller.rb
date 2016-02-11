@@ -1,7 +1,6 @@
 class PreorderController < ApplicationController
-  require 'scalablepressclient' 
   skip_before_action :verify_authenticity_token, :only => :ipn
-
+  include Scalablepressclient
   require "stripe"
   Stripe.api_key = ENV['STRIPE_API_KEY']
 
@@ -69,7 +68,7 @@ class PreorderController < ApplicationController
     @user.update(stripe_charge_id: charge.id)
     # here we use Rails session object to save an hash containing both the @user.id (so we can use it later, and the order_uuid. The order_uuid is so that we can render the path for sharing and the @user.id is so that in case this charge entails a t-shirt shipping, later on, since each session object is unique to each user active on the wbesite, we can return this :user_order hash from the session to fetch the corresponding user as well as the right sharing path to redirect once the t-shirt process is finished. In case this charge was not including a t-shirt, we pass the share_path() for this specific user/order so that we can redirect the. We also have to render the shipping addresses, so in case we need to ship the t-shirt, we'll have the addresses available. We don't need to check it further because stripe makes sure our addresses are real (at least, country, state, city). So we are confident we can use them with scalable_press api
     session[:user_order] = { user_id: @user.id, order_uuid: @order.uuid }
-    
+    notification_mail('payment', @order, @user)
     # this is the block that responds to the call. We can use format.json, or format.html in this case doesn't matter. The "render json:" says that instead of rendering a view, we render a JSON object, and this is what the success callback in checkout.js will grab under the name "data". So it means we'll have available an hash, named data, with two key-values. One "path" another one "shipping". So now back to the guide document to follow through
     respond_to do |format|
       format.json { render json: { path: share_path(@order.uuid), shipping: params[:shipping] } }
@@ -176,6 +175,9 @@ class PreorderController < ApplicationController
   def test_shirt_availability(elements)
     #we initiate an empty array
     files = []
+    # we fetch the user
+    user = User.find(session[:user_order][:user_id])
+    # we initiate a client to send the notification email
     #here we differentiate according to the gender. If it's male we load the "color" name for the male options along with the hex color we want to match to that option
     #from the settings.yml
     if elements[:gender] == 'male'
@@ -191,17 +193,14 @@ class PreorderController < ApplicationController
     #Since we might have availability for one color and that size but not for the other one, we use this .each function to try both. And if you add values to the arrays in "settings.yml"
     #this will run those availability tests for those colors as well which means you can include as many colors as you want
     colors.each_with_index do | color, i |
-      # here we start a new client. This didn't need to be like this - but I started trying to re-use the printful api and they used the client like this. In our case since we don't have
-      # an initialize we could just have used plain methods... but anyway.
-      pf = ScalablepressClient.new
       # now we merge into the "elements" hash we had passed into this function the colors - since now we know which colors we have because we differentiated according to gender
       elements.deep_merge!({color: color})
       # here we store the first response. "pf" is the ScalablepressClient instance we initiated two lines above. So we call the method start_request, passing it the elements hash and true
       # as the second argument - we'll use the true to decide what to do - please check scalablepressclient.rb in the lib folder on the root folder of the app
       # this response assumes the value of the hash we returned at last in check_availability_status function
-      response = pf.start_request(elements)
+      response = start_request(elements)
       # since we standardized the answer we can now easily check if there's availability or not - no matter what the issue we put it as the "status" key (bad_value is what the api returns)
-      if response[:status] == "bad_value"
+      if response[:status] == "bad_value" || response[:status] == "missing_field"
         #so if in the "status" key we had a bad_value then we know there's a problem and now we'll check where is the problem. The API always returns the field where there's a problem
         #and so we create a switch/case statement using the key "path" (we standardized this that's why we can use it like this - now all errors are organized the same)
         case response[:path]
@@ -222,10 +221,14 @@ class PreorderController < ApplicationController
           #sure we want to stop the function right now. It's not needed to have other colors tried because the address will always be wrong. Before I was using this to display
           #the errors on the popup, but since then we moved to stripe address form we probably don't need to worry with it as it validates it itself. In case stripe accepts an
           #address that is invalid to scalable api we have a problem... But that shouldn't happen at all - and there's no way to change it since the address comes from stripe
-          return [{ status: "error", type: "address", field: "state" }]
+          error = { status: "error", type: "address", field: "state", path: share_path(session[:user_order][:order_uuid]) }
+          notification_mail('error', error, user)
+          return [error]
         when "address[zip]"
           #this is the same as the previous
-          return [{ status: "error", type: "address", field: "zip" }]
+          error = { status: "error", type: "address", field: "zip", path: share_path(session[:user_order][:order_uuid])  }
+          notification_mail('error', error, user)
+          return [error]
         end
       else
         #otherwise, when "status" isn't "bad_value" (we could also check if it was "ok") we know this article with this particular color is available, so we use the same technique
@@ -236,6 +239,7 @@ class PreorderController < ApplicationController
       end
     end
     #here we return whatever we got from the quote test to our ajax callback - so follow it on checkout.js
+    notification_mail('notification', files, user)
     return files
   end
   
@@ -244,17 +248,16 @@ class PreorderController < ApplicationController
     #at this point we don't need to worry with anything else because the quote is valid and we can fetch the previously placed quote with the orderToken we had saved and passed as parameter
     #through the ajax call
     token = params[:token]
-    #we initiate again an instance of the ScalablepressClient
-    pf = ScalablepressClient.new
     #here we use the session[:user_order] we had created before to fetch the correct user by it's id in our db.
     user = User.find(session[:user_order][:user_id])
     #we make the call to the api - switch to lib/scalablepressclient.rb - method=> place_order
-    response = pf.place_order(token, user)
+    response = place_order(token, user)
     #since an order will always be made effective unless the cost is higher than 30$ and since we set "response" both for returning the quote and for placing the order we can safely assume
     #we'll have those values and it won't break ever our app
     #and here we update the user instance, to save both the order_id (the token used) and the full response given by the API. This way you can double check if any inconsistency rises. And 
     #you can see if a order was placed, left on hold or anything else. We used it as .json field inside the DB becuase PostGreSQL and rails have native support for it.
     user.update(api_order_id: response[:order_id], order_data: response[:answer])
+    notification_mail('order', response[:answer], user)
     #here we kick our answer to ajax, which once again uses the session hash we created before to fetch the correct redirect path!
     respond_to do |format|
       #voilá! this hits the JS front-end and we redirect to the computed result of "share_path(for_this_order_id)"

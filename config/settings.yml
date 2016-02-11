@@ -65,7 +65,7 @@ printful_key: <%= ENV['PRINTFUL_KEY'] %>
 mailgun_key: <%= ENV['MAILGUN_KEY'] %>
 mailgun_domain: "2thegig.com"
 mailgun_from: "general@2thegig.com"
-mailgun_to: "palanzo@yahoo.com"
+mailgun_to: "micaelnussbaumer@gmail.com" #"orders@ironlatch.com"
 
 
 # On Lockitron, it's "backers"
@@ -105,7 +105,7 @@ tweet_text: "to crowdfund"
 google_id: <%= ENV['GOOGLE_ID'] %>
 
 # Set if payment is in the main page or in options page
-pay_in_page: true
+pay_in_page: false
 
 # If payment is in page you can set 2 options
 
@@ -114,7 +114,7 @@ payment_button_1: "Become a founder"
 # this is the headline
 payment_headline_1: "Be one of only 200 “Founders” and fund our development!"
 # this is the description
-payment_description_1: "You’ll get a limited addition Founders T-Shirt, and a “Gold” note on your profile for $250! "
+payment_description_1: "You’ll get a limited edition Founders T-Shirt, and a “Gold” note on your profile for $250! "
 # you have to set the price as integer so 1000 is equivalent to 10.00$ or 10$
 payment_price_1: 25000
 special_1: "founder"

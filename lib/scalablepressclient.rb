@@ -1,16 +1,8 @@
-##
-#
-# This is based on Printful API but tweaked to accomodate scalablepress API
-#
-# version 1.0
-# copyright 2016 
-#
-##
 #we need to require 'json' because we need to do some parsing of the curb answers
 require 'json'
 require 'mailgun'
 
-module ScalablepressClientModule
+module Scalablepressclient
 
   #we set some constants, including the base url for the API and the Scalablepress API Key - we set it in settings to point to an environment variable
 	API_URL = 'https://api.scalablepress.com/v2/'
@@ -161,24 +153,44 @@ module ScalablepressClientModule
       response.merge!(user.as_json)
       message_params.merge!( { :subject => 'T-shirt order not completed',
       :text    => JSON.pretty_generate(response) } )
-    end
+    when 'error'
+      response.merge!(user.as_json)
+      message_params.merge!( { :subject => 'T-shirt order not completed - address problem',
+      :text    => JSON.pretty_generate(response) } )
+    when 'notification'
+      if decide_notification(response)
+        response = { response: response }
+        response.merge!(user.as_json)
+        message_params.merge!( { :subject => 'Somebody tried an unavailable combination',
+        :text    => JSON.pretty_generate(response) } )
+      else
+        response = { response: response }
+        response.merge!(user.as_json)
+        message_params.merge!( { :subject => 'Somebody is doing an order',
+        :text    => JSON.pretty_generate(response) } )
+      end
+    when 'payment'
+      response = response.as_json
+      response.merge!(user.as_json)
+      message_params.merge!( { :subject => 'Payment made',
+      :text    => JSON.pretty_generate(response) } )
+    when 'order'
+      response = { response: response }
+      response.merge!(user.as_json)
+      message_params.merge!( { :subject => 'Order for t-shirt placed',
+      :text    => JSON.pretty_generate(response) } )
+    end 
     mg_client.send_message Settings.mailgun_domain, message_params
   end
-end
-
-
-class ScalablepressClient
-   include ScalablepressClientModule
-end
-
-# Generic Scalablepress exception
-class ScalablepressException < RuntimeError
-end
-
-# Scalablepress exception returned from the API
-class ScalablepressApiException < ScalablepressException
-  def initialize(code)
-    @code = code
+  
+  def decide_notification(response)
+    total = failed = 0
+    response.each do |r|
+      total += 1
+      if r[:status] == 'error'
+        failed += 1
+      end
+    end
+    total == failed ? (return true) : (return false)
   end
-  attr_accessor :code
 end

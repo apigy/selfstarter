@@ -20,6 +20,6 @@ module Selfstarter
     config.assets.version = '1.0'
     # --- Standard Rails Config ---
     config.action_dispatch.default_headers['X-Frame-Options'] = "ALLOW-FROM https://www.youtube.com"
-
+    config.autoload_paths += %W(#{config.root}/lib)
   end
 end
