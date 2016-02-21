@@ -2,42 +2,27 @@ class Order < ActiveRecord::Base
   before_validation :generate_uuid!, :on => :create
   belongs_to :user
   belongs_to :payment_option
-  scope :completed, -> { where("token != ? OR token != ?", "", nil) }
   self.primary_key = 'uuid'
 
-  # This is where we create our Caller Reference for Amazon Payments, and prefill some other information.
-  def self.prefill!(options = {})
-    @order                = Order.new
-    @order.name           = options[:name]
-    @order.user_id        = options[:user_id]
-    @order.price          = options[:price]
-    @order.number         = Order.next_order_number
-    @order.payment_option = options[:payment_option] if !options[:payment_option].nil?
+  # note - completed scope removed, because any entries in Order *have* to be completed ones.
+  
+  #micael - here is the fill! method. As you can see it's not a default method, it's just something that they coded into it. The hash is passed and then it's used to populate the fields. In the end it calls .save! which is the default method for saving object assignments into the DB, in this case since it has the ! ("bang") it executes it at the DB level creating the record. The method ends with @order, which means it returns the saved @order object. 
+  def self.fill!(options = {}) 
+    @order                    = Order.new
+    @order.name               = options[:name]
+    @order.user_id            = options[:user_id]
+    @order.price              = options[:price]
+    @order.currency           = options[:currency]
+    @order.payment_option_id  = options[:payment_option_id]
+    @order.number             = Order.next_order_number
+    @order.transaction_id     = options[:transaction_id]
+
     @order.save!
 
     @order
   end
 
-  # After authenticating with Amazon, we get the rest of the details
-  def self.postfill!(options = {})
-    @order = Order.find_by!(:uuid => options[:callerReference])
-    @order.token             = options[:tokenID]
-    if @order.token.present?
-      @order.address_one     = options[:addressLine1]
-      @order.address_two     = options[:addressLine2]
-      @order.city            = options[:city]
-      @order.state           = options[:state]
-      @order.status          = options[:status]
-      @order.zip             = options[:zip]
-      @order.phone           = options[:phoneNumber]
-      @order.country         = options[:country]
-      @order.expiration      = Date.parse(options[:expiry])
-      @order.save!
-
-      @order
-    end
-  end
-
+  #micael - this method here just checks if there are any orders in the DB already, in case there are (Order.count > 0) it returns 1 single value, by descending order (starting at the last) and converts it into integer adding 1 to it. Which makes sense. If the last order we have is 5, this returns 5 and adds 1, which gives us the number for the "next" order. If Order.count == 0 ( or negative), it doesn't trigger the first condition so the "else" block is executed and returns 1, meaning it's the first order.
   def self.next_order_number
     if Order.count > 0
       Order.order("number DESC").limit(1).first.number.to_i + 1
@@ -46,6 +31,7 @@ class Order < ActiveRecord::Base
     end
   end
 
+  #micael - this methods generates a random number that we use to populate the "uuid" (unique universal identifier), it's part of the SecureRandom module.
   def generate_uuid!
     begin
       self.uuid = SecureRandom.hex(16)
@@ -64,14 +50,14 @@ class Order < ActiveRecord::Base
 
   # See what it looks like when you have some backers! Drop in a number instead of Order.count
   def self.backers
-    Order.completed.count
+    Order.count
   end
 
   def self.revenue
     if Settings.use_payment_options
-      PaymentOption.joins(:orders).where("token != ? OR token != ?", "", nil).pluck('sum(amount)')[0].to_f
+      PaymentOption.joins(:orders).sum(:price).to_f
     else
-      Order.completed.sum(:price).to_f
+      Order.sum(:price).to_f
     end 
   end
 

@@ -13,8 +13,12 @@
 //= require html5shiv-printshiv
 //= require jquery
 //= require jquery_ujs
-//= require jquery.ui.all
 //= require jquery.details
 //= require jquery.textchange
+//= require spin
 //= require preorder
-//= require_tree .
+//= require checkout
+//= require magnific-popup
+//= require popup
+//= require jquery.spin
+

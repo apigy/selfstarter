@@ -1,0 +1,84 @@
+.white-popup {
+  position: relative;
+  background: #FFF;
+  font-weight: 400;
+  padding: 20px;
+  width: 400px;
+  max-width: 500px;
+  margin: 20px auto;
+  color: #000;
+  h2 {
+    font-size: 1.5em;
+    text-align: left;
+    font-weight: 400;
+    margin-top: 20px;
+  }
+  select {
+    text-align: center;
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 25px;
+  }
+  label {
+    font-size: 1em;
+    text-align: left;
+    font-weight: 100;
+  }
+  input[type=radio] {
+    text-align:left;
+    margin: 10px;
+  }
+  #alert_no_selection, #alert_shipping, #alert_not_available {
+    margin: 20px 0px 20px 0px;
+    padding: 0px 10px 0px 10px;
+    color: red;
+  }
+  
+  button {
+    margin:auto;
+    min-width: 100%;
+    max-width: 100%;
+    width: 200px;
+    padding: 20px;
+    background-color: #ff8f22;
+    cursor: pointer;
+    border-radius: 5px;
+    color: white;
+    max-height: 70px;
+    min-height: 70px;
+    font-size: 1.3em;
+  }
+  button:hover {
+    background-color: #be5815;
+    cursor: pointer !important;
+  }
+  #submit_holder{
+    margin-top: 50px;
+    margin-bottom: 10px;
+  }
+  #cancel_holder {
+   margin-top: 30px;
+   margin-bottom: 30px; 
+  }
+  #address_details {
+    input[type=text] {
+      width: 390px;
+      margin-bottom: 10px;
+    }
+  }
+  hr {
+    margin-top: 15px;
+  }
+}
+
+.glass {
+  display: none;
+  top: -5%;
+  left: -5%;
+  position: absolute;
+  z-index: 9999;
+  background-color: rgba(0,0,0,0.3);
+  width: 110%;
+  height: 110%;
+  color: orange;
+}

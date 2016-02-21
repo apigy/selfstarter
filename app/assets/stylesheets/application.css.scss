@@ -10,9 +10,11 @@
  *
  *= require_self
  *= require reset
+ *= require magnific-popup
  *= require main
- *= require jquery.ui.all
  */
+
+@import "main.css.scss";
 .hidden
 {
   display: none;

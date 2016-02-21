@@ -5,15 +5,14 @@
         <img alt="video_place_holder" width='512px' height='385px' src="/assets/video_placeholder.png" />
       </div>
       <div id="player" class="hidden" style="display: none;">
-        <object width="512" height="385">
-          <param name="movie" value="<%= Settings.video_embed_url %>?autohide=1&showinfo=0&rel=0&autoplay=1" />
-          <param name="allowFullScreen" value="true" />
-          <param name="allowscriptaccess" value="always" />
-          <embed src="<%= Settings.video_embed_url %>?autohide=1&showinfo=0&rel=0&autoplay=1" type="application/x-shockwave-flash" width="512" height="385" allowscriptaccess="always" allowfullscreen="true"></embed>
-        </object>
+        <div class="embed-responsive embed-responsive-4by3">
+          <iframe type="text/html" allowFullScreen frameborder="0" src="<%= Settings.video_embed_url %>"></iframe>
+        </div>
       </div>
     <% else %>
-      <iframe width='512' height='385' src="<%= video_url %>"></iframe>
+    <div class="video_box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/MkQcZ8A01AA" frameborder="0" allowfullscreen></iframe>
+    </div>
     <% end %>
   </div>
 
@@ -55,13 +54,35 @@
     <% end %>
     
     <div id="reserve_container">
-      <p id="ship_date"><%= Settings.ships %></p>
-      <a href="/preorder/checkout" class="blue_button reserve"><%= Settings.call_to_action %></a>
-      <p id="price"><%= Settings.price_human %></p>
-      <p><%= Settings.dont_give_them_a_reason_to_say_no %></p>
-      <%= like_button %>
-    </div>
-    
+      <% if Settings.pay_in_page %>
+        <div class="options-box">
+          <div class="column">
+            <div class="column" id="options_button_1">
+              <div class="column" id="options_description_1">
+                <h2><%= Settings.payment_headline_1 %></h2>
+                <p><%= Settings.payment_description_1 %> <a href="#pop_up_1" class="pop_up" data-target="1">Learn more</a></p>
+              </div>
+              <button class="button" id="first_option" data-description="<%= Settings.payment_button_1 %>" data-amount="<%= Settings.payment_price_1 %>" data-option="1" data-special="<%= Settings.special_1 %>"><p><%= Settings.payment_button_1 %></p></button>
+            </div>
+            <div class="spacerflex"></div>
+            <div class="column" id="options_button_2">
+              <div class="column" id="options_description_2">
+                <h2><%= Settings.payment_headline_2 %></h2>
+                <p><%= Settings.payment_description_2 %> <a href="#pop_up_2" class="pop_up" data-target="2">Learn more</a></p>
+              </div>
+              <button class="button" id="second_option" data-description="<%= Settings.payment_button_2 %>" data-amount="<%= Settings.payment_price_2 %>" data-option="2" data-special="<%= Settings.special_2 %>">
+                <p><%= Settings.payment_button_2 %></p>
+              </button>
+            </div>
+          </div>
+        </div>
+      <% else %>
+        <p id="ship_date"><%= Settings.ships %></p>
+        <a href="/preorder/order" class="blue_button reserve"><%= Settings.call_to_action %></a>
+        <p id="price"><%= Settings.price_human %></p>
+        <p><%= Settings.dont_give_them_a_reason_to_say_no %></p>
+        <%= like_button %>
+      <% end %>
+    </div> 
   </div>
-  
 </div>

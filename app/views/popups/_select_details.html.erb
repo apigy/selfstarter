@@ -1,0 +1,28 @@
+<div id="select_details" class="white-popup mfp-hide">
+  <div id="details_holder">
+    <h2>Details for the tee</h2>
+    <%= label_tag "size", "Size" %>
+    <%= select_tag "size", options_for_select([["XXSML", "XXSML"], ["XSML", "XSML"], ['SML', 'SML'], ["MED", "MED"], ["LRG", "LRG"], ["XLG", "XLG"], ["XXL", "XXL"], ["XXXL", "XXXL"], ["XXXXL", "XXXXL"], ["XXXXXL", "XXXXXL"], ["XXXXXXL", "XXXXXXL"]]), include_blank: "Choose an option" %>
+    <%= label_tag "Male" %>
+    <%= radio_button_tag "gender", "Male" %>
+    <%= label_tag "Female" %>
+    <%= radio_button_tag "gender", "Female" %>
+    <div style="display: none" id="alert_no_selection">
+      <p>You have to choose a size and for who is the t-shirt.</p>
+    </div>
+    <hr>
+    <div style="display: none" id="alert_not_available">
+      <p>It seems our tees provider doesn't have that size available right now. We'll get in touch soon!</p>
+    </div>
+  </div>
+  <div style="display: none" id="color_holder">
+    <h2>Choose your color!</h2>
+    <div class="column-flex"></div>
+  </div>
+  <div id="submit_holder">
+    <button class="confirm_select_modal">Choose</button>
+  </div>
+  <div id="cancel_holder">
+    <button class="close_select_modal">Cancel</button>
+  </div>
+</div>

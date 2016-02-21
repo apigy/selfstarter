@@ -4,15 +4,18 @@
       <ol>
         <% PaymentOption.all.each_with_index do |p, index| %>
           <li>
-            <%= radio_button_tag "payment_option", p.id, false, class: 'payment_radio', disabled: sold_out(p) %>
-            <%= label_tag("payment_option_#{index}", p.amount_display) %>
-            <div class="shipping">
-              <% if sold_out p %>
-                <span class="sold-out">Sold Out</span>
-              <% end %>
-              <span><%= p.shipping_desc %></span>
+            <div class="column-flex">
+            <%= radio_button_tag "payment_option", p.id, false, class: 'payment_radio flex', disabled: sold_out(p), data: { amount: "#{p.amount.to_i.to_s + '00'}", description: 'option', option: p.id  } %>
+            <%= label_tag("payment_option_#{index}", p.amount_display, class: "flex") %>
+              <div class="shipping flex">
+                <% if sold_out p %>
+                  <span class="sold-out">Sold Out</span>
+                <% end %>
+                <span><%= p.shipping_desc %></span>
+              </div>
             </div>
-            <div class="description">
+            <br>
+            <div class="description flexbigger">
               <p class="full"><%= raw p.description %></p>
               <% if p.limit > -1 %>
                 <p class="limited">Limited (<%= p.limit - order_count(p) %> of <%= p.limit %> remaining)</p>

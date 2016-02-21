@@ -1,21 +1,24 @@
-.footer 
+.footer
 {
   padding: 40px 0;
-  ul 
+  @media screen and (max-device-width:$wrapper_breakpoint), screen and (max-width: $wrapper_breakpoint)  {
+    padding: 40px;
+  }
+  ul
   {
     float: left;
   }
-  li 
+  li
   {
     margin-bottom: 10px;
   }
-  a 
+  a
   {
     font-size: 18px;
     color: #525252;
     font-family: $primary_font, $secondary_font, $tertiary_font;
   }
-  p 
+  p
   {
     font-size: 18px;
   }
