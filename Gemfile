@@ -8,6 +8,7 @@ gem 'json', '~> 1.8', '>= 1.8.3'
 group :development do
   gem 'sqlite3'
   gem 'pry-rails'
+  gem 'annotate', '~> 2.6.10'
 end
 
 group :production do
