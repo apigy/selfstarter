@@ -1,13 +1,14 @@
 source 'https://rubygems.org'
 
-ruby '2.0.0'
+ruby '2.3.0'
 
-gem 'rails', '4.0.0'
-gem 'json', '~> 1.7.7'
+gem 'rails', '4.2.6'
+gem 'json', '~> 1.8', '>= 1.8.3'
 
 group :development do
   gem 'sqlite3'
   gem 'pry-rails'
+  gem 'annotate', '~> 2.6.10'
 end
 
 group :production do
@@ -24,19 +25,20 @@ group :assets do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 2.0'
-  gem 'shoulda'
+  gem 'rspec-rails', '~> 3.5', '>= 3.5.1'
+  gem 'factory_girl_rails'
+  gem 'shoulda-matchers', '~> 3.0'
 end
 
 # jQuery
 gem 'jquery-rails'
-gem 'jquery-ui-rails'
+gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
 
 # Kickstarter's awesome Amazon Flexible Payments gem
-gem 'amazon_flex_pay'
+gem 'amazon_flex_pay', '~> 0.11.0'
 
 # Configuration File
-gem 'rails_config'
+gem 'config', github: 'railsconfig/config'
 
 # For Heroku
 gem 'rails_12factor'

@@ -8,9 +8,10 @@
 #  updated_at :datetime
 #
 
-describe User do
-
-  it { should have_many :orders }
-  it { should respond_to :email }
-
+FactoryGirl.define do
+  factory :User do
+    sequence(:name) { |n| " name #{n}" }
+    sequence(:price) {  1.00 }
+    association :user
+  end
 end
