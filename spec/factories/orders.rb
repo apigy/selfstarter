@@ -25,33 +25,10 @@
 #  payment_option_id :integer
 #
 
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
-
-one:
-  user_id: 1
-  token: MyString
-  transaction_id: MyString
-  address_one: MyString
-  address_two: MyString
-  city: MyString
-  state: MyString
-  zip: MyString
-  country: MyString
-  status: MyString
-  number: MyString
-  name: Marin
-  price: 123.05
-  uuid: ec781fa2-c5e6-4af9-8049-4dee15a85296
-
-two:
-  user_id: 2
-  transaction_id: MyString
-  address_one: MyString
-  address_two: MyString
-  city: MyString
-  state: MyString
-  zip: MyString
-  country: MyString
-  status: MyString
-  number: MyString
-  uuid: MyString
+FactoryGirl.define do
+  factory :order do
+    sequence(:name) { |n| " name #{n}" }
+    sequence(:price) {  1.00 }
+    association :user
+  end
+end

@@ -8,12 +8,10 @@
 #  updated_at :datetime
 #
 
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
-
-one:
-  email: mneorr@gmail.com
-  id: 1
-
-two:
-  email: MyString
-  id: 2
+FactoryGirl.define do
+  factory :User do
+    sequence(:name) { |n| " name #{n}" }
+    sequence(:price) {  1.00 }
+    association :user
+  end
+end

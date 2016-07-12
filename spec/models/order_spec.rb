@@ -25,28 +25,74 @@
 #  payment_option_id :integer
 #
 
-describe Order do
+require 'spec_helper'
 
-  context "attributes" do
+RSpec.describe Order, type: :model do
 
-    [:address_one, :address_two, :city, :country, :number, :state, :status,
-      :token, :transaction_id, :zip, :shipping, :tracking_number, :name,
-      :price, :phone, :expiration
-      ].each do |property|
-        it { should allow_mass_assignment_of property }
-      end
-
-      it { should_not allow_mass_assignment_of :uuid }
-
-      it "generates UUID before validation on_create" do
-        @order = Order.new
-        @order.valid?
-        @order.uuid.should_not be_nil
-      end
-
-      it { Order.primary_key.should == 'uuid' }
-
+  context 'db' do
+    context 'columns' do
+      it { should have_db_column(:token).of_type(:string) }
+      it { should have_db_column(:transaction_id).of_type(:string) }
+      it { should have_db_column(:address_one).of_type(:string) }
+      it { should have_db_column(:address_two).of_type(:string) }
+      it { should have_db_column(:city).of_type(:string) }
+      it { should have_db_column(:state).of_type(:string) }
+      it { should have_db_column(:zip).of_type(:string) }
+      it { should have_db_column(:country).of_type(:string) }
+      it { should have_db_column(:status).of_type(:string) }
+      it { should have_db_column(:number).of_type(:string) }
+      it { should have_db_column(:uuid).of_type(:string) }
+      it { should have_db_column(:user_id).of_type(:string) }
+      it { should have_db_column(:price).of_type(:decimal) }
+      it { should have_db_column(:shipping).of_type(:decimal) }
+      it { should have_db_column(:tracking_number).of_type(:string) }
+      it { should have_db_column(:phone).of_type(:string) }
+      it { should have_db_column(:name).of_type(:string) }
+      it { should have_db_column(:expiration).of_type(:date) }
+      it { should have_db_column(:created_at).of_type(:datetime) }
+      it { should have_db_column(:payment_option_id).of_type(:integer) }
     end
+
+    context 'attributes' do
+      it 'has UUID when is initialized' do
+        @order = Order.new
+        expect(@order).to be_valid
+        expect(@order.uuid.blank?).to be false
+      end
+    end
+  end
+
+  context 'associations' do
+    it { should belong_to(:user) }
+    it { should belong_to(:payment_option) }
+  end
+
+  context 'validations' do
+    it { should validate_presence_of :name }
+    it { should validate_presence_of :price }
+    it { should validate_presence_of :user }
+  end
+
+  # context "attributes" do
+
+  #   [:address_one, :address_two, :city, :country, :number, :state, :status,
+  #     :token, :transaction_id, :zip, :shipping, :tracking_number, :name,
+  #     :price, :phone, :expiration
+  #     ].each do |property|
+  #       it { should allow_mass_assignment_of property }
+  #     end
+
+  #     it { should_not allow_mass_assignment_of :uuid }
+
+  #     it "generates UUID before validation on_create" do
+  #       @order = Order.new
+  #       @order.valid?
+  #       @order.uuid.should_not be_nil
+  #     end
+
+  #     it { Order.primary_key.should == 'uuid' }
+
+  # end
 
   context "class methods" do
 

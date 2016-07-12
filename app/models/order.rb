@@ -26,11 +26,15 @@
 #
 
 class Order < ActiveRecord::Base
-  before_validation :generate_uuid!, :on => :create
   belongs_to :user
   belongs_to :payment_option
+
   scope :completed, -> { where("token != ? OR token != ?", "", nil) }
   self.primary_key = 'uuid'
+
+  validates :name, :price, :user, presence: true
+
+  before_create :generate_uuid!
 
   # This is where we create our Caller Reference for Amazon Payments, and prefill some other information.
   def self.prefill!(options = {})
@@ -99,8 +103,6 @@ class Order < ActiveRecord::Base
       PaymentOption.joins(:orders).where("token != ? OR token != ?", "", nil).pluck('sum(amount)')[0].to_f
     else
       Order.completed.sum(:price).to_f
-    end 
+    end
   end
-
-  validates_presence_of :name, :price, :user_id
 end

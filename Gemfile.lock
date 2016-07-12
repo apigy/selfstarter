@@ -69,6 +69,11 @@ GEM
     erubis (2.7.0)
     eventmachine (1.2.0.1)
     execjs (2.7.0)
+    factory_girl (4.7.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.7.0)
+      factory_girl (~> 4.7.0)
+      railties (>= 3.0.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     hike (1.2.3)
@@ -200,6 +205,7 @@ DEPENDENCIES
   annotate (~> 2.6.10)
   coffee-rails (~> 4.0.0)
   config!
+  factory_girl_rails
   jquery-rails
   jquery-ui-rails (~> 5.0, >= 5.0.5)
   json (~> 1.8, >= 1.8.3)
