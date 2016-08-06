@@ -7,7 +7,6 @@ gem 'json', '~> 1.7.7'
 
 group :development do
   gem 'sqlite3'
-  gem 'pry-rails'
 end
 
 group :production do
@@ -26,6 +25,10 @@ end
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
   gem 'shoulda'
+  gem 'factory_girl_rails'
+  gem 'faker'
+  gem 'pry-rails'
+  gem 'pry-debugger'
 end
 
 # jQuery
