@@ -36,3 +36,7 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 end
+
+def http_login(user = "shipwrecked", pw = "lighthouselabs")
+  request.env['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Basic.encode_credentials(user, pw)
+end
