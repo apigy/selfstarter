@@ -5,11 +5,6 @@ ruby '2.0.0'
 gem 'rails', '4.0.0'
 gem 'json', '~> 1.7.7'
 
-group :development do
-  gem 'sqlite3'
-  gem 'pry-rails'
-end
-
 group :production do
   gem 'thin'
   gem 'pg'
@@ -24,8 +19,13 @@ group :assets do
 end
 
 group :development, :test do
+  gem 'sqlite3'
   gem 'rspec-rails', '~> 2.0'
   gem 'shoulda'
+  gem 'factory_girl_rails'
+  gem 'faker'
+  gem 'pry-rails'
+  gem 'pry-debugger'
 end
 
 # jQuery
