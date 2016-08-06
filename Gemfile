@@ -35,6 +35,9 @@ gem 'jquery-ui-rails'
 # Kickstarter's awesome Amazon Flexible Payments gem
 gem 'amazon_flex_pay'
 
+# Wepay gem
+gem 'wepay'
+
 # Configuration File
 gem 'rails_config'
 
