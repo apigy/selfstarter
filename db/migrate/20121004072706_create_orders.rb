@@ -1,4 +1,4 @@
-class CreateOrders < ActiveRecord::Migration
+class CreateOrders < ActiveRecord::Migration[4.2]
   def change
     create_table :orders, :id => false do |t|
       t.string  :token
