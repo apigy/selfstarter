@@ -1,12 +1,14 @@
 source 'https://rubygems.org'
 
-ruby '2.0.0'
+ruby '2.4.1'
 
-gem 'rails', '4.0.0'
-gem 'json', '~> 1.7.7'
+gem 'rails', '5.2.0'
+gem 'json'
+gem 'protected_attributes_continued'
+gem 'settingslogic'
 
 group :development do
-  gem 'sqlite3'
+  gem 'sqlite3', '~> 1.3.6'
   gem 'pry-rails'
 end
 
@@ -18,13 +20,13 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 4.0.0'
-  gem 'coffee-rails', '~> 4.0.0'
-  gem 'uglifier', '>= 1.0.3'
+  gem 'sass-rails'
+  gem 'coffee-rails'
+  gem 'uglifier'
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 2.0'
+  gem 'rspec-rails'
   gem 'shoulda'
 end
 
