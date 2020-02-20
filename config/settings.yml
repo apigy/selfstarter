@@ -13,10 +13,10 @@ defaults: &defaults
   # If you want to edit the FAQ, head over to app/views/preorder/homepage/_faqs.html.erb
 
   # This'll be both the page title (<title></title>) and the name in the header
-  product_name: "Foxtival"
+  product_name: "Selfstarter"
 
   # This will be used in sentences like Hooray You've just reserved product_description
-  product_description: "a ticket for the Foxtival"
+  product_description: "a set of widgets"
 
   # An image showcasing your product -- it'll show up when you pin your product
   # It should be in app/assets/images
