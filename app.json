@@ -1,0 +1,17 @@
+{
+  "name": "selfstarter",
+  "env": {
+    "RACK_ENV": {
+      "value": "production"
+    },
+    "PORT": {
+      "value": "3000"
+    },
+  },
+  "addons": [],
+  "buildpacks": [
+    {
+      "url": "heroku/ruby"
+    }
+  ]
+}
